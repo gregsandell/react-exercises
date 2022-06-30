@@ -1,4 +1,3 @@
-import cx from 'classnames'
 import { Component } from 'react'
 
 export default class Index extends Component {
@@ -8,7 +7,6 @@ export default class Index extends Component {
   }
 
   handleIncrement (e) {
-    console.log('handler')
     e.preventDefault()
     this.setState((prevState) => ({
       counter: prevState.counter + 1
@@ -19,8 +17,11 @@ export default class Index extends Component {
     return (
       <>
         <div>
-          <h2 className={cx('counter')}>{this.state.counter}</h2>
-          <button className={cx('counter-button')} onClick={this.handleIncrement.bind(this)}>Click</button>
+          <h1>Counter</h1>
+          <div>
+            <span>Counter Value: </span><span>{this.state.counter}</span>
+          </div>
+          <button onClick={this.handleIncrement.bind(this)}>Increment</button>
         </div>
         <style>{`
                     .counter-button {

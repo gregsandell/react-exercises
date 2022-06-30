@@ -77,9 +77,7 @@ export default class Index extends Component {
     return (
       <>
         <div>
-          <h2>
-            Todo List
-          </h2>
+          <h1>Todo List</h1>
           <input type='text' value={this.state.newitem} onChange={this.handleNewitemChange.bind(this)} />
           <button onClick={this.handleNewitemAppend.bind(this)}>Add</button>
           <ul>
