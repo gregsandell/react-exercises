@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import './autocomplete.css'
 import cx from 'classnames'
 
-// the exported component can be either a function or a class
-
 const Match = (props) => {
   const [highlight, setHighlight] = useState(false)
   return (
@@ -12,6 +10,7 @@ const Match = (props) => {
       className={cx({ match: highlight || props.first })}
       onMouseEnter={() => setHighlight(true)}
       onMouseLeave={() => setHighlight(false)}
+      onClick={props.onClick}
     >
       {props.children}
     </li>
@@ -19,7 +18,8 @@ const Match = (props) => {
 }
 Match.propTypes = {
   children: PropTypes.string.isRequired,
-  first: PropTypes.boolean
+  first: PropTypes.bool,
+  onClick: PropTypes.func
 }
 Match.defaultProps = {
   first: false
@@ -43,7 +43,11 @@ const Autocomplete = (props) => {
         return accum
       }, [])
       setMatchElems(matches.map((match, i) => {
-        return (<Match first={i === 0} key={i}>{match}</Match>)
+        return (<Match
+          first={i === 0}
+          key={i}
+          onClick={() => { setInput(match); setMatchElems([]) }}
+        >{match}</Match>)
       }))
     }
   }
