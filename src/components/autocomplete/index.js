@@ -1,13 +1,33 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import './autocomplete.css'
-// import classnames from 'classnames'
+import cx from 'classnames'
 
 // the exported component can be either a function or a class
 
-export default function Autocomplete (props) {
+const Match = (props) => {
+  const [highlight, setHighlight] = useState(false)
+  return (
+    <li
+      className={cx({ match: highlight || props.first })}
+      onMouseEnter={() => setHighlight(true)}
+      onMouseLeave={() => setHighlight(false)}
+    >
+      {props.children}
+    </li>
+  )
+}
+Match.propTypes = {
+  children: PropTypes.string.isRequired,
+  first: PropTypes.boolean
+}
+Match.defaultProps = {
+  first: false
+}
+
+const Autocomplete = (props) => {
   const [input, setInput] = useState('')
-  const noMatchLI = <li key={0}>No matches</li>
+  const noMatchLI = (<li className='no-match' key={0}>No matches</li>)
   const [matchElems, setMatchElems] = useState([noMatchLI])
   const handleInput = (e) => {
     e.preventDefault()
@@ -18,14 +38,14 @@ export default function Autocomplete (props) {
     if (value.length) {
       matches = props.suggestions.reduce((accum, sugg) => {
         if (sugg.toLowerCase().indexOf(value.toLowerCase()) > -1) {
-          console.log(`${value} match with ${sugg}`)
           accum.push(sugg)
         }
         return accum
       }, [])
-      setMatchElems(matches.map((match, i) => (<li className='match' key={i}>{match}</li>)))
+      setMatchElems(matches.map((match, i) => {
+        return (<Match first={i === 0} key={i}>{match}</Match>)
+      }))
     }
-    console.log(`accum has ${matches.length} matches`)
   }
   return (
     <div className='wrapper'>
@@ -45,3 +65,4 @@ Autocomplete.propTypes = {
 }
 
 Autocomplete.defaultProps = {}
+export default Autocomplete
