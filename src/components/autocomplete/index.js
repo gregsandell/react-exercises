@@ -29,6 +29,7 @@ const Autocomplete = (props) => {
   const [input, setInput] = useState('')
   const noMatchLI = (<li className='no-match' key={0}>No matches</li>)
   const [matchElems, setMatchElems] = useState([noMatchLI])
+  // const [selectedMatchIdx, setSelectedMatchIdx] = useState(0)
   const handleInput = (e) => {
     e.preventDefault()
     const value = e.target.value.trim()
@@ -55,8 +56,16 @@ const Autocomplete = (props) => {
     <div className='wrapper'>
       <h1>Autocomplete</h1>
       <div className='control'>
-        <input type='text' value={input} onChange={handleInput} className='input' />
-        <ul className='matches'>
+        <input
+          type='text'
+          value={input}
+          onChange={handleInput}
+          className='input'
+          onKeyDown={(e) => console.log(`event.key = ${e.key}`)}
+        />
+        <ul
+          className='matches'
+        >
           {matchElems.map((match) => match)}
         </ul>
       </div>
