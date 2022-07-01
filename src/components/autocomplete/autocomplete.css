@@ -1,0 +1,20 @@
+ul.matches {
+  list-style: none;
+  min-width: 100px;
+  width: max-content;
+  padding-inline-start: 0;
+  margin-top: 0;
+}
+ul.matches li {
+  border: 1px solid black;
+  padding: 3px;
+  color: black;
+  background: white;
+}
+ul.matches li.match:first-child  {
+  color: white;
+  background: black;
+}
+ul.matches li:first-child {
+  border-top: 0px;
+}
