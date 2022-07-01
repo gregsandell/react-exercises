@@ -17,10 +17,18 @@ ul.matches li {
 ul.matches li.no-match {
   border: 0px;
 }
-ul.matches li.match, ul.matches li.first  {
+ul.matches li:hover  {
+  color: white;
+  background-color: black;
+}
+ul.matches li.highlight {
   color: white;
   background-color: black;
 }
 ul.matches li:first-child {
   border-top: 0px;
+}
+ul.matches li.no-match:hover {
+  color: black;
+  background-color: white;
 }

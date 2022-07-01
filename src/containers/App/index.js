@@ -23,7 +23,8 @@ function App () {
         <Routes>
           <Route exact='true' path='/' element={<ToDoList />} />
           <Route exact='true' path='/todolist' element={<ToDoList />} />
-          <Route exact='true' path='/autocomplete' element={<Autocomplete suggestions={suggestions} />} />
+          <Route
+            exact='true' path='/autocomplete' element={<Autocomplete suggestions={suggestions} />} />
           <Route exact='true' path='/counter' element={<Counter />} />
         </Routes>
       </div>
