@@ -1,70 +1,46 @@
-# Getting Started with Create React Index
+# Misc React Exercises
+## ToDoList
+A pretty standard, bare bones ToDo List.  Clicking on each ToDo toggles
+it as done vs in progress, and text at the bottom tallies incomplete
+vs complete tasks.
 
-This project was bootstrapped with [Create React Index](https://github.com/facebook/create-react-app).
+## Autocomplete widget
+The idea for this came from a tutorial:  [How To Build an Autocomplete Component in React](https://www.digitalocean.com/community/tutorials/react-react-autocomplete), but I did not 
+peek at their solution.  Their sandbox demo is [here](https://codesandbox.io/s/8lyp733pj0).  That solution may also be found
+in the present project with name **AutocompleteOnline**.
 
-## Available Scripts
+An array of matches should be provided as a property, for example:
+```javascript
+"Alligator",
+"Bask",
+"Crocodilian",
+"Death Roll",
+"Eggs",
+"Jaws",
+"Reptile",
+"Solitary",
+"Tail",
+"Wetlands"
+```
+Substring matches should work.
 
-In the project directory, you can run:
+The UI should have a title, brief instructions, and an &lt;input&gt; field. An initial message appears when there are no matches, or empty input.
 
-### `npm start`
+Matches should be incremental, results change as you type.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Matches appear as a kind of &lt;select&gt; attached to the bottom of the &lt;input&gt;.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Css styling should apply to the &lt;select&gt; options:
 
-### `npm test`
+1. The first one is highlighted by default; this is the current selection
+2. As the mouse hovers over any others below the first, they also highlight in addition to the current selection
+3. The up and down arrow keys will move the current selection up and down.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+When clicking on an option, or pressing Return on a highlighted option:
+1. The &lt;input&gt; is replaced with the full text of the current selection
+2. The options list vanishes
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## OrganizeTeams
+This challenge comes from [React Coding Interview Challenge 21](https://medium.com/@justin.sherman/react-coding-interview-challenge-21-c4fc68c823a3).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React Index documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web Index
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

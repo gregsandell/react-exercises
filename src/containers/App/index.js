@@ -5,6 +5,7 @@ import Counter from '../../components/counter'
 import Autocomplete from '../../components/autocomplete'
 import suggestions from './autocompleteData'
 
+/* TO DO:  change to an original list of suggestions */
 function App () {
   return (
     <Router>
