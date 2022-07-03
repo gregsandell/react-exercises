@@ -36,13 +36,11 @@ export default function OrganizeTeams (props) {
       for (let i = 0; i < length; i++) {
         result.push(list.pop())
       }
-      console.log(`popToArray, players = ${JSON.stringify(players)}, length = ${length}, result = ${result}`)
       return result
     }
 
     const groupSizes = randomizeGroupSizes(players.length)
     scramble(players)
-    console.log(players)
     result.playerPool = popToArray(players, groupSizes[0])
     result.team1 = popToArray(players, groupSizes[1])
     result.team2 = popToArray(players, groupSizes[2])
@@ -54,7 +52,6 @@ export default function OrganizeTeams (props) {
     setPlayerGroups({ ...playerGroups })
   }
 
-  console.log(`props.players = ${JSON.stringify(props.players)}`)
   const [playerGroups, setPlayerGroups] = useState(initializeTeams(props.players))
   const [teamTurn, setTeamTurn] = useState(0)
 
@@ -67,7 +64,6 @@ export default function OrganizeTeams (props) {
             className='player'
             key={i}
             onClick={() => {
-              console.log(i)
               playerGroups[`team${teamTurn + 1}`].push(playerGroups.playerPool[i])
               playerGroups.playerPool.splice(i, 1)
               setPlayerGroups({ ...playerGroups })
