@@ -82,24 +82,28 @@ export default function OrganizeTeams (props) {
       </div>
       <div id='rosters'>
         <div className='team'>
-          <h2>Team 1</h2>
-          {playerGroups.team1.map((player, i) => (
-            <div
-              className='player'
-              key={`team1_${i}`}
-              onClick={() => returnPlayerToPool(1, i)}
-            >{player}</div>
-          ))}
+          <h2 className='team-head'>Team 1</h2>
+          <div className='team-players'>
+            {playerGroups.team1.map((player, i) => (
+              <div
+                className='player'
+                key={`team1_${i}`}
+                onClick={() => returnPlayerToPool(1, i)}
+              >{player}</div>
+            ))}
+          </div>
         </div>
         <div className='team'>
-          <h2>Team 2</h2>
-          {playerGroups.team2.map((player, i) => (
-            <div
-              className='player'
-              key={`team2_${i}`}
-              onClick={() => returnPlayerToPool(2, i)}
-            >{player}</div>
-          ))}
+          <h2 className='team-head'>Team 2</h2>
+          <div className='team-players'>
+            {playerGroups.team2.map((player, i) => (
+              <div
+                className='player'
+                key={`team2_${i}`}
+                onClick={() => returnPlayerToPool(2, i)}
+              >{player}</div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
