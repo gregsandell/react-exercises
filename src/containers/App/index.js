@@ -2,8 +2,11 @@ import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-do
 import './App.css'
 import ToDoList from '../../components/toDoList'
 import Counter from '../../components/counter'
+import OrganizeTeams from '../../components/organizeTeams'
 import Autocomplete from '../../components/autocomplete'
+import AutocompleteOnline from '../../components/autocompleteOnline'
 import suggestions from './autocompleteData'
+import teamPlayers from './organizeTeamsData'
 
 /* TO DO:  change to an original list of suggestions */
 function App () {
@@ -18,6 +21,12 @@ function App () {
             <NavLink to='/autocomplete' exact='true' activestyle={{ color: 'green' }}>Autocomplete</NavLink>
           </li>
           <li>
+            <NavLink to='/autocompleteonline' exact='true' activestyle={{ color: 'green' }}>Autocomplete (Online version)</NavLink>
+          </li>
+          <li>
+            <NavLink to='/organizeteams' exact='true' activestyle={{ color: 'green' }}>Organize Teams</NavLink>
+          </li>
+          <li>
             <NavLink to='/counter' exact='true' activestyle={{ color: 'green' }}>Counter</NavLink>
           </li>
         </ul>
@@ -26,6 +35,11 @@ function App () {
           <Route exact='true' path='/todolist' element={<ToDoList />} />
           <Route
             exact='true' path='/autocomplete' element={<Autocomplete suggestions={suggestions} />} />
+          <Route
+            exact='true' path='/autocompleteonline' element={<AutocompleteOnline suggestions={suggestions} />} />
+          <Route exact='true' path='/counter' element={<Counter />} />
+          <Route
+            exact='true' path='/organizeteams' element={<OrganizeTeams players={teamPlayers} />} />
           <Route exact='true' path='/counter' element={<Counter />} />
         </Routes>
       </div>

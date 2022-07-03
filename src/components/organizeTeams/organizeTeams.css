@@ -1,0 +1,32 @@
+#container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  max-width: 500px;
+}
+#player-pool {
+  margin: 0 auto;
+}
+.player {
+  display: inline-block;
+  padding: 5px 10px;
+}
+#buttons {
+  margin: 0 auto;
+}
+#buttons button {
+  margin: 0 10px;
+}
+#rosters {
+  display: flex;
+  flex-direction: row;
+}
+.team {
+  flex: 1;
+  background-color: lightgray;
+  padding: 5px;
+  margin: 10px 20px;
+}
+/*.team:first-child {*/
+/*  margin-left: 20px;*/
+/*}*/
