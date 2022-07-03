@@ -1,0 +1,21 @@
+#container {
+    display: flex;
+    flex-direction: column;
+    border: 0;
+}
+#results-table {
+
+}
+#page-links {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+}
+.page-link {
+    padding-right: 25px;
+    color: blue;
+}
+.selected {
+    font-weight: bold;
+}
+

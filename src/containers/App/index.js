@@ -7,6 +7,7 @@ import Autocomplete from '../../components/autocomplete'
 import AutocompleteOnline from '../../components/autocompleteOnline'
 import WordByWord from '../../components/wordByWord'
 import WordByWordPublished from '../../components/wordByWordPublished'
+import Pagination from '../../components/pagination'
 import suggestions from './autocompleteData'
 import teamPlayers from './organizeTeamsData'
 
@@ -35,6 +36,9 @@ function App () {
             <NavLink to='/wordbywordpublished' exact='true' activestyle={{ color: 'green' }}>Word by Word (published version)</NavLink>
           </li>
           <li>
+            <NavLink to='/pagination' exact='true' activestyle={{ color: 'green' }}>Pagination</NavLink>
+          </li>
+          <li>
             <NavLink to='/counter' exact='true' activestyle={{ color: 'green' }}>Counter</NavLink>
           </li>
         </ul>
@@ -52,6 +56,8 @@ function App () {
             exact='true' path='/wordbyword' element={<WordByWord />} />
           <Route
             exact='true' path='/wordbywordpublished' element={<WordByWordPublished />} />
+          <Route
+            exact='true' path='/pagination' element={<Pagination />} />
           <Route exact='true' path='/counter' element={<Counter />} />
         </Routes>
       </div>

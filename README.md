@@ -58,3 +58,7 @@ The solution published in the original article (see link above).  It
 uses state instead of DOM manipulation (which is good React style)
 but it is doing more work because it re-renders the whole output,
 plus the latest new word, every 500 msec.
+
+## Pagination 
+This challenge comes from [React Coding Interview Challenge 18](https://medium.com/@justin.sherman/react-coding-interview-challenge-18-257bbcb7429a).
+
