@@ -44,3 +44,17 @@ When clicking on an option, or pressing Return on a highlighted option:
 ## OrganizeTeams
 This challenge comes from [React Coding Interview Challenge 21](https://medium.com/@justin.sherman/react-coding-interview-challenge-21-c4fc68c823a3).
 
+I tweaked the requirements to include clicking on player inside their
+team boxes, which make them return to the player pool.
+
+## WordByWord
+This challenge comes from [React Coding Interview Challenge 20](https://medium.com/@justin.sherman/react-coding-interview-challenge-20-87d5707ecefe).
+
+My version accomplishes it with DOM manipulation.  It works, but admittedly
+direct DOM manipulation is not in the spirit of React.
+
+## WordByWordPublished 
+The solution published in the original article (see link above).  It
+uses state instead of DOM manipulation (which is good React style)
+but it is doing more work because it re-renders the whole output,
+plus the latest new word, every 500 msec.

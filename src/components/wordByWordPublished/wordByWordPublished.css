@@ -1,0 +1,13 @@
+#container {
+    display: flex;
+    flexDirection: column;
+    alignItems: center;
+}
+#typewriter {
+    display: flex;
+    flexDirection: row;
+    flexWrap: wrap;
+}
+.word {
+    paddingRight: 4px;
+}
