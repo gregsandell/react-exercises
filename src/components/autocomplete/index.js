@@ -23,6 +23,7 @@ Match.defaultProps = {
 
 const Autocomplete = (props) => {
   const [input, setInput] = useState('')
+  // TODO The noMatchLI needs to disappear when a match has been accepted (clicked on)
   const noMatchLI = (<li className='no-match' key={0}>No matches</li>)
   const [matches, setMatches] = useState([])
   const [selectedMatchIdx, setSelectedMatchIdx] = useState(0)

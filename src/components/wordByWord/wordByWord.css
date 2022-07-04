@@ -7,7 +7,6 @@
     flex: 1;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-right: 2px;
 }
 .word {
     margin-right: 4px;

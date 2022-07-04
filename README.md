@@ -1,8 +1,11 @@
 # Misc React Exercises
+## Counter
+Original source:  toptal.com code challenge, June 2022.  Simple demonstration 
+of a state variable, using the old-fashioned *class* approach to components.
 ## ToDoList
 A pretty standard, bare bones ToDo List.  Clicking on each ToDo toggles
 it as done vs in progress, and text at the bottom tallies incomplete
-vs complete tasks.
+vs complete tasks. Original source:  code challenge from toptal.com, June 2022.
 
 ## Autocomplete widget
 The idea for this came from a tutorial:  [How To Build an Autocomplete Component in React](https://www.digitalocean.com/community/tutorials/react-react-autocomplete), but I did not 
@@ -65,4 +68,13 @@ This challenge comes from [React Coding Interview Challenge 18](https://medium.c
 ## StarRating
 This challenge comes from [React Coding Interview Challenge 12](https://medium.com/@justin.sherman/react-coding-interview-challenge-12-b8d7d13c96e6).
 
+My approach uses a <Star> component for each star.  The clicked and hover
+states are stored at the parent level and the state variables and setter
+are passed down as props.  Although the <Star> component approach is
+good React style, the state management is overly busy.  
+
+## StarRatingPublished
+The solution published in the original article (see link above). More concise
+than my solution, but at the cost of having no <Star> child component.
+Also it avoids the use of loops that were in my solution.
 

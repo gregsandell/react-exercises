@@ -35,7 +35,7 @@ export default function Pagination (props) {
   const ptr = currentPage * props.itemsPerPage
   return (
     <div id='container'>
-      {/* TO DO: replace HTML table with FlexBox or CSS Grid solution */}
+      {/* TODO: replace HTML table with FlexBox or CSS Grid solution */}
       <table id='results-table'>
         <thead><tr><th>name</th><th>age</th><th>email</th></tr></thead>
         <tbody>

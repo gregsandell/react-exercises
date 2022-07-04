@@ -3,6 +3,7 @@ import { Component } from 'react'
 import PropTypes from 'prop-types'
 import './toDoList.css'
 
+// TODO Make the input submit by pressing RETURN
 class TodoItem extends Component {
   constructor (props) {
     super(props)

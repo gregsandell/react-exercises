@@ -39,6 +39,7 @@ export default function WordByWord () {
   return (
     <div id='container'>
       <input type='text' value={inputText} onChange={handleChangedInput} />
+      {/* TODO The div below is not acting like a block element (is appearing adjacent to the <input>) */}
       <div id='typewriter' ref={typewriterRef} />
     </div>
   )
