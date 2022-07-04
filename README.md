@@ -62,3 +62,7 @@ plus the latest new word, every 500 msec.
 ## Pagination 
 This challenge comes from [React Coding Interview Challenge 18](https://medium.com/@justin.sherman/react-coding-interview-challenge-18-257bbcb7429a).
 
+## StarRating
+This challenge comes from [React Coding Interview Challenge 12](https://medium.com/@justin.sherman/react-coding-interview-challenge-12-b8d7d13c96e6).
+
+

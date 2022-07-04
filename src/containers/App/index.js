@@ -8,6 +8,7 @@ import AutocompleteOnline from '../../components/autocompleteOnline'
 import WordByWord from '../../components/wordByWord'
 import WordByWordPublished from '../../components/wordByWordPublished'
 import Pagination from '../../components/pagination'
+import StarRating from '../../components/starRating'
 import suggestions from './autocompleteData'
 import teamPlayers from './organizeTeamsData'
 
@@ -41,6 +42,9 @@ function App () {
           <li>
             <NavLink to='/counter' exact='true' activestyle={{ color: 'green' }}>Counter</NavLink>
           </li>
+          <li>
+            <NavLink to='/starrating' exact='true' activestyle={{ color: 'green' }}>Star Rating</NavLink>
+          </li>
         </ul>
         <Routes>
           <Route exact='true' path='/' element={<ToDoList />} />
@@ -58,6 +62,8 @@ function App () {
             exact='true' path='/wordbywordpublished' element={<WordByWordPublished />} />
           <Route
             exact='true' path='/pagination' element={<Pagination />} />
+          <Route
+            exact='true' path='/starrating' element={<StarRating />} />
           <Route exact='true' path='/counter' element={<Counter />} />
         </Routes>
       </div>
