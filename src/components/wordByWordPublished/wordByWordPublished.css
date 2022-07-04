@@ -1,13 +1,13 @@
 #container {
     display: flex;
-    flexDirection: column;
-    alignItems: center;
+    flex-direction: column;
+    align-items: center;
 }
 #typewriter {
     display: flex;
-    flexDirection: row;
-    flexWrap: wrap;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 .word {
-    paddingRight: 4px;
+    padding-right: 4px;
 }

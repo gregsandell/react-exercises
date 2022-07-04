@@ -56,11 +56,15 @@ This challenge comes from [React Coding Interview Challenge 20](https://medium.c
 My version accomplishes it with DOM manipulation.  It works, but admittedly
 direct DOM manipulation is not in the spirit of React.
 
+My version does not require a submit button or RETURN press, it 
+automatically starts printing on any newly typed input.
+
 ## WordByWordPublished 
 The solution published in the original article (see link above).  It
 uses state instead of DOM manipulation (which is good React style)
 but it is doing more work because it re-renders the whole output,
-plus the latest new word, every 500 msec.
+plus the latest new word, every 500 msec. Their version uses a submit
+button, which is a better user experience.
 
 ## Pagination 
 This challenge comes from [React Coding Interview Challenge 18](https://medium.com/@justin.sherman/react-coding-interview-challenge-18-257bbcb7429a).
@@ -76,5 +80,7 @@ good React style, the state management is overly busy.
 ## StarRatingPublished
 The solution published in the original article (see link above). More concise
 than my solution, but at the cost of having no <Star> child component.
-Also it avoids the use of loops that were in my solution.
+Also it avoids the use of loops that were in my solution.  But the
+hover requirement does not appear to have been met correctly (hovers are
+overriding previously clicked stars).
 

@@ -1,59 +1,43 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import cx from 'classnames'
-import './starRating.css'
 
-const Star = (props) => {
-  const handleClick = () => {
-    const litStarzCopy = [...props.litStarz]
-    for (let i = 0; i < litStarzCopy.length; i++) {
-      litStarzCopy[i].clicked = i <= props.num
-    }
-    props.setLitStarz(litStarzCopy)
+const EMPTY_STAR =
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Five-pointed_star.svg/1088px-Five-pointed_star.svg.png'
+const FULL_STAR =
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Gold_Star.svg/1200px-Gold_Star.svg.png'
+
+const StarRatingPublished = () => {
+  const starIds = [1, 2, 3, 4, 5]
+  const [hovered, setHovered] = useState(0)
+  const [clicked, setClicked] = useState(0)
+
+  const getImg = (id) => {
+    return hovered >= id || clicked >= id ? FULL_STAR : EMPTY_STAR
   }
-  const setHover = (lit) => {
-    const litStarzCopy = [...props.litStarz]
-    litStarzCopy[props.num].hovered = lit
-    for (let i = props.num; i >= 0; i--) {
-      litStarzCopy[i].hovered = lit
-    }
-    props.setLitStarz(litStarzCopy)
-  }
-  const handleMouseEnter = () => setHover(true)
-  const handleMouseLeave = () => setHover(false)
-  const litStar = props.litStarz[props.num]
+
   return (
     <div
-      className={cx({ star: true, on: litStar.clicked || litStar.hovered })}
-      onClick={handleClick}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    />
-  )
-}
-Star.propTypes = {
-  num: PropTypes.number,
-  litStarz: PropTypes.array,
-  setLitStarz: PropTypes.func
-}
-export default function StarRatingPublished (props) {
-  const unlitStar = { clicked: false, hovered: false }
-  const [litStars, setLitStars] = useState([
-    { ...unlitStar }, { ...unlitStar }, { ...unlitStar }, { ...unlitStar }, { ...unlitStar }
-  ])
-
-  return (
-    <div id='container'>
-      {
-        [0, 1, 2, 3, 4].map((num) => (
-          <Star
-            key={`star_${num}`}
-            num={num}
-            litStarz={litStars}
-            setLitStarz={(litStarz) => setLitStars(litStarz)}
-          />
-        ))
-      }
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        padding: 20
+      }}
+    >
+      {starIds.map((id, i) => (
+        <img
+          key={`img_${i}`}
+          src={getImg(id)}
+          onMouseEnter={() => {
+            setHovered(id)
+            if (id < clicked) setClicked(0)
+          }}
+          onClick={() => setClicked(id)}
+          onMouseOut={() => setHovered(0)}
+          width={60}
+          height={60}
+        />
+      ))}
     </div>
   )
 }
+
+export default StarRatingPublished
