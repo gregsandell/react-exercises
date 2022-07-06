@@ -84,3 +84,9 @@ Also it avoids the use of loops that were in my solution.  But the
 hover requirement does not appear to have been met correctly (hovers are
 overriding previously clicked stars).
 
+## Quiz 
+This challenge comes from [React Coding Interview Challenge 8](https://medium.com/@justin.sherman/react-coding-interview-challenge-8-f852c6d19385).
+
+# Other Sources of challenges
+
+* [9 JavaScript Projects You Can Build to Perfect Your Coding Skills](https://javascript.plainenglish.io/9-javascript-projects-you-can-build-to-perfect-your-coding-skills-1e8b23e53392)

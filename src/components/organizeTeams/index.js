@@ -28,9 +28,6 @@ export default function OrganizeTeams (props) {
       return groups
     }
     const scramble = (input) => input.sort(() => Math.random() - 0.5)
-    // const createAscendingArray = (start, end) => {
-    //   return Array(end - start + 1).fill().map((_, idx) => start + idx)
-    // }
     const popToArray = (list, length) => {
       const result = []
       for (let i = 0; i < length; i++) {

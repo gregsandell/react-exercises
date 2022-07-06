@@ -10,6 +10,7 @@ import WordByWordPublished from '../../components/wordByWordPublished'
 import Pagination from '../../components/pagination'
 import StarRating from '../../components/starRating'
 import StarRatingPublished from '../../components/starRatingPublished'
+import Quiz from '../../components/quiz'
 import suggestions from './autocompleteData'
 import teamPlayers from './organizeTeamsData'
 
@@ -25,7 +26,8 @@ function App () {
     { to: '/wordbywordpublished', text: 'Word by Word (published version)', element: <WordByWordPublished /> },
     { to: '/pagination', text: 'Pagination', element: <Pagination /> },
     { to: '/starrating', text: 'Star Rating', element: <StarRating /> },
-    { to: '/starratingpublished', text: 'Star Rating (published version)', element: <StarRatingPublished /> }
+    { to: '/starratingpublished', text: 'Star Rating (published version)', element: <StarRatingPublished /> },
+    { to: '/quiz', text: 'Quiz', element: <Quiz /> }
   ]
   return (
     <Router>
