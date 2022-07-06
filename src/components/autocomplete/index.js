@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import './autocomplete.css'
+import styles from './autocomplete.module.css'
 import cx from 'classnames'
 
 const Match = (props) => {
   return (
     <li
-      className={cx({ highlight: props.isActive })}
+      className={cx({ [styles.highlight]: props.isActive })}
       onClick={props.onClick}
     >
       {props.children}
@@ -24,7 +24,7 @@ Match.defaultProps = {
 const Autocomplete = (props) => {
   const [input, setInput] = useState('')
   // TODO The noMatchLI needs to disappear when a match has been accepted (clicked on)
-  const noMatchLI = (<li className='no-match' key={0}>No matches</li>)
+  const noMatchLI = (<li className={styles['no-match']} key={0}>No matches</li>)
   const [matches, setMatches] = useState([])
   const [selectedMatchIdx, setSelectedMatchIdx] = useState(0)
 
@@ -44,14 +44,14 @@ const Autocomplete = (props) => {
     }
   }
   return (
-    <div className='wrapper'>
+    <div className={styles.wrapper}>
       <h1>Autocomplete</h1>
-      <div className='control'>
+      <div className={styles.control}>
         <input
           type='text'
           value={input}
           onChange={handleInput}
-          className='input'
+          className={styles.input}
           onKeyUp={(e) => {
             if (/ArrowUp/.test(e.key) && selectedMatchIdx > 0) {
               setSelectedMatchIdx(selectedMatchIdx - 1)
@@ -64,7 +64,7 @@ const Autocomplete = (props) => {
             }
           }}
         />
-        <ul className='matches'>
+        <ul className={styles.matches}>
           {matches.length > 0 && matches.map((match, i) => (
             <Match
               key={i}
@@ -78,7 +78,7 @@ const Autocomplete = (props) => {
           {matches.length === 0 && noMatchLI}
         </ul>
       </div>
-      <div className='list is-hoverable' />
+      <div className={styles['list is-hoverable']} />
     </div>
   )
 }

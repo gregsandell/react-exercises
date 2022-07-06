@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import './autocompleteOnline.css'
+import styles from './autocompleteOnline.module.css'
 
 class AutocompleteOnline extends Component {
   constructor (props) {
@@ -88,7 +88,7 @@ class AutocompleteOnline extends Component {
     if (showSuggestions && userInput) {
       if (filteredSuggestions.length) {
         suggestionsListComponent = (
-          <ul className='suggestions'>
+          <ul className={styles.suggestions}>
             {filteredSuggestions.map((suggestion, index) => {
               let className
 
@@ -98,7 +98,7 @@ class AutocompleteOnline extends Component {
               }
 
               return (
-                <li className={className} key={suggestion} onClick={onClick.bind(this)}>
+                <li className={styles[className]} key={suggestion} onClick={onClick.bind(this)}>
                   {suggestion}
                 </li>
               )
@@ -107,7 +107,7 @@ class AutocompleteOnline extends Component {
         )
       } else {
         suggestionsListComponent = (
-          <div className='no-suggestions'>
+          <div className={styles['no-suggestions']}>
             <em>No suggestions, you're on your own!</em>
           </div>
         )

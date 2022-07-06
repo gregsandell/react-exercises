@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import './pagination.css'
+import styles from './pagination.module.css'
 import cx from 'classnames'
 
 export default function Pagination (props) {
@@ -34,9 +34,9 @@ export default function Pagination (props) {
 
   const ptr = currentPage * props.itemsPerPage
   return (
-    <div id='container'>
+    <div id={styles.container}>
       {/* TODO: replace HTML table with FlexBox or CSS Grid solution */}
-      <table id='results-table'>
+      <table id={styles['results-table']}>
         <thead><tr><th>name</th><th>age</th><th>email</th></tr></thead>
         <tbody>
           {
@@ -52,12 +52,12 @@ export default function Pagination (props) {
           }
         </tbody>
       </table>
-      <div id='page-links'>
+      <div id={styles['page-links']}>
         {
           pageLinksText.map((page) => (
             <div
               key={`page_${page}`}
-              className={cx({ 'page-link': true, selected: Number(page) === (currentPage + 1) })}
+              className={cx({ [styles['page-link']]: true, [styles.selected]: Number(page) === (currentPage + 1) })}
               onClick={() => setCurrentPage(Number(page) - 1)}
             >{page}</div>
           ))

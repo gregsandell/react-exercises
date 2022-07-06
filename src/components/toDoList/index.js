@@ -1,7 +1,7 @@
 import cx from 'classnames'
 import { Component } from 'react'
 import PropTypes from 'prop-types'
-import './toDoList.css'
+import styles from './toDoList.module.css'
 
 // TODO Make the input submit by pressing RETURN
 class TodoItem extends Component {
@@ -24,7 +24,7 @@ class TodoItem extends Component {
     return (
       <li
         onClick={this.handleItemClick.bind(this)}
-        className={cx({ 'is-done': this.state.crossedOut })}
+        className={cx({ [styles['is-done']]: this.state.crossedOut })}
       >{this.props.value}</li>
     )
   }

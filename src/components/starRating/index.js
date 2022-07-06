@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
-import './starRating.css'
+import styles from './starRating.module.css'
 
 const Star = (props) => {
   const handleClick = () => {
@@ -24,7 +24,7 @@ const Star = (props) => {
   const litStar = props.litStarz[props.num]
   return (
     <div
-      className={cx({ star: true, on: litStar.clicked || litStar.hovered })}
+      className={cx({ [styles.star]: true, [styles.on]: litStar.clicked || litStar.hovered })}
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -43,7 +43,7 @@ export default function StarRating (props) {
   ])
 
   return (
-    <div id='container'>
+    <div id={styles.container}>
       {
         [0, 1, 2, 3, 4].map((num) => (
           <Star

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import './wordByWordPublished.css'
+import styles from './wordByWordPublished.module.css'
 
 const WordByWordPublished = () => {
   const [input, setInput] = useState('')
@@ -31,7 +31,7 @@ const WordByWordPublished = () => {
   }, [text, word])
 
   return (
-    <div id='container'>
+    <div id={styles.container}>
       <form onSubmit={onSubmit}>
         <input
           required
@@ -43,9 +43,9 @@ const WordByWordPublished = () => {
 
       {/* On each change to 'word' state variable, rerender the output text up to */}
       {/* the token pointed at by the 'word' index. */}
-      <div id='typewriter'>
+      <div id={styles.typewriter}>
         {text.slice(0, word).map((item, i) => (
-          <p className='word' key={`word_${i}`}>{item}</p>
+          <p className={styles.word} key={`word_${i}`}>{item}</p>
         ))}
       </div>
     </div>

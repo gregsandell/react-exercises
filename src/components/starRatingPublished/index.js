@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import styles from './starRatingPublished.module.css'
 
 const EMPTY_STAR =
     'https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Five-pointed_star.svg/1088px-Five-pointed_star.svg.png'
@@ -15,13 +16,7 @@ const StarRatingPublished = () => {
   }
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        padding: 20
-      }}
-    >
+    <div className={styles.container}>
       {starIds.map((id, i) => (
         <img
           key={`img_${i}`}

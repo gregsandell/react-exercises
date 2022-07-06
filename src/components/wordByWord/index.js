@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import './wordByWord.css'
+import styles from './wordByWord.module.css'
 export default function WordByWord () {
   const [inputText, setInputText] = useState('')
   const [queuedTokens, setQueuedTokens] = useState([])
@@ -37,10 +37,9 @@ export default function WordByWord () {
     }
   }
   return (
-    <div id='container'>
+    <div id={styles.container}>
       <input type='text' value={inputText} onChange={handleChangedInput} />
-      {/* TODO The div below is not acting like a block element (is appearing adjacent to the <input>) */}
-      <div id='typewriter' ref={typewriterRef} />
+      <div id={styles.typewriter} ref={typewriterRef} />
     </div>
   )
 }

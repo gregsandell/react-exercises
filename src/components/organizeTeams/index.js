@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import './organizeTeams.css'
+import styles from './organizeTeams.module.css'
 
 export default function OrganizeTeams (props) {
   const initializeTeams = (players) => {
@@ -53,12 +53,12 @@ export default function OrganizeTeams (props) {
   const [teamTurn, setTeamTurn] = useState(0)
 
   return (
-    <div id='container'>
+    <div id={styles.container}>
       {/* {JSON.stringify(playerGroups)} */}
-      <div id='player-pool'>
+      <div id={styles['player-pool']}>
         {playerGroups.playerPool.map((player, i) => (
           <div
-            className='player'
+            className={styles.player}
             key={i}
             onClick={() => {
               playerGroups[`team${teamTurn + 1}`].push(playerGroups.playerPool[i])
@@ -68,30 +68,30 @@ export default function OrganizeTeams (props) {
           >{player}</div>
         ))}
       </div>
-      <div id='buttons'>
+      <div id={styles.buttons}>
         <button onClick={() => setTeamTurn((teamTurn + 1) % 2)}>Now Selecting for Team {teamTurn + 1}</button>
         <button onClick={() => setPlayerGroups(randomizeTeams(props.players))}>Randomize Teams</button>
         <button onClick={() => setPlayerGroups(initializeTeams(props.players))}>Reset</button>
       </div>
-      <div id='rosters'>
-        <div className='team'>
-          <h2 className='team-head'>Team 1</h2>
-          <div className='team-players'>
+      <div id={styles.rosters}>
+        <div className={styles.team}>
+          <h2 className={styles['team-head']}>Team 1</h2>
+          <div className={styles['team-players']}>
             {playerGroups.team1.map((player, i) => (
               <div
-                className='player'
+                className={styles.player}
                 key={`team1_${i}`}
                 onClick={() => returnPlayerToPool(1, i)}
               >{player}</div>
             ))}
           </div>
         </div>
-        <div className='team'>
-          <h2 className='team-head'>Team 2</h2>
-          <div className='team-players'>
+        <div className={styles.team}>
+          <h2 className={styles['team-head']}>Team 2</h2>
+          <div className={styles['team-players']}>
             {playerGroups.team2.map((player, i) => (
               <div
-                className='player'
+                className={styles.player}
                 key={`team2_${i}`}
                 onClick={() => returnPlayerToPool(2, i)}
               >{player}</div>

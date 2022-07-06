@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom'
-import './App.css'
+import styles from './App.module.css'
 import ToDoList from '../../components/toDoList'
 import Counter from '../../components/counter'
 import OrganizeTeams from '../../components/organizeTeams'
@@ -31,7 +31,7 @@ function App () {
   ]
   return (
     <Router>
-      <div className='App'>
+      <div className={styles.App}>
         <ul>
           {
             navlinks.map((record, i) => (
