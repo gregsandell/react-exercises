@@ -32,10 +32,10 @@ module.exports = [
   {
     question: 'What are the two major political parties in the United States?',
     answers: [
-      'Democratic Party & Republican Party',
-      'Green Party & Red Party',
-      'Bull Party & Moose Party',
-      'Hamilton Party & Burr Party'
+      'Democratic Party and Republican Party',
+      'Green Party and Red Party',
+      'Bull Party and Moose Party',
+      'Hamilton Party and Burr Party'
     ],
     correct: 0
   }

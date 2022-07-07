@@ -13,6 +13,7 @@ import StarRatingPublished from '../../components/starRatingPublished'
 import Quiz from '../../components/quiz'
 import suggestions from './autocompleteData'
 import teamPlayers from './organizeTeamsData'
+import quizData from './quizData'
 
 /* TODO:  change to an original list of suggestions */
 function App () {
@@ -27,7 +28,7 @@ function App () {
     { to: '/pagination', text: 'Pagination', element: <Pagination /> },
     { to: '/starrating', text: 'Star Rating', element: <StarRating /> },
     { to: '/starratingpublished', text: 'Star Rating (published version)', element: <StarRatingPublished /> },
-    { to: '/quiz', text: 'Quiz', element: <Quiz /> }
+    { to: '/quiz', text: 'Quiz', element: <Quiz questions={quizData} /> }
   ]
   return (
     <Router>
