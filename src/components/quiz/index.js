@@ -10,7 +10,8 @@ const StartScreen = (props) => {
 StartScreen.propTypes = {
   advancer: PropTypes.func
 }
-
+// TODO Scramble the order of questions on each test run
+// TODO Add forward and back buttons, allowing them to change their answer
 export default function Quiz (props) {
   const [screenCount, setScreenCount] = useState(0)
   const [score, setScore] = useState(0)
