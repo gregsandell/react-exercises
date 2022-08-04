@@ -95,6 +95,13 @@ https://codesandbox.io/s/form-challenge-forked-3kfhq0?file=/src/styles.css:0-103
 ## Colorswitch
 This challenge was presented to me during an interview with Dun & Bradstreet on 2020-11-18
 
+## Calc
+Code challenge was 2020-12-01, in a Zoom call with Todd Lunter of Upserve.
+
+The original instructions are in the pdf `UpserveInstructions.pdf`.
+
+A code sandbox version is here:  https://codepen.io/fishtaco1/pen/xxEwbye
+
 # Other Sources of challenges
 
 * [9 JavaScript Projects You Can Build to Perfect Your Coding Skills](https://javascript.plainenglish.io/9-javascript-projects-you-can-build-to-perfect-your-coding-skills-1e8b23e53392)

@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    flex-grow: 0;
+    /*   flex-basis: 300px; */
+    border: 1px solid black;
+    margin: 7px;
+}
+.readout {
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 auto;
+    border: 1px solid black;
+    text-align: right;
+    margin: 3px;
+    padding: 15px 7px;
+}
+.keypad {
+    display: block;
+    text-align: center;
+}
+.key {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4px;
+    border: 1px solid black;
+    float: left;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
