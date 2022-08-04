@@ -89,7 +89,11 @@ overriding previously clicked stars).
 This challenge comes from [React Coding Interview Challenge 8](https://medium.com/@justin.sherman/react-coding-interview-challenge-8-f852c6d19385).
 
 ## Form Validation
-This challenge came from an interview with GoDaddy with interviewer Alex Chen, 2022-08-04
+This challenge came from an interview with GoDaddy with interviewer Alex Chen, 2022-08-04.  We used this sandbox:
+https://codesandbox.io/s/form-challenge-forked-3kfhq0?file=/src/styles.css:0-103
+
+## Colorswitch
+This challenge was presented to me during an interview with Dun & Bradstreet on 2020-11-18
 
 # Other Sources of challenges
 

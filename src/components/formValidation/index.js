@@ -6,7 +6,7 @@
  * 4. Validate that the email is valid
  * 5. Fetch list of known email addresses from public/emails.json and verify that email does not exist
  *
- * https://codesandbox.io/s/form-challenge-forked-3kfhq0?file=/src/styles.css:0-103
+ *
  */
 
 import { useState, useEffect } from 'react'

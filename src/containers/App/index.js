@@ -12,6 +12,7 @@ import StarRating from '../../components/starRating'
 import StarRatingPublished from '../../components/starRatingPublished'
 import Quiz from '../../components/quiz'
 import FormValidation from '../../components/formValidation'
+import ColorSwitch from '../../components/colorSwitch'
 import suggestions from './autocompleteData'
 import teamPlayers from './organizeTeamsData'
 import quizData from './quizData'
@@ -30,7 +31,8 @@ function App () {
     { to: '/starrating', text: 'Star Rating', element: <StarRating /> },
     { to: '/starratingpublished', text: 'Star Rating (published version)', element: <StarRatingPublished /> },
     { to: '/quiz', text: 'Quiz', element: <Quiz questions={quizData} /> },
-    { to: '/formValidation', text: 'Form Validation', element: <FormValidation /> }
+    { to: '/formValidation', text: 'Form Validation', element: <FormValidation /> },
+    { to: '/colorSwitch', text: 'Color Switch', element: <ColorSwitch /> }
   ]
   return (
     <Router>
