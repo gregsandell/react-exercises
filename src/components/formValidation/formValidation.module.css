@@ -1,0 +1,8 @@
+.main {
+    font-family: sans-serif;
+    text-align: center;
+}
+.error {
+    font-weight: bold;
+    color: red;
+}
