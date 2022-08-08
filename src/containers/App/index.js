@@ -12,6 +12,7 @@ import StarRating from '../../components/starRating'
 import StarRatingPublished from '../../components/starRatingPublished'
 import Quiz from '../../components/quiz'
 import FormValidation from '../../components/formValidation'
+import FormValidationHtml5 from '../../components/formValidation-html5'
 import ColorSwitch from '../../components/colorSwitch'
 import Calc from '../../components/calc'
 import suggestions from './autocompleteData'
@@ -33,6 +34,7 @@ function App () {
     { to: '/starratingpublished', text: 'Star Rating (published version)', element: <StarRatingPublished /> },
     { to: '/quiz', text: 'Quiz', element: <Quiz questions={quizData} /> },
     { to: '/formValidation', text: 'Form Validation', element: <FormValidation /> },
+    { to: '/formValidation-html5', text: 'Form Validation with HTML5', element: <FormValidationHtml5 /> },
     { to: '/colorSwitch', text: 'Color Switch', element: <ColorSwitch /> },
     { to: '/calc', text: 'Calculator', element: <Calc initial={0} /> }
   ]

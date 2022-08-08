@@ -1,0 +1,23 @@
+.main {
+    font-family: sans-serif;
+    text-align: center;
+}
+label {
+    margin-right: 7px;
+}
+.field {
+    margin-bottom: 15px;
+}
+input {
+    border: 1px solid #333;
+    box-sizing: border-box;
+}
+input:invalid {
+    border-color: #900;
+    background-color: #FDD;
+}
+
+input:focus.invalid {
+    outline: none;
+}
+
