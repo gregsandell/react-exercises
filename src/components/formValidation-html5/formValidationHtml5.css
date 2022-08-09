@@ -8,4 +8,6 @@ label {
 .field {
     margin-bottom: 15px;
 }
-
+button#cancel {
+    margin-left: 15px;
+}
