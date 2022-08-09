@@ -94,8 +94,13 @@ https://codesandbox.io/s/form-challenge-forked-3kfhq0?file=/src/styles.css:0-103
 
 ## Form Validation with HTML5
 Variation on the `Form Validation` exercise, taking advantage of built-in
-HTML5 validation features, using custom validation messages.  Some hackery
+HTML5 validation features, using custom validation messages.  HTML5 validation
+is probably not a good solution for form validation.  Some hackery
 was needed to make it work, and it is still less than ideal.
+
+## Form Validation with react-hook-form
+Variation on the `Form Validation` exercise, using the [react-hook-form](https://react-hook-form.com/)
+library.  
 
 ## Colorswitch
 This challenge was presented to me during an interview with Dun & Bradstreet on 2020-11-18

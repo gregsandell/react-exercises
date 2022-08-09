@@ -68,7 +68,6 @@ export default function FormValidationHtml5 () {
   }
 
   const handleSubmit = (e) => {
-    console.log('submit')
     setSubmitted(true)
     validate()
     e.preventDefault()
