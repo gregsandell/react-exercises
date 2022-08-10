@@ -116,4 +116,4 @@ A code sandbox version is here:  https://codepen.io/fishtaco1/pen/xxEwbye
 
 * [9 JavaScript Projects You Can Build to Perfect Your Coding Skills](https://javascript.plainenglish.io/9-javascript-projects-you-can-build-to-perfect-your-coding-skills-1e8b23e53392)
 * [react-coding-challenges](https://github.com/alexgurr/react-coding-challenges/) (Github repo)
-* 
+* [70+ React Projects to Master React for Free](https://levelup.gitconnected.com/build-70-react-projects-to-master-react-for-free-c612ce031982)
