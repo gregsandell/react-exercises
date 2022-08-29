@@ -16,6 +16,7 @@ import FormValidationHtml5 from '../../components/formValidation-html5'
 import FormValidationHooks from '../../components/formValidation-hooks'
 import ColorSwitch from '../../components/colorSwitch'
 import Calc from '../../components/calc'
+import MUITable from '../../components/mui-table'
 import suggestions from './autocompleteData'
 import teamPlayers from './organizeTeamsData'
 import quizData from './quizData'
@@ -30,7 +31,8 @@ function App () {
     { to: '/organizeteams', text: 'Organize Teams', element: <OrganizeTeams players={teamPlayers} /> },
     { to: '/wordbyword', text: 'Word by Word', element: <WordByWord /> },
     { to: '/wordbywordpublished', text: 'Word by Word (published version)', element: <WordByWordPublished /> },
-    { to: '/pagination', text: 'Pagination', element: <Pagination /> },
+    { to: '/pagination', text: 'Pagination (from scratch)', element: <Pagination /> },
+    { to: '/mui-table', text: 'Pagination (with a UI library)', element: <MUITable /> },
     { to: '/starrating', text: 'Star Rating', element: <StarRating /> },
     { to: '/starratingpublished', text: 'Star Rating (published version)', element: <StarRatingPublished /> },
     { to: '/quiz', text: 'Quiz', element: <Quiz questions={quizData} /> },

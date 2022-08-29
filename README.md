@@ -66,9 +66,14 @@ but it is doing more work because it re-renders the whole output,
 plus the latest new word, every 500 msec. Their version uses a submit
 button, which is a better user experience.
 
-## Pagination 
+## Pagination (from scratch)
+Paginated tabular data, home-made with no UI library.
+
 This challenge comes from [React Coding Interview Challenge 18](https://medium.com/@justin.sherman/react-coding-interview-challenge-18-257bbcb7429a).
 
+## Pagination (with a library)
+Paginated tabular data rendered by [Material React Table](https://www.material-react-table.com/) which is based on
+[Material UI (a.k.a. MUI)](https://mui.com/).
 
 ## StarRating
 This challenge comes from [React Coding Interview Challenge 12](https://medium.com/@justin.sherman/react-coding-interview-challenge-12-b8d7d13c96e6).
@@ -111,6 +116,7 @@ Code challenge was 2020-12-01, in a Zoom call with Todd Lunter of Upserve.
 The original instructions are in the pdf `UpserveInstructions.pdf`.
 
 A code sandbox version is here:  https://codepen.io/fishtaco1/pen/xxEwbye
+
 
 # Other Sources of challenges
 
