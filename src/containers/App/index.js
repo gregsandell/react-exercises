@@ -15,6 +15,7 @@ import FormValidation from '../../components/formValidation'
 import FormValidationHtml5 from '../../components/formValidation-html5'
 import FormValidationHooks from '../../components/formValidation-hooks'
 import ColorSwitch from '../../components/colorSwitch'
+import InfiniteScroll from '../../components/infiniteScroll'
 import Calc from '../../components/calc'
 import MUITable from '../../components/mui-table'
 import suggestions from './autocompleteData'
@@ -40,7 +41,8 @@ function App () {
     { to: '/formValidation-html5', text: 'Form Validation with HTML5', element: <FormValidationHtml5 /> },
     { to: '/formValidation-hooks', text: 'Form Validation with react-form-hooks', element: <FormValidationHooks /> },
     { to: '/colorSwitch', text: 'Color Switch', element: <ColorSwitch /> },
-    { to: '/calc', text: 'Calculator', element: <Calc initial={0} /> }
+    { to: '/calc', text: 'Calculator', element: <Calc initial={0} /> },
+    { to: '/infiniteScroll', text: 'Infinite Scroll', element: <InfiniteScroll /> }
   ]
   return (
     <Router>

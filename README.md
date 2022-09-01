@@ -117,7 +117,7 @@ The original instructions are in the pdf `UpserveInstructions.pdf`.
 
 A code sandbox version is here:  https://codepen.io/fishtaco1/pen/xxEwbye
 
-
+## Infinite Scroll
 # Other Sources of challenges
 
 * [9 JavaScript Projects You Can Build to Perfect Your Coding Skills](https://javascript.plainenglish.io/9-javascript-projects-you-can-build-to-perfect-your-coding-skills-1e8b23e53392)
