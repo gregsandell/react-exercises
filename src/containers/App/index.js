@@ -18,6 +18,8 @@ import ColorSwitch from '../../components/colorSwitch'
 import InfiniteScroll from '../../components/infiniteScroll'
 import Calc from '../../components/calc'
 import MUITable from '../../components/mui-table'
+import UseAsyncHook from '../../components/useAsyncHook'
+
 import suggestions from './autocompleteData'
 import teamPlayers from './organizeTeamsData'
 import quizData from './quizData'
@@ -42,7 +44,8 @@ function App () {
     { to: '/formValidation-hooks', text: 'Form Validation with react-form-hooks', element: <FormValidationHooks /> },
     { to: '/colorSwitch', text: 'Color Switch', element: <ColorSwitch /> },
     { to: '/calc', text: 'Calculator', element: <Calc initial={0} /> },
-    { to: '/infiniteScroll', text: 'Infinite Scroll', element: <InfiniteScroll /> }
+    { to: '/infiniteScroll', text: 'Infinite Scroll', element: <InfiniteScroll /> },
+    { to: '/useAsyncHook', text: 'Async Fetch hook (Work in Progress)', element: <UseAsyncHook /> }
   ]
   return (
     <Router>

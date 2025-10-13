@@ -118,6 +118,10 @@ The original instructions are in the pdf `UpserveInstructions.pdf`.
 A code sandbox version is here:  https://codepen.io/fishtaco1/pen/xxEwbye
 
 ## Infinite Scroll
+
+## UseAsync Hook (work in progress)
+Source: [The Hook I Use in Every React Project (You’ll Want It Too)](https://medium.com/full-stack-forge/the-hook-i-use-in-every-react-project-youll-want-it-too-50a504b1b854)
+
 # Other Sources of challenges
 
 * [9 JavaScript Projects You Can Build to Perfect Your Coding Skills](https://javascript.plainenglish.io/9-javascript-projects-you-can-build-to-perfect-your-coding-skills-1e8b23e53392)
