@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import styles from './autocomplete.module.css'
+import style from './autocomplete.module.css'
 import cx from 'classnames'
 
 const Match = (props) => {
   return (
     <li
-      className={cx({ [styles.highlight]: props.isActive })}
+      className={cx({ [style.highlight]: props.isActive })}
       onClick={props.onClick}
     >
       {props.children}
@@ -24,7 +24,7 @@ Match.defaultProps = {
 const Autocomplete = (props) => {
   const [input, setInput] = useState('')
   // TODO The noMatchLI needs to disappear when a match has been accepted (clicked on)
-  const noMatchLI = (<li className={styles['no-match']} key={0}>No matches</li>)
+  const noMatchLI = (<li className={style['no-match']} key={0}>No matches</li>)
   const [matches, setMatches] = useState([])
   const [selectedMatchIdx, setSelectedMatchIdx] = useState(0)
 
@@ -44,14 +44,15 @@ const Autocomplete = (props) => {
     }
   }
   return (
-    <div className={styles.wrapper}>
+    <div className={style.wrapper}>
       <h1>Autocomplete</h1>
-      <div className={styles.control}>
+      <div className={style.instructions}>Start typing and see what happens...</div>
+      <div className={style.control}>
         <input
           type='text'
           value={input}
           onChange={handleInput}
-          className={styles.input}
+          className={style.input}
           onKeyUp={(e) => {
             if (/ArrowUp/.test(e.key) && selectedMatchIdx > 0) {
               setSelectedMatchIdx(selectedMatchIdx - 1)
@@ -64,7 +65,7 @@ const Autocomplete = (props) => {
             }
           }}
         />
-        <ul className={styles.matches}>
+        <ul className={style.matches}>
           {matches.length > 0 && matches.map((match, i) => (
             <Match
               key={i}
@@ -78,7 +79,7 @@ const Autocomplete = (props) => {
           {matches.length === 0 && noMatchLI}
         </ul>
       </div>
-      <div className={styles['list is-hoverable']} />
+      <div className={style['list is-hoverable']} />
     </div>
   )
 }
