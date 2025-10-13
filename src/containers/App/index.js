@@ -21,7 +21,7 @@ import Calc from '../../components/calc'
 import MUITable from '../../components/mui-table'
 import UseAsyncHook from '../../components/useAsyncHook'
 
-import suggestions from './autocompleteData'
+import suggestions from '../../components/autocomplete/autocompleteData'
 import teamPlayers from './organizeTeamsData'
 import quizData from './quizData'
 

@@ -115,15 +115,20 @@ class AutocompleteOnline extends Component {
     }
 
     return (
-      <Fragment>
-        <input
-          type='text'
-          onChange={onChange.bind(this)}
-          onKeyDown={onKeyDown.bind(this)}
-          value={userInput}
-        />
-        {suggestionsListComponent}
-      </Fragment>
+      <div>
+        <h1>autocomplete (published version)</h1>
+        <p>Start typing and see what happens...</p>
+        <p>Words that I know are in components/autocomplete/autocompleteData.js</p>
+        <Fragment>
+          <input
+            type='text'
+            onChange={onChange.bind(this)}
+            onKeyDown={onKeyDown.bind(this)}
+            value={userInput}
+          />
+          {suggestionsListComponent}
+        </Fragment>
+      </div>
     )
   }
 }

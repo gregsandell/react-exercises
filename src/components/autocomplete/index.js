@@ -46,7 +46,10 @@ const Autocomplete = (props) => {
   return (
     <div className={style.wrapper}>
       <h1>Autocomplete</h1>
-      <div className={style.instructions}>Start typing and see what happens...</div>
+      <div className={style.instructions}>
+        <p>Start typing and see what happens...</p>
+        <p>Words that I know are in components/autocomplete/autocompleteData.js</p>
+      </div>
       <div className={style.control}>
         <input
           type='text'
