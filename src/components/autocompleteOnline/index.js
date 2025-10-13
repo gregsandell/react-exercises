@@ -22,7 +22,7 @@ class AutocompleteOnline extends Component {
     const { suggestions } = this.props
     const userInput = e.currentTarget.value
 
-    // Filter our suggestions that don't contain the user's input
+    // Filter out suggestions that don't contain the user's input
     const filteredSuggestions = suggestions.filter(
       suggestion =>
         suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
@@ -37,6 +37,7 @@ class AutocompleteOnline extends Component {
   };
 
   onClick (e) {
+    // When clicking on a choice in the dropdown, put its value in the text field and close the dropdown.
     this.setState({
       activeSuggestion: 0,
       filteredSuggestions: [],
@@ -97,6 +98,7 @@ class AutocompleteOnline extends Component {
                 className = 'suggestion-active'
               }
 
+              // Render the dropdown
               return (
                 <li className={styles[className]} key={suggestion} onClick={onClick.bind(this)}>
                   {suggestion}
@@ -120,12 +122,14 @@ class AutocompleteOnline extends Component {
         <p>Start typing and see what happens...</p>
         <p>Words that I know are in components/autocomplete/autocompleteData.js</p>
         <Fragment>
+          {/* The text box (input field) */}
           <input
             type='text'
             onChange={onChange.bind(this)}
             onKeyDown={onKeyDown.bind(this)}
             value={userInput}
           />
+          {/* The dropdown */}
           {suggestionsListComponent}
         </Fragment>
       </div>

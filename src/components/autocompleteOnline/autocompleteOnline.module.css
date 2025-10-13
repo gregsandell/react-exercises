@@ -30,8 +30,8 @@ input {
 
 .suggestion-active,
 .suggestions li:hover {
-    background-color: #008f68;
-    color: #fae042;
+    background-color: #008f68; /* a green */
+    color: #fae042;            /* a yellow */
     cursor: pointer;
     font-weight: 700;
 }
