@@ -41,10 +41,12 @@ const ToDoBroken: React.FC = () => {
     setTodoValue('')
   }
 
+  // eslint-disable-next-line
   const toggleTodo = (todo: Todo) => {
     // Pending:  fix method
   }
 
+  // eslint-disable-next-line
   const removeTodo = (id: number) => {
     // Pending:fix method
   }

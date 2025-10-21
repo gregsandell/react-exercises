@@ -99,7 +99,7 @@ const ToDoFixed: React.FC = () => {
       </Menu>
       <Segment attached="bottom">
         <List divided>
-          {todos.filter((todo, idx) => {
+          {todos.filter((todo) => {
             switch(todoFilter) {
               case 'pending':
                 return todo.completed === false
