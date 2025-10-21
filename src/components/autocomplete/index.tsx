@@ -18,13 +18,7 @@ const Match = (props: MatchProps) => {
     </li>
   )
 }
-// Match.propTypes = {
-//   children: PropTypes.string.isRequired,
-//   onClick: PropTypes.func.isRequired,
-//   isActive: PropTypes.bool
-// }
-// Match.defaultProps = {
-// }
+
 type AutocompleteProps = {
     suggestions: string[]
 }

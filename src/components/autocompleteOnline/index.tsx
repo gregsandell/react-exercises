@@ -1,9 +1,18 @@
-import React, { Component, Fragment } from 'react'
-import PropTypes from 'prop-types'
+import React, { Fragment } from 'react'
 import styles from './autocompleteOnline.module.css'
 
-class AutocompleteOnline extends Component {
-  constructor (props) {
+type AutocompleteProps = {
+  suggestions: string[]
+}
+type AutocompleteState = {
+  activeSuggestion: number,
+  filteredSuggestions: string[],
+  showSuggestions: boolean,
+  userInput: string
+}
+class AutocompleteOnline extends React.Component<AutocompleteProps, AutocompleteState> {
+  state: AutocompleteState
+  constructor (props: AutocompleteProps) {
     super(props)
 
     this.state = {
@@ -18,7 +27,7 @@ class AutocompleteOnline extends Component {
     }
   }
 
-  onChange (e) {
+  onChange (e: React.ChangeEvent<HTMLInputElement>) {
     const { suggestions } = this.props
     const userInput = e.currentTarget.value
 
@@ -36,7 +45,7 @@ class AutocompleteOnline extends Component {
     })
   }
 
-  onClick (e) {
+  onClick (e: React.MouseEvent<HTMLElement>) {
     // When clicking on a choice in the dropdown, put its value in the text field and close the dropdown.
     this.setState({
       activeSuggestion: 0,
@@ -46,7 +55,7 @@ class AutocompleteOnline extends Component {
     })
   }
 
-  onKeyDown (e) {
+  onKeyDown (e: React.KeyboardEvent<HTMLInputElement>) {
     const { activeSuggestion, filteredSuggestions } = this.state
 
     // User pressed the enter key
@@ -91,7 +100,7 @@ class AutocompleteOnline extends Component {
         suggestionsListComponent = (
           <ul className={styles.suggestions}>
             {filteredSuggestions.map((suggestion, index) => {
-              let className
+              let className = ''
 
               // Flag the active suggestion with a class
               if (index === activeSuggestion) {
@@ -135,13 +144,6 @@ class AutocompleteOnline extends Component {
       </div>
     )
   }
-}
-AutocompleteOnline.propTypes = {
-  suggestions: PropTypes.instanceOf(Array)
-}
-
-AutocompleteOnline.defaultProps = {
-  suggestions: []
 }
 
 export default AutocompleteOnline
