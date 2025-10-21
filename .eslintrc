@@ -5,23 +5,42 @@
     "es6": true
   },
   "extends": [
-    "standard",
-    "standard-react"
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true,
       "experimentalObjectRestSpread": true
     },
-    "ecmaVersion": 11,
+    "ecmaVersion": 2020,
     "sourceType": "module"
   },
-  "plugins": ["react", "jest"],
+  "plugins": [
+    "react",
+    "@typescript-eslint"
+  ],
   "rules": {
-    "indent": ["error", 2],
-    "linebreak-style": ["error", "unix"],
-    "quotes": ["error", "single"],
-    "semi": ["error", "never"],
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "never"
+    ],
     "one-var": "off",
     "react/jsx-no-bind": "off",
     "react/jsx-boolean-value": "off",
@@ -29,12 +48,31 @@
     "camelcase": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-closing-tag-location": "off",
-    "react/jsx-fragments": "off",
-    "react/jsx-closing-bracket-location": "off"
+    "react/jsx-fragments": [
+      "off",
+      "element"
+    ],
+    "react/jsx-closing-bracket-location": "off",
+    "comma-dangle": [
+      "error",
+      "only-multiline"
+    ],
+    "react/no-unescaped-entities": "off"
   },
   "settings": {
     "react": {
-      "version": "16.13.1"
+      "version": "^17.0.2"
+    },
+    "import/parsers": {
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".tsx"
+      ]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      }
     }
   }
 }
