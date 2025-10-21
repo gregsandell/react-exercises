@@ -19,13 +19,13 @@ const Match = (props: MatchProps) => {
     </li>
   )
 }
-Match.propTypes = {
-  children: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-  isActive: PropTypes.bool
-}
-Match.defaultProps = {
-}
+// Match.propTypes = {
+//   children: PropTypes.string.isRequired,
+//   onClick: PropTypes.func.isRequired,
+//   isActive: PropTypes.bool
+// }
+// Match.defaultProps = {
+// }
 type AutocompleteProps = {
     suggestions: string[]
 }
@@ -94,9 +94,9 @@ const Autocomplete = (props: AutocompleteProps) => {
     </div>
   )
 }
-Autocomplete.propTypes = {
-  suggestions: PropTypes.array
-}
-
-Autocomplete.defaultProps = {}
+// Autocomplete.propTypes = {
+//   suggestions: PropTypes.array
+// }
+//
+// Autocomplete.defaultProps = {}
 export default Autocomplete
