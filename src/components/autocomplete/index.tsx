@@ -1,9 +1,15 @@
-import React, { useState } from 'react'
+import React, { ReactNode, useState } from 'react'
 import PropTypes from 'prop-types'
 import style from './autocomplete.module.css'
 import cx from 'classnames'
 
-const Match = (props) => {
+type MatchProps = {
+    children: ReactNode,
+    onClick: React.MouseEventHandler<HTMLElement>,
+    isActive: boolean
+}
+
+const Match = (props: MatchProps) => {
   return (
     <li
       className={cx({ [style.highlight]: props.isActive })}
@@ -20,22 +26,24 @@ Match.propTypes = {
 }
 Match.defaultProps = {
 }
-
-const Autocomplete = (props) => {
+type AutocompleteProps = {
+    suggestions: string[]
+}
+const Autocomplete = (props: AutocompleteProps) => {
   const [input, setInput] = useState('')
   // TODO The noMatchLI needs to disappear when a match has been accepted (clicked on)
   const noMatchLI = (<li className={style['no-match']} key={0}>No matches</li>)
-  const [matches, setMatches] = useState([])
+  const [matches, setMatches] = useState([''])
   const [selectedMatchIdx, setSelectedMatchIdx] = useState(0)
 
-  const handleInput = (e) => {
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
     const value = e.target.value.trim()
     setInput(value)
     setMatches([])
     setSelectedMatchIdx(0)
     if (value.length) {
-      setMatches(props.suggestions.reduce((accum, sugg) => {
+      setMatches(props.suggestions.reduce((accum: string[], sugg: string) => {
         if (sugg.toLowerCase().indexOf(value.toLowerCase()) > -1) {
           accum.push(sugg)
         }
