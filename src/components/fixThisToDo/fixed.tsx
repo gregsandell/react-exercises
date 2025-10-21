@@ -55,6 +55,7 @@ const ToDoFixed: React.FC = () => {
   }
 
   const removeTodo = (id: number) => {
+    // This method was empty in unfixed.tsx
     setTodos(
       todos.filter((todo) => {
         return todo.id !== id
@@ -73,7 +74,7 @@ const ToDoFixed: React.FC = () => {
             <DropdownMenu>
               <DropdownItem
                 active={todoFilter == 'all'}
-                value="all"
+                value='all'
                 onClick={(_, { value }) => setTodoFilter(value as string)}
               >
                                 All
@@ -98,8 +99,16 @@ const ToDoFixed: React.FC = () => {
       </Menu>
       <Segment attached="bottom">
         <List divided>
-          {todos.map((todo, idx) => {
-            // filter
+          {todos.filter((todo, idx) => {
+            switch(todoFilter) {
+              case 'pending':
+                return todo.completed === false
+              case 'completed':
+                return todo.completed === true
+              default:
+                return true
+            }
+          }).map((todo, idx) => {
             return (
               <List.Item key={idx} style={{ padding: '20px 0px' }}>
                 <List.Content floated="right">
