@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Button,
   Checkbox,
@@ -28,6 +28,11 @@ const ToDoFixed: React.FC = () => {
   const [todoValue, setTodoValue] = useState<string>('')
   const [todoFilter, setTodoFilter] = useState<string>('all')
 
+  useEffect(() => {
+    console.log('todos have been updated')
+    setTodoValue('')
+  }, [todos])
+
   const addTodo = () => {
     if (todoValue.trim() === '') return
 
@@ -37,12 +42,16 @@ const ToDoFixed: React.FC = () => {
       completed: false,
     }
     setTodos([...todos, newTodo])
-    setTodoValue('')
+    // in unfixed.tsx, setValue('') called here caused an infinite loop.  Not sure why.
+    // So the call was moved to a useEffect()
   }
 
   const toggleTodo = (todo: Todo) => {
-    // Pending:  fix method
-    todo.completed = true
+    todo.completed = !todo.completed // flip the toggle (neglected in unfixed.tsx)
+    // todos.map() rendered an array of React nodes based on the todos, but that leaves todos unchanged,
+    // even if handlers in the React nodes change a todo.  The altered todo must replace that todo
+    // in the stateful todos.
+    setTodos(todos.filter((item) => item.id === todo.id ? todo : item))
   }
 
   const removeTodo = (id: number) => {
@@ -58,7 +67,6 @@ const ToDoFixed: React.FC = () => {
       <Header as="h1" textAlign="center">
                 Todo List
       </Header>
-
       <Menu attached="top">
         <MenuMenu position="right">
           <Dropdown value={todoFilter} item icon="filter" text="Filter" simple>
@@ -108,7 +116,7 @@ const ToDoFixed: React.FC = () => {
                 <List.Content style={{ textAlign: 'left', display: 'flex' }}>
                   <Checkbox
                     toggle
-                    checked={false}
+                    checked={!todo.completed}
                     onChange={() => toggleTodo(todo)}
                   />
                   <Header as="h3" style={{ display: 'inline-block' }}>
