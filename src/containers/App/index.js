@@ -20,6 +20,8 @@ import InfiniteScroll from '../../components/infiniteScroll'
 import Calc from '../../components/calc'
 import MUITable from '../../components/mui-table'
 import UseAsyncHook from '../../components/useAsyncHook'
+import ToDoBroken from '../../components/fixThisToDo/unfixed'
+import ToDoFixed from '../../components/fixThisToDo/fixed'
 
 import suggestions from '../../components/autocomplete/autocompleteData'
 import teamPlayers from './organizeTeamsData'
@@ -45,6 +47,8 @@ function App () {
     { to: '/quiz', text: 'Quiz', element: <Quiz questions={quizData} /> },
     { to: '/starrating', text: 'Star Rating', element: <StarRating /> },
     { to: '/starratingpublished', text: 'Star Rating (published version)', element: <StarRatingPublished /> },
+    { to: '/todobroken', text: 'To Do (Broken)', element: <ToDoBroken /> },
+    { to: '/todofixed', text: 'To Do (Fixed)', element: <ToDoFixed /> },
     { to: '/todolist', text: 'To Do List', element: <ToDoList /> },
     { to: '/wordbyword', text: 'Word by Word', element: <WordByWord /> },
     { to: '/wordbywordpublished', text: 'Word by Word (published version)', element: <WordByWordPublished /> },

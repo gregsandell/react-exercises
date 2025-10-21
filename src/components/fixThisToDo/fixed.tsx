@@ -21,7 +21,7 @@ interface Todo {
     completed: boolean;
 }
 
-const BrokenToDoContainer: React.FC = () => {
+const ToDoFixed: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([
     { id: 1, text: 'This is an important todo', completed: false },
   ])
@@ -171,4 +171,4 @@ const BrokenToDoContainer: React.FC = () => {
   )
 }
 
-export default BrokenToDoContainer
+export default ToDoFixed

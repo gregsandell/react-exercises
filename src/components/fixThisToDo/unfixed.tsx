@@ -14,6 +14,7 @@ import {
   MenuMenu,
   Segment,
 } from 'semantic-ui-react'
+import styles from './styles.module.css'
 
 interface Todo {
     id: number;
@@ -21,7 +22,7 @@ interface Todo {
     completed: boolean;
 }
 
-const BrokenToDoContainer: React.FC = () => {
+const ToDoBroken: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([
     { id: 1, text: 'This is an important todo', completed: false },
   ])
@@ -45,10 +46,11 @@ const BrokenToDoContainer: React.FC = () => {
   }
 
   const removeTodo = (id: number) => {
+    // Pending:fix method
   }
 
   return (
-    <Container className="todoContainer">
+    <Container className={styles.todoContainer}>
       <Header as="h1" textAlign="center">
                 Todo List
       </Header>
@@ -165,4 +167,4 @@ const BrokenToDoContainer: React.FC = () => {
   )
 }
 
-export default BrokenToDoContainer
+export default ToDoBroken
