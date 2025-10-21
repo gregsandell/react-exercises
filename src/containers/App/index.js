@@ -28,26 +28,26 @@ import quizData from './quizData'
 /* TODO:  change to an original list of suggestions */
 function App () {
   const navlinks = [
-    { to: '/counter', text: 'Counter', element: <Counter /> },
-    { to: '/todolist', text: 'To Do List', element: <ToDoList /> },
+    { to: '/useAsyncHook', text: 'Async Fetch hook (Work in Progress)', element: <UseAsyncHook /> },
     { to: '/autocomplete', text: 'AutoComplete', element: <Autocomplete suggestions={suggestions} /> },
     { to: '/autocompleteonline', text: 'Autocomplete (published version)', element: <AutocompleteOnline suggestions={suggestions} /> },
-    { to: '/organizeteams', text: 'Organize Teams', element: <OrganizeTeams players={teamPlayers} /> },
-    { to: '/wordbyword', text: 'Word by Word', element: <WordByWord /> },
-    { to: '/wordbywordpublished', text: 'Word by Word (published version)', element: <WordByWordPublished /> },
-    { to: '/pagination', text: 'Pagination (from scratch)', element: <Pagination /> },
-    { to: '/mui-table', text: 'Pagination (with a UI library)', element: <MUITable /> },
-    { to: '/starrating', text: 'Star Rating', element: <StarRating /> },
-    { to: '/starratingpublished', text: 'Star Rating (published version)', element: <StarRatingPublished /> },
-    { to: '/quiz', text: 'Quiz', element: <Quiz questions={quizData} /> },
+    { to: '/calc', text: 'Calculator', element: <Calc initial={0} /> },
+    { to: '/counter', text: 'Counter', element: <Counter /> },
+    { to: '/colorSwitch', text: 'Color Switch', element: <ColorSwitch /> },
     { to: '/formValidation', text: 'Form Validation', element: <FormValidation /> },
     { to: '/formValidation-html5', text: 'Form Validation with HTML5', element: <FormValidationHtml5 /> },
     { to: '/formValidation-hooks', text: 'Form Validation with react-form-hooks', element: <FormValidationHooks /> },
     { to: '/formValidationFormik', text: 'Form Validation with Formik', element: <FormValidationFormik /> },
-    { to: '/colorSwitch', text: 'Color Switch', element: <ColorSwitch /> },
-    { to: '/calc', text: 'Calculator', element: <Calc initial={0} /> },
     { to: '/infiniteScroll', text: 'Infinite Scroll', element: <InfiniteScroll /> },
-    { to: '/useAsyncHook', text: 'Async Fetch hook (Work in Progress)', element: <UseAsyncHook /> }
+    { to: '/mui-table', text: 'Pagination (with a UI library)', element: <MUITable /> },
+    { to: '/organizeteams', text: 'Organize Teams', element: <OrganizeTeams players={teamPlayers} /> },
+    { to: '/pagination', text: 'Pagination (from scratch)', element: <Pagination /> },
+    { to: '/quiz', text: 'Quiz', element: <Quiz questions={quizData} /> },
+    { to: '/starrating', text: 'Star Rating', element: <StarRating /> },
+    { to: '/starratingpublished', text: 'Star Rating (published version)', element: <StarRatingPublished /> },
+    { to: '/todolist', text: 'To Do List', element: <ToDoList /> },
+    { to: '/wordbyword', text: 'Word by Word', element: <WordByWord /> },
+    { to: '/wordbywordpublished', text: 'Word by Word (published version)', element: <WordByWordPublished /> },
   ]
   return (
     <Router>

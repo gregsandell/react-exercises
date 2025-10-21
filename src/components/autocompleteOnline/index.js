@@ -34,7 +34,7 @@ class AutocompleteOnline extends Component {
       showSuggestions: true,
       userInput: e.currentTarget.value
     })
-  };
+  }
 
   onClick (e) {
     // When clicking on a choice in the dropdown, put its value in the text field and close the dropdown.
@@ -44,7 +44,7 @@ class AutocompleteOnline extends Component {
       showSuggestions: false,
       userInput: e.currentTarget.innerText
     })
-  };
+  }
 
   onKeyDown (e) {
     const { activeSuggestion, filteredSuggestions } = this.state
@@ -69,7 +69,7 @@ class AutocompleteOnline extends Component {
 
       this.setState({ activeSuggestion: activeSuggestion + 1 })
     }
-  };
+  }
 
   render () {
     const {

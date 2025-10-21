@@ -1,5 +1,4 @@
 import React, { ReactNode, useState } from 'react'
-import PropTypes from 'prop-types'
 import style from './autocomplete.module.css'
 import cx from 'classnames'
 
@@ -94,9 +93,4 @@ const Autocomplete = (props: AutocompleteProps) => {
     </div>
   )
 }
-// Autocomplete.propTypes = {
-//   suggestions: PropTypes.array
-// }
-//
-// Autocomplete.defaultProps = {}
 export default Autocomplete

@@ -50,7 +50,7 @@ export default function Calc ({ initial }) {
       </div>
     </div>
   )
-};
+}
 Calc.propTypes = {
   initial: PropTypes.number
 }

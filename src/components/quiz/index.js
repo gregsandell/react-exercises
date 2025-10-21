@@ -33,44 +33,44 @@ export default function Quiz (props) {
     advanceScreen()
   }
   switch (true) {
-  case screenCount < 1:
-    return (<StartScreen advancer={advanceScreen} />)
-  case screenCount <= props.questions.length: {
-    const queryIdx = screenCount - 1
-    const query = props.questions[queryIdx]
+    case screenCount < 1:
+      return (<StartScreen advancer={advanceScreen} />)
+    case screenCount <= props.questions.length: {
+      const queryIdx = screenCount - 1
+      const query = props.questions[queryIdx]
 
-    return (
-      <div>
-        <h1>{query.question}</h1>
-        <ul>
-          {
-            query.answers.map((answer, i) => (
-              <li
-                key={`answer_${i}`}
-                onClick={(e) => handleClick(e, queryIdx)}
-              >{answer}</li>)
-            )
-          }
-        </ul>
-      </div>
-    )
-  }
-  case screenCount > props.questions.length: {
-    const finalScore = ((score / props.questions.length) * 100).toFixed(1)
-    // return (<ExamEnd score={`${finalScore}%`} setSkreenCount={setScreenCount} setSkore={setScore} />)
-    const handleClick = () => {
-      setScore(0)
-      setScreenCount(1) // skip right to question 1
+      return (
+        <div>
+          <h1>{query.question}</h1>
+          <ul>
+            {
+              query.answers.map((answer, i) => (
+                <li
+                  key={`answer_${i}`}
+                  onClick={(e) => handleClick(e, queryIdx)}
+                >{answer}</li>)
+              )
+            }
+          </ul>
+        </div>
+      )
     }
-    return (
-      <div>
-        <h2>You got a score of {finalScore}</h2>
-        <button onClick={handleClick}>Press to take test again</button>
-      </div>
-    )
-  }
-  default:
-    return (<></>)
+    case screenCount > props.questions.length: {
+      const finalScore = ((score / props.questions.length) * 100).toFixed(1)
+      // return (<ExamEnd score={`${finalScore}%`} setSkreenCount={setScreenCount} setSkore={setScore} />)
+      const handleClick = () => {
+        setScore(0)
+        setScreenCount(1) // skip right to question 1
+      }
+      return (
+        <div>
+          <h2>You got a score of {finalScore}</h2>
+          <button onClick={handleClick}>Press to take test again</button>
+        </div>
+      )
+    }
+    default:
+      return (<></>)
   }
 }
 

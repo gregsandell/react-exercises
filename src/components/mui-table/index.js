@@ -5,8 +5,6 @@ const NUM_ITEMS = 25
 
 export default function MUITable () {
   const [JSONdata, setJSONdata] = useState([])
-  useEffect(() => {
-  }, [])
   const url = `https://randomuser.me/api?results=${NUM_ITEMS}`
   const fetchData = async (url) => {
     await fetch(url)
@@ -43,7 +41,7 @@ export default function MUITable () {
     []
   )
   const adaptToFourColumns = (data) => {
-    return data.map((user, i) => {
+    return data.map((user) => {
       const name = `${user.name.title} ${user.name.first} ${user.name.last}`
       const address = `${user.location.street.number} ${user.location.street.name}, ${user.location.city}, ${user.location.state}, ${user.location.postcode}`
       return ({

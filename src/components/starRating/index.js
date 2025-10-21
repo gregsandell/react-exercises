@@ -36,7 +36,7 @@ Star.propTypes = {
   litStarz: PropTypes.array,
   setLitStarz: PropTypes.func
 }
-export default function StarRating (props) {
+export default function StarRating () {
   const unlitStar = { clicked: false, hovered: false }
   const [litStars, setLitStars] = useState([
     { ...unlitStar }, { ...unlitStar }, { ...unlitStar }, { ...unlitStar }, { ...unlitStar }
