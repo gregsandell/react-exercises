@@ -17,7 +17,7 @@ import FormValidationHooks from '../../components/formValidation-hooks'
 import FormValidationFormik from '../../components/formValidationFormik'
 import ColorSwitch from '../../components/colorSwitch'
 import InfiniteScroll from '../../components/infiniteScroll'
-import Calc from '../../components/calc'
+// import Calc from '../../components/calc' // TODO restore this when TypeScript problems are fixed
 import MUITable from '../../components/mui-table'
 import UseAsyncHook from '../../components/useAsyncHook'
 import ToDoBroken from '../../components/fixThisToDo/unfixed'
@@ -33,7 +33,7 @@ function App () {
     { to: '/useAsyncHook', text: 'Async Fetch hook (Work in Progress)', element: <UseAsyncHook /> },
     { to: '/autocomplete', text: 'AutoComplete', element: <Autocomplete suggestions={suggestions} /> },
     { to: '/autocompleteonline', text: 'Autocomplete (published version)', element: <AutocompleteOnline suggestions={suggestions} /> },
-    { to: '/calc', text: 'Calculator', element: <Calc initial={0} /> },
+    // { to: '/calc', text: 'Calculator', element: <Calc initial={0} /> }, // TODO fix the typ0escript problems in <Calc>
     { to: '/counter', text: 'Counter', element: <Counter /> },
     { to: '/colorSwitch', text: 'Color Switch', element: <ColorSwitch /> },
     { to: '/formValidation', text: 'Form Validation', element: <FormValidation /> },

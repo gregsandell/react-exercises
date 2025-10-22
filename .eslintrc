@@ -57,7 +57,8 @@
       "error",
       "only-multiline"
     ],
-    "react/no-unescaped-entities": "off"
+    "react/no-unescaped-entities": "off",
+    "react/prop-types": "off"
   },
   "settings": {
     "react": {
