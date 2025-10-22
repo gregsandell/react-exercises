@@ -1,14 +1,15 @@
 import { Component } from 'react'
 
 export default class Index extends Component {
-  constructor () {
-    super()
+  state: { counter: number }
+  constructor (props: NonNullable<unknown>) {
+    super(props)
     this.state = { counter: 42 }
   }
 
-  handleIncrement (e) {
+  handleIncrement (e: React.MouseEvent) {
     e.preventDefault()
-    this.setState((prevState) => ({
+    this.setState((prevState: { counter: number }) => ({
       counter: prevState.counter + 1
     }))
   }
@@ -24,12 +25,12 @@ export default class Index extends Component {
           <button onClick={this.handleIncrement.bind(this)}>Increment</button>
         </div>
         <style>{`
-                    .counter-button {
-                        font-size: 1rem;
-                        padding: 5px 10px;
-                        color:  #585858;
-                    }
-                `}</style>
+            .counter-button {
+                font-size: 1rem;
+                padding: 5px 10px;
+                color:  #585858;
+            }
+        `}</style>
 
       </>
     )
