@@ -25,10 +25,10 @@ export default function FormValidation () {
     setAllValid(state.email.length > 0 && emailValid(state.email) && state.firstName.length > 0 && nameValid(state.firstName) && state.lastName.length > 0 && nameValid(state.lastName))
   }, [state])
 
-  function handleOnEmailChange (event) {
+  function handleOnEmailChange (event: React.ChangeEvent<HTMLInputElement>) {
     setErrorMesg('')
     setSubmitted(false)
-    const email = event.target.value
+    const email = event.currentTarget.value
     setState({
       ...state,
       email
@@ -38,9 +38,9 @@ export default function FormValidation () {
     }
   }
 
-  const emailValid = (email) => /^.+@.+\..+$/.test(email)
-  const nameValid = (name) => !/\d/.test(name)
-  function handleOnFirstnameChange (event) {
+  const emailValid = (email: string) => /^.+@.+\..+$/.test(email)
+  const nameValid = (name: string) => !/\d/.test(name)
+  function handleOnFirstnameChange (event: React.ChangeEvent<HTMLInputElement>) {
     setErrorMesg('')
     const firstName = event.target.value
     setState({
@@ -51,7 +51,7 @@ export default function FormValidation () {
       setErrorMesg('Number not allowed in first or last name')
     }
   }
-  function handleOnLastnameChange (event) {
+  function handleOnLastnameChange (event: React.ChangeEvent<HTMLInputElement>) {
     setErrorMesg('')
     setSubmitted(false)
     const lastName = event.target.value
