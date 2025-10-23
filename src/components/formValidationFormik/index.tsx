@@ -1,12 +1,18 @@
 import React, { useState } from 'react'
-import { useFormik } from 'formik'
+import { useFormik, FormikProps } from 'formik'
 import * as Yup from 'yup'
 import style from './formValidationFormik.module.css'
 
+type FormObject = {
+  email: string,
+  firstName: string,
+  lastName: string
+}
+
 export default function FormValidationFormik () {
-  const [submitted, setSubmitted] = useState(false)
-  const [submittedForm, setSubmittedForm] = useState({})
-  const formik = useFormik({
+  const [submitted, setSubmitted] = useState<boolean>(false)
+  const [submittedForm, setSubmittedForm] = useState<Partial<FormObject>>({})
+  const formik: FormikProps<FormObject> = useFormik({
     initialValues: {
       firstName: '',
       lastName: '',
@@ -26,7 +32,7 @@ export default function FormValidationFormik () {
       setSubmittedForm(values)
     }
   })
-  const handleCancel = () => {
+  const handleCancel = (): void => {
     formik.resetForm()
     formik.errors = {}
     setSubmitted(false)
