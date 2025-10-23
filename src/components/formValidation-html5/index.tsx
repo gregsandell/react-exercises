@@ -1,16 +1,27 @@
 import { useState, createRef } from 'react'
 import './formValidationHtml5.css'
+import assert from 'node:assert'
+
+type FormObject = {
+  email: string,
+  firstName: string,
+  lastName: string
+}
+interface ValidationMessages {
+  [key: string]: string; // This index signature allows any string to be used as a key
+}
+
 
 export default function FormValidationHtml5 () {
-  const [state, setState] = useState({
+  const [state, setState] = useState<FormObject>({
     email: '',
     firstName: '',
     lastName: ''
   })
-  const [submitted, setSubmitted] = useState(false)
-  const formRef = createRef()
-  const emailRef = createRef()
-  const formValidationMessages = {
+  const [submitted, setSubmitted] = useState<boolean>(false)
+  const formRef = createRef<HTMLFormElement>()
+  const emailRef = createRef<HTMLInputElement>()
+  const formValidationMessages: ValidationMessages = {
     email: 'Please enter a complete email address, such as person@company.com',
     firstName: 'First Name may not contain any numbers',
     lastName: 'Last Name may not contain any numbers'
@@ -21,8 +32,9 @@ export default function FormValidationHtml5 () {
 
   const validate = () => {
     let allValid = true
+    assert(formRef.current !== null, 'ref is null')
     for (let i = 0; i < formRef.current.length; i++) { // Note: formRef.current.map() doesn't work
-      const elem = formRef.current[i]
+      const elem = formRef.current[i] as HTMLInputElement
       if (!elem.validity.valid && elem.validity.patternMismatch && elem.name in formValidationMessages) {
         elem.setCustomValidity(formValidationMessages[elem.name])
         allValid = false
@@ -32,7 +44,7 @@ export default function FormValidationHtml5 () {
 
     return formRef.current.reportValidity()
   }
-  function handleOnEmailChange (event) {
+  function handleOnEmailChange (event: React.ChangeEvent<HTMLInputElement>) {
     const email = event.target.value
     setState({
       ...state,
@@ -40,11 +52,13 @@ export default function FormValidationHtml5 () {
     })
     setSubmitted(false)
     if (!event.target.validity.patternMismatch) {
-      emailRef.current.setCustomValidity('') // string must be empty or it registers as invalid
+      const elem = emailRef.current as HTMLInputElement
+      assert(elem !== null, 'ref is null')
+      elem.setCustomValidity('') // string must be empty or it registers as invalid
     }
   }
 
-  function handleOnFirstnameChange (event) {
+  function handleOnFirstnameChange (event: React.ChangeEvent<HTMLInputElement>) {
     const firstName = event.target.value
     setState({
       ...state,
@@ -55,7 +69,7 @@ export default function FormValidationHtml5 () {
       event.target.setCustomValidity('')
     }
   }
-  function handleOnLastnameChange (event) {
+  function handleOnLastnameChange (event: React.ChangeEvent<HTMLInputElement>) {
     const lastName = event.target.value
     setState({
       ...state,
@@ -67,7 +81,7 @@ export default function FormValidationHtml5 () {
     }
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.MouseEvent) => {
     setSubmitted(true)
     validate()
     e.preventDefault()

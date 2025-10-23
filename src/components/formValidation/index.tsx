@@ -12,15 +12,21 @@
 import { useState, useEffect } from 'react'
 import style from './formValidation.module.css'
 
+type FormObject = {
+  email: string,
+  firstName: string,
+  lastName: string
+}
 export default function FormValidation () {
-  const [state, setState] = useState({
+  const [state, setState] = useState<FormObject>({
     email: '',
     firstName: '',
     lastName: ''
   })
-  const [submitted, setSubmitted] = useState(false)
-  const [errorMesg, setErrorMesg] = useState('')
-  const [allValid, setAllValid] = useState(false)
+  const [submitted, setSubmitted] = useState<boolean>(false)
+  const [errorMesg, setErrorMesg] = useState<string>('')
+  const [allValid, setAllValid] = useState<boolean>(false)
+
   useEffect(() => {
     setAllValid(state.email.length > 0 && emailValid(state.email) && state.firstName.length > 0 && nameValid(state.firstName) && state.lastName.length > 0 && nameValid(state.lastName))
   }, [state])
