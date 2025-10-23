@@ -1,6 +1,6 @@
 import { useState, createRef } from 'react'
 import './formValidationHtml5.css'
-import assert from 'node:assert'
+import assert from 'assert'
 
 type FormObject = {
   email: string,
