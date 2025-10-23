@@ -61,7 +61,7 @@ function App () {
             //   TODO active styling not working because (I think) entire page (with navigation)
             // is rendering on each click.
             navlinks.map((record, i) =>
-              <li key={`navlink_${i}`}><NavLink to={record.to} exact activeClassName={styles.active}>{record.text}</NavLink></li>
+              <li key={`navlink_${i}`}><NavLink to={record.to} activeClassName={styles.active}>{record.text}</NavLink></li>
             )
           }
         </ul>
@@ -69,7 +69,7 @@ function App () {
         <Routes>
           {
             navlinks.map((record, i) => (
-              <Route key={`route_${i}`} exact='true' path={record.to} element={record.element} />
+              <Route key={`route_${i}`} path={record.to} element={record.element} />
             ))
           }
         </Routes>
