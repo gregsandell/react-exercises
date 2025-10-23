@@ -1,8 +1,8 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { OmdbSearchItem } from './types'
 import noPoster from './noPoster.png'
 
-const Movie = (props) => {
+const Movie = (props: { dataSource: OmdbSearchItem}) => {
   const posterSrc = props.dataSource.Poster !== 'N/A'
     ? props.dataSource.Poster
     : noPoster
@@ -12,13 +12,6 @@ const Movie = (props) => {
       {props.dataSource.Title}
     </div>
   )
-}
-
-Movie.defaultProps = {
-  dataSource: {}
-}
-Movie.propTypes = {
-  dataSource: PropTypes.object
 }
 
 export default Movie

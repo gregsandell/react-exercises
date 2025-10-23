@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from 'react'
+import { AxiosResponse } from 'axios'
+import {OmdbSearchItem, OmdbSearchResponse} from './types'
 import { fetchMovies } from './fetchMovies'
 import Movie from './movie'
 // TO DO Style output more nicely, use all of the data (including making an IMDB link)
 // import style from './infiniteScroll.module.css'
 
 const InfiniteScroll = () => {
-  const [data, setData] = useState([])
-  const [currentPage, setCurrentPage] = useState(1)
-  const [searchTerm, setSearchTerm] = useState('john')
+  const [data, setData] = useState<OmdbSearchItem[]>([])
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [searchTerm, setSearchTerm] = useState<string>('john')
 
   useEffect(() => {
     (async () => {
-      const newdata = await fetchMovies(searchTerm, currentPage)
-      console.log(newdata)
-      if (newdata.data.Error) {
+      const response: AxiosResponse<any, any> = await fetchMovies(searchTerm, currentPage)
+      console.log(response)
+      if (response.data.Error) {
         setData([])
       } else {
-        setData([...data, ...newdata.data.Search])
+        const newData = response.data.Search
+        setData([...data, ...newData])
       }
     })()
   }, [searchTerm, currentPage])
@@ -25,13 +28,13 @@ const InfiniteScroll = () => {
     document.addEventListener('scroll', handleScroll)
   }, [])
 
-  const handleScroll = () => {
+  const handleScroll = ():void => {
     if (window.scrollY + window.innerHeight >= document.body.scrollHeight) {
       setCurrentPage((previousValue) => ++previousValue)
     }
   }
 
-  const searchTermChange = (e) => {
+  const searchTermChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setData([])
     setSearchTerm(e.target.value)
     setCurrentPage(1)

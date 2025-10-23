@@ -73,7 +73,9 @@ Variation on the `Form Validation` exercise, using the [Formik](https://formik.o
 library.
 
 ## Infinite Scroll
-This left intentionally blank until I find the original source.
+From a job interview code challenge on 2022-06-15 (forgot who the employer was).
+Retrieves movie data from service at `omdbapi.com` and displays results ten at a time with 
+infinite scroll. The api is described at [https://www.omdbapi.com](https://www.omdbapi.com).
 
 ## MUI Table
 This was a challenge I posed to myself.
