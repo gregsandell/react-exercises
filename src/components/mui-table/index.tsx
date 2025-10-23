@@ -1,24 +1,27 @@
 import React, { useMemo, useState, useEffect } from 'react'
-import MaterialReactTable from 'material-react-table'
+import MaterialReactTable, {MRT_ColumnDef} from 'material-react-table'
+import { RandomUserApiResponse, RandomUser, FourColumnUser } from './types'
 import style from './mui-table.module.css'
 const NUM_ITEMS = 25
 
 export default function MUITable () {
-  const [JSONdata, setJSONdata] = useState([])
+  const [JSONdata, setJSONdata] = useState<FourColumnUser[]>([])
   const url = `https://randomuser.me/api?results=${NUM_ITEMS}`
-  const fetchData = async (url) => {
+  const fetchData = async (url: string): Promise<any> => {
     await fetch(url)
       .then(response => response.json())
-      .then(data => {
+      .then((data: RandomUserApiResponse) => {
         console.log(data)
-        setJSONdata(adaptToFourColumns(data.results), [])
+        setJSONdata(adaptToFourColumns(data.results))
       })
       .catch((e) => console.log(`fetch error.  No network connection?  randomuser.me is down? error = ${e}`))
   }
+
   useEffect(() => {
     fetchData(url)
   }, []) // Empty array for 2nd arg means this will be called once in component lifecycle
-  const columns = useMemo(
+
+  const columns = useMemo<MRT_ColumnDef<FourColumnUser>[]>(
     () => [
       {
         accessorKey: 'name',
@@ -34,13 +37,13 @@ export default function MUITable () {
       },
       {
         accessorKey: 'phone',
-        id: 'phone',
+        // id: 'phone',
         header: 'Phone'
       }
     ],
     []
   )
-  const adaptToFourColumns = (data) => {
+  const adaptToFourColumns = (data: RandomUser[]): FourColumnUser[] => {
     return data.map((user) => {
       const name = `${user.name.title} ${user.name.first} ${user.name.last}`
       const address = `${user.location.street.number} ${user.location.street.name}, ${user.location.city}, ${user.location.state}, ${user.location.postcode}`
