@@ -22,6 +22,7 @@ import MUITable from '../../components/mui-table'
 import UseAsyncHook from '../../components/useAsyncHook'
 import ToDoBroken from '../../components/fixThisToDo/unfixed'
 import ToDoFixed from '../../components/fixThisToDo/fixed'
+import Home from '../../components/home'
 
 import suggestions from '../../components/autocomplete/autocompleteData'
 import teamPlayers from './organizeTeamsData'
@@ -61,12 +62,13 @@ function App () {
             //   TODO active styling not working because (I think) entire page (with navigation)
             // is rendering on each click.
             navlinks.map((record, i) =>
-              <li key={`navlink_${i}`}><NavLink to={record.to} activeClassName={styles.active}>{record.text}</NavLink></li>
+              <li key={`navlink_${i}`}><NavLink to={record.to} activeclassname={styles.active}>{record.text}</NavLink></li>
             )
           }
         </ul>
         {/* TO DO Make the apps centered in screen */}
         <Routes>
+          <Route path={'/'} element={<Home />} />
           {
             navlinks.map((record, i) => (
               <Route key={`route_${i}`} path={record.to} element={record.element} />
