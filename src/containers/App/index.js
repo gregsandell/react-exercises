@@ -25,7 +25,7 @@ import ToDoFixed from '../../components/fixThisToDo/fixed'
 import Home from '../../components/home'
 
 import suggestions from '../../components/autocomplete/autocompleteData'
-import teamPlayers from './organizeTeamsData'
+import teamData from './organizeTeamsData'
 import quizData from './quizData'
 
 /* TODO:  change to an original list of suggestions */
@@ -43,7 +43,7 @@ function App () {
     { to: '/formValidationFormik', text: 'Form Validation with Formik', element: <FormValidationFormik /> },
     { to: '/infiniteScroll', text: 'Infinite Scroll', element: <InfiniteScroll /> },
     { to: '/mui-table', text: 'Pagination (with a UI library)', element: <MUITable /> },
-    { to: '/organizeteams', text: 'Organize Teams', element: <OrganizeTeams players={teamPlayers} /> },
+    { to: '/organizeteams', text: 'Organize Teams', element: <OrganizeTeams players={teamData} /> },
     { to: '/pagination', text: 'Pagination (from scratch)', element: <Pagination /> },
     { to: '/quiz', text: 'Quiz', element: <Quiz questions={quizData} /> },
     { to: '/starrating', text: 'Star Rating', element: <StarRating /> },
