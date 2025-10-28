@@ -1,0 +1,85 @@
+import { render, screen, within } from '@testing-library/react'
+import * as ReactDOMClient from 'react-dom/client'
+import '@testing-library/jest-dom'
+
+import OrganizeTeams, { TESTIDS } from './index'
+import teamPlayers from '../../containers/App/organizeTeamsData'
+import userEvent from '@testing-library/user-event'
+
+describe('organize teams', () => {
+
+  test('initial pool state', () => {
+    render(<OrganizeTeams players={teamPlayers} />)
+
+    // Now you can use screen to query for elements
+    const poolElement = screen.getByTestId(TESTIDS.POOL)
+
+    // Add your assertions here, e.g.:
+    expect(poolElement).toBeInTheDocument()
+    teamPlayers.forEach((player) => {
+      expect(within(poolElement).getByText(player)).toBeInTheDocument()
+    })
+
+  })
+  test('team select button toggle', async () => {
+    render(<OrganizeTeams players={teamPlayers} />)
+
+    // Now you can use screen to query for elements
+    const teamSelectButton = screen.getByTestId(TESTIDS.TEAM_SELECT)
+
+    expect(teamSelectButton).toBeInTheDocument()
+
+    expect(screen.getByText((content, element) => {
+      return content.startsWith('Now Selecting for Team') && content.includes('1')
+    })).toBeInTheDocument()
+
+    const user = userEvent.setup()
+
+    await user.click(teamSelectButton) // Use await for userEvent actions
+    expect(screen.getByText((content) => {
+      return content.startsWith('Now Selecting for Team') && content.includes('2')
+    })).toBeInTheDocument()
+  })
+  test('add then remove player', async () => {
+    render(<OrganizeTeams players={teamPlayers} />)
+
+    const teamSelectButton = screen.getByTestId(TESTIDS.TEAM_SELECT)
+
+    // Elements with id 'player' are the clickable players in the pool (like buttons, but divs actually).
+    // Work with the first one.
+    let firstPlayer = screen.getAllByTestId(TESTIDS.PLAYER_IN_POOL)[0]
+    let playerName = firstPlayer.textContent // i.e. 'Alice', 'Bob' etc
+
+    expect(firstPlayer).toBeInTheDocument() // prove that the div is there
+
+    const user = userEvent.setup() // set up ability to click
+
+    await user.click(firstPlayer) // moves player from pool to Team 1
+
+    //
+    const team1box = screen.getAllByTestId(TESTIDS.PLAYER_ON_TEAM) // get all players in both boxes
+    expect(team1box.length).toBe(1) // we only added one
+
+    // Prove that our player is in the team box now
+    const ourPlayer = team1box[0]
+    expect(within(ourPlayer).getByText(playerName)).toBeInTheDocument()
+
+    // Prove that our player has left the pool
+    firstPlayer = screen.getAllByTestId(TESTIDS.PLAYER_IN_POOL)[0]
+    let currentFirstPlayerInPool = firstPlayer.textContent
+    expect(currentFirstPlayerInPool).not.toBe(playerName)
+
+
+    // Now remove that player
+    const team1BoxPlayerButton = screen.getByText(playerName)
+    await user.click(team1BoxPlayerButton)
+
+    // Prove that it left the team box
+    expect(within(ourPlayer).getByText(playerName)).not.toBeInTheDocument()
+
+    // Prove that player was returned to pool.  Don't expect it to be in the same position
+    const currentPool = screen.getAllByTestId(TESTIDS.PLAYER_IN_POOL)
+    expect(currentPool.some((item) => item.textContent === playerName)).toBe(true)
+  })
+})
+
