@@ -94,8 +94,7 @@ export default function OrganizeTeams (props: TeamData) {
             key={i}
             data-testid={TESTIDS.PLAYER_IN_POOL}
             onClick={() => {
-              playerGroups['team1'].push(playerGroups.playerPool[i])
-              // playerGroups[`team${teamTurn + 1}`].push(playerGroups.playerPool[i])
+              playerGroups[teamTurn === 0 ? 'team1' : 'team2'].push(playerGroups.playerPool[i])
               playerGroups.playerPool.splice(i, 1)
               setPlayerGroups({ ...playerGroups })
             }}

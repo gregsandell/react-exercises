@@ -1,28 +1,27 @@
 import { render, screen, within } from '@testing-library/react'
-import * as ReactDOMClient from 'react-dom/client'
 import '@testing-library/jest-dom'
 
 import OrganizeTeams, { TESTIDS } from './index'
-import teamPlayers from '../../containers/App/organizeTeamsData'
+import teamData from '../../containers/App/organizeTeamsData'
 import userEvent from '@testing-library/user-event'
 
 describe('organize teams', () => {
 
   test('initial pool state', () => {
-    render(<OrganizeTeams players={teamPlayers} />)
+    render(<OrganizeTeams players={teamData.players} />)
 
     // Now you can use screen to query for elements
     const poolElement = screen.getByTestId(TESTIDS.POOL)
 
     // Add your assertions here, e.g.:
     expect(poolElement).toBeInTheDocument()
-    teamPlayers.forEach((player) => {
+    teamData.players.forEach((player) => {
       expect(within(poolElement).getByText(player)).toBeInTheDocument()
     })
 
   })
   test('team select button toggle', async () => {
-    render(<OrganizeTeams players={teamPlayers} />)
+    render(<OrganizeTeams players={teamData.players} />)
 
     // Now you can use screen to query for elements
     const teamSelectButton = screen.getByTestId(TESTIDS.TEAM_SELECT)
@@ -41,14 +40,14 @@ describe('organize teams', () => {
     })).toBeInTheDocument()
   })
   test('add then remove player', async () => {
-    render(<OrganizeTeams players={teamPlayers} />)
+    render(<OrganizeTeams players={teamData.players} />)
 
     const teamSelectButton = screen.getByTestId(TESTIDS.TEAM_SELECT)
 
     // Elements with id 'player' are the clickable players in the pool (like buttons, but divs actually).
     // Work with the first one.
     let firstPlayer = screen.getAllByTestId(TESTIDS.PLAYER_IN_POOL)[0]
-    let playerName = firstPlayer.textContent // i.e. 'Alice', 'Bob' etc
+    const playerName: string = firstPlayer.textContent || '' // i.e. 'Alice', 'Bob' etc
 
     expect(firstPlayer).toBeInTheDocument() // prove that the div is there
 
@@ -66,7 +65,7 @@ describe('organize teams', () => {
 
     // Prove that our player has left the pool
     firstPlayer = screen.getAllByTestId(TESTIDS.PLAYER_IN_POOL)[0]
-    let currentFirstPlayerInPool = firstPlayer.textContent
+    const currentFirstPlayerInPool = firstPlayer.textContent
     expect(currentFirstPlayerInPool).not.toBe(playerName)
 
 
