@@ -42,9 +42,9 @@ function App () {
     { to: '/formValidation-hooks', text: 'Form Validation with react-form-hooks', element: <FormValidationHooks /> },
     { to: '/formValidationFormik', text: 'Form Validation with Formik', element: <FormValidationFormik /> },
     { to: '/infiniteScroll', text: 'Infinite Scroll', element: <InfiniteScroll /> },
-    { to: '/mui-table', text: 'Pagination (with a UI library)', element: <MUITable /> },
     { to: '/organizeteams', text: 'Organize Teams', element: <OrganizeTeams players={teamData.players} /> },
     { to: '/pagination', text: 'Pagination (from scratch)', element: <Pagination /> },
+    { to: '/mui-table', text: 'Pagination (with a UI library)', element: <MUITable /> },
     { to: '/quiz', text: 'Quiz', element: <Quiz questions={quizData} /> },
     { to: '/starrating', text: 'Star Rating', element: <StarRating /> },
     { to: '/starratingpublished', text: 'Star Rating (published version)', element: <StarRatingPublished /> },
@@ -62,7 +62,7 @@ function App () {
             //   TODO active styling not working because (I think) entire page (with navigation)
             // is rendering on each click.
             navlinks.map((record, i) =>
-              <li key={`navlink_${i}`}><NavLink to={record.to} activeclassname={styles.active}>{record.text}</NavLink></li>
+              <li key={`navlink_${i}`}><NavLink to={record.to}>{record.text}</NavLink></li>
             )
           }
         </ul>
