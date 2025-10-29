@@ -43,7 +43,7 @@ function App () {
     { to: '/formValidationFormik', text: 'Form Validation with Formik', element: <FormValidationFormik /> },
     { to: '/infiniteScroll', text: 'Infinite Scroll', element: <InfiniteScroll /> },
     { to: '/mui-table', text: 'Pagination (with a UI library)', element: <MUITable /> },
-    { to: '/organizeteams', text: 'Organize Teams', element: <OrganizeTeams players={teamData} /> },
+    { to: '/organizeteams', text: 'Organize Teams', element: <OrganizeTeams players={teamData.players} /> },
     { to: '/pagination', text: 'Pagination (from scratch)', element: <Pagination /> },
     { to: '/quiz', text: 'Quiz', element: <Quiz questions={quizData} /> },
     { to: '/starrating', text: 'Star Rating', element: <StarRating /> },

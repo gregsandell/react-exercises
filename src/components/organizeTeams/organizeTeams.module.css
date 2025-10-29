@@ -9,6 +9,10 @@
   flex-direction: row;
   margin: 0 auto;
 }
+.label {
+  padding: 5px 10px;
+  font-weight: bold;
+}
 .player {
   /*display: inline-block;*/
   padding: 5px 10px;
@@ -34,13 +38,22 @@
   justify-content: center;
   min-height: 100px;
 }
-h2.team-head {
+h2.team-active {
   margin: 5px;
   text-align: center;
+}
+h2.team-inactive {
+  margin: 5px;
+  text-align: center;
+  color: #999999;
 }
 .team-players {
   display: flex;
   flex-direction: row;
   flex: 1;
   flex-wrap:wrap;
+}
+.instructions {
+  text-align: center;
+  margin: 0;
 }

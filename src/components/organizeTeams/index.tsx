@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState} from 'react'
 import styles from './organizeTeams.module.css'
-import type { TeamData, AppData, TeamIdx } from './types'
+import type { TeamData, Groups, TeamIdx } from './types'
 import assert from 'assert'
 
 export const TESTIDS: Record<string, string> = {
@@ -14,7 +14,7 @@ export default function OrganizeTeams (props: TeamData) {
   /*
     Create the initial state, where all teams are in the pool, and teams 1 and 2 have no players
    */
-  const initializeTeams = (players: string[]): AppData => {
+  const initializeTeams = (players: string[]): Groups => {
     return {
       playerPool: [...players],
       team1: [],
@@ -31,7 +31,7 @@ export default function OrganizeTeams (props: TeamData) {
       group[2] the remaining number of players that will be in the unselected pool.  Will be at least 1
   */
   // eslint-disable-next-line no-unused-vars
-  const randomizeTeams = (playersOrig: string[]): AppData => {
+  const randomizeTeams = (playersOrig: string[]): Groups => {
     const players: string[] = [...playersOrig] // leave original prop alone
     const randomizeGroupSizes = (maxNum: number) => {
       const groups = [0, 0, 0]
@@ -41,6 +41,9 @@ export default function OrganizeTeams (props: TeamData) {
       return groups
     }
     const scramble = (input: string[]) => input.sort(() => Math.random() - 0.5)
+    const newTeamTurn: number = Math.floor(Math.random() * 2)
+    assert(newTeamTurn === 0 || newTeamTurn === 1, 'invalid teamTurn')
+    setTeamTurn(newTeamTurn)
 
     /*
       Take length items off of the end of list, and return a list of those items.
@@ -80,14 +83,13 @@ export default function OrganizeTeams (props: TeamData) {
     setPlayerGroups({ ...playerGroups })
   }
 
-  const [playerGroups, setPlayerGroups] = useState<AppData>(initializeTeams(props.players))
+  const [playerGroups, setPlayerGroups] = useState<Groups>(initializeTeams(props.players))
   const [teamTurn, setTeamTurn] = useState<TeamIdx>(0) // the only values can be 0 or 1 (team1 or team2)
-
 
   return (
     <div id={styles.container}>
-      {/* Render the pool */}
       <div id={styles['player-pool']} data-testid={TESTIDS.POOL}>
+        <span className={styles.label}>Pool: </span>
         {playerGroups.playerPool.map((player, i) => (
           <div
             className={styles.player}
@@ -104,17 +106,18 @@ export default function OrganizeTeams (props: TeamData) {
       <div id={styles.buttons}>
         <button onClick={() => {
           setTeamTurn(teamTurn === 0 ? 1 : 0)
-        }} data-testid="teamselect">Now Selecting for Team {teamTurn + 1}</button>
+        }} data-testid="teamselect">Toggle Team Selection</button>
         <button onClick={() => {
           setPlayerGroups(randomizeTeams(props.players))
         }}>Randomize Teams</button>
         <button onClick={() => {
           setPlayerGroups(initializeTeams(props.players))
+          setTeamTurn(0)
         }}>Reset</button>
       </div>
       <div id={styles.rosters}>
         <div className={styles.team}>
-          <h2 className={styles['team-head']}>Team 1</h2>
+          <h2 className={styles[teamTurn === 0 ? 'team-active' : 'team-inactive']}>Team 1</h2>
           <div className={styles['team-players']}>
             {playerGroups.team1.map((player, i) => (
               <div
@@ -129,7 +132,7 @@ export default function OrganizeTeams (props: TeamData) {
           </div>
         </div>
         <div className={styles.team}>
-          <h2 className={styles['team-head']}>Team 2</h2>
+          <h2 className={styles[teamTurn === 1 ? 'team-active' : 'team-inactive']}>Team 2</h2>
           <div className={styles['team-players']}>
             {playerGroups.team2.map((player, i) => (
               <div
@@ -144,6 +147,12 @@ export default function OrganizeTeams (props: TeamData) {
           </div>
         </div>
       </div>
+      <h4 className={styles.instructions}>Instructions</h4>
+      <ol>
+        <li>Click on a player name in the pool to add it to the active team</li>
+        <li>Use the toggle button to choose the active team</li>
+        <li>Clicking on a player on a team returns it back to the pool</li>
+      </ol>
     </div>
   )
 }
