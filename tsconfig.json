@@ -9,7 +9,7 @@
     "module": "esnext",
     "target": "es5",
     "types": [
-        "node"
+        "node", "jest"
      ],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,

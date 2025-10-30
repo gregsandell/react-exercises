@@ -1,7 +1,10 @@
 import React, { useState} from 'react'
+import assert from 'assert'
 import styles from './organizeTeams.module.css'
 import type { TeamData, Groups, TeamIdx } from './types'
-import assert from 'assert'
+import { initializeTeams, randomizeTeams } from './helpers'
+
+export const TOGGLE_BUTTON_TEXT = 'Toggle Team Selection'
 
 export const TESTIDS: Record<string, string> = {
   POOL: 'pool', // div containing players not yet on either team
@@ -10,65 +13,7 @@ export const TESTIDS: Record<string, string> = {
   PLAYER_ON_TEAM: 'team_link', // all players that are in team[1|2]
 }
 export default function OrganizeTeams (props: TeamData) {
-
-  /*
-    Create the initial state, where all teams are in the pool, and teams 1 and 2 have no players
-   */
-  const initializeTeams = (players: string[]): Groups => {
-    return {
-      playerPool: [...players],
-      team1: [],
-      team2: []
-    }
-  }
-  /*
-    Array randomizeGroupSizes(int maxNums)
-
-    Returns an array of length 3 consisting of three random non-zero values that add up
-    to maxNum.  Description of result:
-      group[0] the number of players to put in Team 1. Choice must leave at least two (one each from the remaining groups)
-      group[1] the number of players to put in Team 2. The maximum of group[0] + group[1] is (maxNum-1)
-      group[2] the remaining number of players that will be in the unselected pool.  Will be at least 1
-  */
-  // eslint-disable-next-line no-unused-vars
-  const randomizeTeams = (playersOrig: string[]): Groups => {
-    const players: string[] = [...playersOrig] // leave original prop alone
-    const randomizeGroupSizes = (maxNum: number) => {
-      const groups = [0, 0, 0]
-      groups[0] = Math.floor((Math.random() * (maxNum - 2))) + 1
-      groups[1] = Math.floor((Math.random() * (maxNum - groups[0] - 1))) + 1
-      groups[2] = maxNum - (groups[0] + groups[1])
-      return groups
-    }
-    const scramble = (input: string[]) => input.sort(() => Math.random() - 0.5)
-    const newTeamTurn: number = Math.floor(Math.random() * 2)
-    assert(newTeamTurn === 0 || newTeamTurn === 1, 'invalid teamTurn')
-    setTeamTurn(newTeamTurn)
-
-    /*
-      Take length items off of the end of list, and return a list of those items.
-      Destructively changes list.
-     */
-    const popToArray = (list: string[], length: number): string[] => {
-      const result: string[] = []
-      for (let i = 0; i < length; i++) {
-        const item: string | undefined = list.pop()
-        assert(item !== undefined, 'array contained an undefined')
-        result.push(item)
-      }
-      return result
-    }
-
-    const groupSizes = randomizeGroupSizes(players.length)
-    scramble(players)
-    return {
-      team1: popToArray(players, groupSizes[0]),
-      team2: popToArray(players, groupSizes[1]),
-      playerPool: popToArray(players, groupSizes[2])
-    }
-  }
-
-  /*
+/*
     Arguments:
       teamNumber:  Which team, team1 or team2, we are pulling a player out of.  Can only be values 1 or 2
       playerIdx: the index of the player in team[1|2] to return to pool
@@ -106,9 +51,12 @@ export default function OrganizeTeams (props: TeamData) {
       <div id={styles.buttons}>
         <button onClick={() => {
           setTeamTurn(teamTurn === 0 ? 1 : 0)
-        }} data-testid="teamselect">Toggle Team Selection</button>
+        }} data-testid="teamselect">{ TOGGLE_BUTTON_TEXT }</button>
         <button onClick={() => {
           setPlayerGroups(randomizeTeams(props.players))
+          const newTeamTurn: number = Math.floor(Math.random() * 2)
+          assert(newTeamTurn === 0 || newTeamTurn === 1, 'invalid teamTurn')
+          setTeamTurn(newTeamTurn)
         }}>Randomize Teams</button>
         <button onClick={() => {
           setPlayerGroups(initializeTeams(props.players))

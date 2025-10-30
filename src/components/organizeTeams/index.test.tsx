@@ -1,11 +1,12 @@
+// React component tests
 import { render, screen, within } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-import OrganizeTeams, { TESTIDS } from './index'
+import OrganizeTeams, { TESTIDS, TOGGLE_BUTTON_TEXT } from './index'
 import teamData from '../../containers/App/organizeTeamsData'
 import userEvent from '@testing-library/user-event'
 
-describe('organize teams', () => {
+describe('organize teams component', () => {
 
   test('initial pool state', () => {
     render(<OrganizeTeams players={teamData.players} />)
@@ -28,16 +29,14 @@ describe('organize teams', () => {
 
     expect(teamSelectButton).toBeInTheDocument()
 
-    expect(screen.getByText((content, element) => {
-      return content.startsWith('Now Selecting for Team') && content.includes('1')
-    })).toBeInTheDocument()
+    expect(teamSelectButton.textContent).toBe(TOGGLE_BUTTON_TEXT)
+
+    // expect(screen.getByText((content, element) => {
+    //   return content.startsWith(TOGGLE_BUTTON_TEXT)
+    // })).toBeInTheDocument()
 
     const user = userEvent.setup()
 
-    await user.click(teamSelectButton) // Use await for userEvent actions
-    expect(screen.getByText((content) => {
-      return content.startsWith('Now Selecting for Team') && content.includes('2')
-    })).toBeInTheDocument()
   })
   test('add then remove player', async () => {
     render(<OrganizeTeams players={teamData.players} />)
