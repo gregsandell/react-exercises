@@ -1,9 +1,10 @@
-// Work in progress!
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useCallback } from 'react'
 export default function useAsync (fn, deps = []) {
   const [data, setData] = useState(null)
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
+
+  const clear = () => setData([])
 
   const run = useCallback(async () => {
     setLoading(true)
@@ -17,8 +18,11 @@ export default function useAsync (fn, deps = []) {
       setLoading(false)
     }
   }, deps)
-  useEffect(() => {
-    if (fn) run()
-  }, [run])
-  return { data, error, loading, run }
+
+  // Use below only if you want to force an auto-retrieval (which the calling code cannot stop)
+  // useEffect(() => {
+  //   if (fn) run()
+  // }, [run])
+
+  return { data, error, loading, run, clear }
 }

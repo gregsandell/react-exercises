@@ -19,7 +19,7 @@ import ColorSwitch from '../../components/colorSwitch'
 import InfiniteScroll from '../../components/infiniteScroll'
 // import Calc from '../../components/calc' // TODO restore this when TypeScript problems are fixed
 import MUITable from '../../components/mui-table'
-import UseAsyncHook from '../../components/useAsyncHook'
+import AsyncHookDemo from '../../components/asyncHookDemo'
 import ToDoBroken from '../../components/fixThisToDo/unfixed'
 import ToDoFixed from '../../components/fixThisToDo/fixed'
 import Home from '../../components/home'
@@ -31,6 +31,7 @@ import quizData from './quizData'
 /* TODO:  change to an original list of suggestions */
 function App () {
   const navlinks = [
+    { to: '/asyncHookDemo', text: 'asyncHookDemo', element: <AsyncHookDemo /> },
     { to: '/autocomplete', text: 'AutoComplete', element: <Autocomplete suggestions={suggestions} /> },
     { to: '/autocompleteonline', text: 'Autocomplete (published version)', element: <AutocompleteOnline suggestions={suggestions} /> },
     // { to: '/calc', text: 'Calculator', element: <Calc initial={0} /> }, // TODO fix the typ0escript problems in <Calc>
@@ -50,7 +51,6 @@ function App () {
     { to: '/todobroken', text: 'To Do (Broken)', element: <ToDoBroken /> },
     { to: '/todofixed', text: 'To Do (Fixed)', element: <ToDoFixed /> },
     { to: '/todolist', text: 'To Do List', element: <ToDoList /> },
-    { to: '/useAsyncHook', text: 'useAsyncHook (Work in Progress)', element: <UseAsyncHook /> },
     { to: '/wordbyword', text: 'Word by Word', element: <WordByWord /> },
     { to: '/wordbywordpublished', text: 'Word by Word (published version)', element: <WordByWordPublished /> },
   ]
