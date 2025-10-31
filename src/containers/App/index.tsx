@@ -31,15 +31,14 @@ import quizData from './quizData'
 /* TODO:  change to an original list of suggestions */
 function App () {
   const navlinks = [
-    { to: '/useAsyncHook', text: 'Async Fetch hook (Work in Progress)', element: <UseAsyncHook /> },
     { to: '/autocomplete', text: 'AutoComplete', element: <Autocomplete suggestions={suggestions} /> },
     { to: '/autocompleteonline', text: 'Autocomplete (published version)', element: <AutocompleteOnline suggestions={suggestions} /> },
     // { to: '/calc', text: 'Calculator', element: <Calc initial={0} /> }, // TODO fix the typ0escript problems in <Calc>
     { to: '/counter', text: 'Counter', element: <Counter /> },
     { to: '/colorSwitch', text: 'Color Switch', element: <ColorSwitch /> },
     { to: '/formValidation', text: 'Form Validation', element: <FormValidation /> },
-    { to: '/formValidation-html5', text: 'Form Validation with HTML5', element: <FormValidationHtml5 /> },
     { to: '/formValidation-hooks', text: 'Form Validation with react-form-hooks', element: <FormValidationHooks /> },
+    { to: '/formValidation-html5', text: 'Form Validation with HTML5', element: <FormValidationHtml5 /> },
     { to: '/formValidationFormik', text: 'Form Validation with Formik', element: <FormValidationFormik /> },
     { to: '/infiniteScroll', text: 'Infinite Scroll', element: <InfiniteScroll /> },
     { to: '/organizeteams', text: 'Organize Teams', element: <OrganizeTeams players={teamData.players} /> },
@@ -51,6 +50,7 @@ function App () {
     { to: '/todobroken', text: 'To Do (Broken)', element: <ToDoBroken /> },
     { to: '/todofixed', text: 'To Do (Fixed)', element: <ToDoFixed /> },
     { to: '/todolist', text: 'To Do List', element: <ToDoList /> },
+    { to: '/useAsyncHook', text: 'useAsyncHook (Work in Progress)', element: <UseAsyncHook /> },
     { to: '/wordbyword', text: 'Word by Word', element: <WordByWord /> },
     { to: '/wordbywordpublished', text: 'Word by Word (published version)', element: <WordByWordPublished /> },
   ]
