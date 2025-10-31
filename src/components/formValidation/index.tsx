@@ -12,6 +12,19 @@
 import { useState, useEffect } from 'react'
 import style from './formValidation.module.css'
 
+export const TESTIDS: Record<string, string> = {
+  ERROR_MESG: 'errorMesg',
+  EMAIL_INPUT: 'emailInput',
+  FIRST_NAME_INPUT: 'firstNameInput',
+  LAST_NAME_INPUT: 'lastNameInput',
+  SUBMIT_BUTTON: 'submitButton',
+  SUBMIT_OUTPUT: 'submitOutput'
+}
+export const ERR_MESGS: Record<string, string> = {
+  BAD_EMAIL: 'Keep typing...invalid email so far!',
+  BAD_NAME: 'Number not allowed in first or last name'
+}
+
 type FormObject = {
   email: string,
   firstName: string,
@@ -40,7 +53,7 @@ export default function FormValidation () {
       email
     })
     if (!emailValid(email)) {
-      setErrorMesg('Keep typing...invalid email so far!')
+      setErrorMesg(ERR_MESGS.BAD_EMAIL)
     }
   }
 
@@ -54,7 +67,7 @@ export default function FormValidation () {
       firstName
     })
     if (!nameValid(firstName)) {
-      setErrorMesg('Number not allowed in first or last name')
+      setErrorMesg(ERR_MESGS.BAD_NAME)
     }
   }
   function handleOnLastnameChange (event: React.ChangeEvent<HTMLInputElement>) {
@@ -66,7 +79,7 @@ export default function FormValidation () {
       lastName
     })
     if (!nameValid(lastName)) {
-      setErrorMesg('Number not allowed in first or last name')
+      setErrorMesg(ERR_MESGS.BAD_NAME)
     }
   }
 
@@ -79,20 +92,20 @@ export default function FormValidation () {
       <h1>Please enter your name and email</h1>
       <div>
         <label>Email</label>
-        <input value={state.email} type='email' onChange={handleOnEmailChange} />
+        <input value={state.email} type='email' onChange={handleOnEmailChange} data-testid={TESTIDS.EMAIL_INPUT}/>
       </div>
       <div>
         <label>First name</label>
-        <input value={state.firstName} onChange={handleOnFirstnameChange} />
+        <input value={state.firstName} onChange={handleOnFirstnameChange} data-testid={TESTIDS.FIRST_NAME_INPUT}/>
       </div>
       <div>
         <label>Last name</label>
-        <input value={state.lastName} onChange={handleOnLastnameChange} />
+        <input value={state.lastName} onChange={handleOnLastnameChange} data-testid={TESTIDS.LAST_NAME_INPUT}/>
       </div>
-      {errorMesg && (<div className={style.error}>{errorMesg}</div>)}
-      <button type='submit' disabled={!allValid} onClick={handleSubmit}>Submit</button>
+      {errorMesg && (<div className={style.error} data-testid={TESTIDS.ERROR_MESG}>{errorMesg}</div>)}
+      <button type='submit' disabled={!allValid} onClick={handleSubmit} data-testid={TESTIDS.SUBMIT_BUTTON}>Submit</button>
       {submitted && (
-        <div>
+        <div data-testid={TESTIDS.SUBMIT_OUTPUT}>
           <div>Submitted Name: {state.firstName} {state.lastName}</div>
           <div>Submitted Email: {state.email}</div>
         </div>
