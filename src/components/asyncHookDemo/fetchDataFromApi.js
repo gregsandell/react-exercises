@@ -7,13 +7,11 @@ export default function fetchDataFromApi (url) {
     .then(async (response) => {
       if (!response.ok) {
         throw new Error(`Network response to fetch of endpoint "${url} was not ok. Code = ${response.status} - ${response.statusText}`)
-
       }
       await sleep(Math.floor(Math.random() * 2000)) // random pause to simulate network latency
       return response.json()
     })
     .catch(error => {
-      console.error(`fetch operation for endpoint "${url} received error: "${error}"`)
       throw error
     })
 }

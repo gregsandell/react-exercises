@@ -2,7 +2,7 @@
 import { useEffect } from 'react'
 import useAsync from './useAsync'
 import fetchDataFromApi from './fetchDataFromApi'
-const testUrl = 'https://jsonplaceholder.typicode.com/posts'
+const testUrl = 'https://jsonplaceholder.typicode.com/postsx'
 import loadingGif from '../../containers/App/loading-200x192.gif'
 import style from './useAsync.module.css'
 
@@ -27,7 +27,9 @@ export default function asyncHookDemo () {
     if (data) {
       console.log('Data retrieved')
     }
-    console.log(error ? `there is an error: ${error}` : 'there is no error')
+    if (error instanceof Error) {
+      console.error(error)
+    }
   })
 
   return (
