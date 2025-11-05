@@ -1,32 +1,35 @@
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom'
 import styles from './App.module.css'
-import ToDoList from '../../components/toDoList'
-import Counter from '../../components/counter'
-import OrganizeTeams from '../../components/organizeTeams'
+
+import AsyncHookDemo from '../../components/asyncHookDemo'
 import Autocomplete from '../../components/autocomplete'
 import AutocompleteOnline from '../../components/autocompleteOnline'
-import WordByWord from '../../components/wordByWord'
-import WordByWordPublished from '../../components/wordByWordPublished'
-import Pagination from '../../components/pagination'
-import StarRating from '../../components/starRating'
-import StarRatingPublished from '../../components/starRatingPublished'
-import Quiz from '../../components/quiz'
+import BankTransactions from '../../components/bankTransactions'
+// import Calc from '../../components/calc' // TODO restore this when TypeScript problems are fixed
+import ColorSwitch from '../../components/colorSwitch'
+import Counter from '../../components/counter'
 import FormValidation from '../../components/formValidation'
 import FormValidationHtml5 from '../../components/formValidation-html5'
 import FormValidationHooks from '../../components/formValidation-hooks'
 import FormValidationFormik from '../../components/formValidationFormik'
-import ColorSwitch from '../../components/colorSwitch'
+import Home from '../../components/home'
 import InfiniteScroll from '../../components/infiniteScroll'
-// import Calc from '../../components/calc' // TODO restore this when TypeScript problems are fixed
 import MUITable from '../../components/mui-table'
-import AsyncHookDemo from '../../components/asyncHookDemo'
+import OrganizeTeams from '../../components/organizeTeams'
+import Pagination from '../../components/pagination'
+import Quiz from '../../components/quiz'
+import StarRating from '../../components/starRating'
+import StarRatingPublished from '../../components/starRatingPublished'
 import ToDoBroken from '../../components/fixThisToDo/unfixed'
 import ToDoFixed from '../../components/fixThisToDo/fixed'
-import Home from '../../components/home'
+import ToDoList from '../../components/toDoList'
+import WordByWord from '../../components/wordByWord'
+import WordByWordPublished from '../../components/wordByWordPublished'
 
 import suggestions from '../../components/autocomplete/autocompleteData'
 import teamData from './organizeTeamsData'
 import quizData from './quizData'
+import bankData from '../../components/bankTransactions/fixtures'
 
 /* TODO:  change to an original list of suggestions */
 function App () {
@@ -35,6 +38,7 @@ function App () {
     { to: '/autocomplete', text: 'AutoComplete', element: <Autocomplete suggestions={suggestions} /> },
     { to: '/autocompleteonline', text: 'Autocomplete (published version)', element: <AutocompleteOnline suggestions={suggestions} /> },
     // { to: '/calc', text: 'Calculator', element: <Calc initial={0} /> }, // TODO fix the typ0escript problems in <Calc>
+    { to: '/bankTransactions', text: 'Bank Transactions', element: <BankTransactions txns={bankData} /> },
     { to: '/counter', text: 'Counter', element: <Counter /> },
     { to: '/colorSwitch', text: 'Color Switch', element: <ColorSwitch /> },
     { to: '/formValidation', text: 'Form Validation', element: <FormValidation /> },

@@ -1,16 +1,9 @@
-# React: HackerBank
+# Bank Transactions 
 
-## Environment 
+## Challenge source
+A code challenge from HackerRank for a position with Yahoo in November 2025.
 
-- React Version: 19.1.0
-- Node Version: 22(LTS)
-- Default Port: 8000
-
-## Application Demo:
-
-![](https://hrcdn.net/s3_pub/istreet-assets/FGlur_Ov682QyDjcxduO-w/hackerbank.gif)
-
-## Functionality Requirements
+## Original Requirements
 
 Implement the following functionalities:
 
@@ -37,21 +30,3 @@ Each transaction object contains the following properties : 
   }
 ```
 
-## Project Specifications
-
-**Read Only Files**
-- src/test/App.test.js
-
-**Commands**
-- run: 
-```bash
-npm start
-```
-- install: 
-```bash
-npm install
-```
-- test: 
-```bash
-npm test
-```
