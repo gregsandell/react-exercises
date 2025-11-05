@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
+import { BankRecord } from './types'
 
-function BankTransactions({ txns }) {
-  const [dateToFilter, setDateToFilter] = useState('')
-  const [bankdate, setBankdate] = useState('')
-  const [livedata, setLivedata] = useState(txns)
+function BankTransactions({ txns }: { txns: BankRecord[] }) {
+  const [dateToFilter, setDateToFilter] = useState<string>('')
+  const [bankdate, setBankdate] = useState<string>('')
+  const [livedata, setLivedata] = useState<BankRecord[]>(txns)
+
   const sort = () => {
-    const sorted = [...livedata].sort((a,b) => a.amount > b.amount ? 1 : b.amount > a.amount ? -1 : 0)
+    const sorted: BankRecord[] = [...livedata].sort((a,b) => a.amount > b.amount ? 1 : b.amount > a.amount ? -1 : 0)
     setLivedata(sorted)
   }
 
@@ -17,12 +19,12 @@ function BankTransactions({ txns }) {
           id="date"
           type="date"
           defaultValue={dateToFilter}
-          onChange={(e) => {
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setDateToFilter(e.currentTarget.value)
           }}
           role="search"
         />
-        <button className="small" onClick={(e) => setBankdate(dateToFilter)}>Filter</button>
+        <button className="small" onClick={() => setBankdate(dateToFilter)}>Filter</button>
       </section>
 
       <div className="card mt-50">
@@ -41,8 +43,8 @@ function BankTransactions({ txns }) {
             </tr>
           </thead>
           <tbody>{
-            livedata.filter((item) => bankdate === '' || item.date === bankdate)
-              .map((item, i) => {
+            livedata.filter((item: BankRecord) => bankdate === '' || item.date === bankdate)
+              .map((item: BankRecord, i: number) => {
                 return (
                   <tr key={i}>
                     <td>{item.date}</td>

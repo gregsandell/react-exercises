@@ -1,4 +1,5 @@
-const txns = [
+import { BankRecord } from './types'
+const txns: BankRecord[] = [
   {
     date: '2019-11-29',
     description: 'HACKERBANK1 BP DES: MERCH PMT ID:1358570',
@@ -30,7 +31,7 @@ const txns = [
   {
     date: '2019-11-29',
     description: 'HACKERBANK DES: DEBIT O ID:00097494729',
-    type: 'Debit',
+    type: 0,
     amount: 564,
     balance: '$12,234.45'
   },
