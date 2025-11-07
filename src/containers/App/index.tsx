@@ -14,6 +14,7 @@ import FormValidationHooks from '../../components/formValidation-hooks'
 import FormValidationFormik from '../../components/formValidationFormik'
 import Home from '../../components/home'
 import InfiniteScroll from '../../components/infiniteScroll'
+import MemoizationDemo from '../../components/memoizationDemo'
 import MUITable from '../../components/mui-table'
 import OrganizeTeams from '../../components/organizeTeams'
 import Pagination from '../../components/pagination'
@@ -46,6 +47,7 @@ function App () {
     { to: '/formValidation-html5', text: 'Form Validation with HTML5', element: <FormValidationHtml5 /> },
     { to: '/formValidationFormik', text: 'Form Validation with Formik', element: <FormValidationFormik /> },
     { to: '/infiniteScroll', text: 'Infinite Scroll', element: <InfiniteScroll /> },
+    { to: '/memoizationDemo', text: 'Memoization demo: React.memo, useMemo and useCallback', element: <MemoizationDemo /> },
     { to: '/organizeteams', text: 'Organize Teams', element: <OrganizeTeams players={teamData.players} /> },
     { to: '/pagination', text: 'Pagination (from scratch)', element: <Pagination /> },
     { to: '/mui-table', text: 'Pagination (with a UI library)', element: <MUITable /> },
