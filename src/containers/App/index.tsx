@@ -10,7 +10,8 @@ import ColorSwitch from '../../components/colorSwitch'
 import Counter from '../../components/counter'
 import FormValidation from '../../components/formValidation'
 import FormValidationHtml5 from '../../components/formValidation-html5'
-import FormValidationHooks from '../../components/formValidation-hooks'
+import FormValidationHooksRegister from '../../components/formValidation-hooks-with-register'
+import FormValidationHooksController from '../../components/formValidation-hooks-with-controller'
 import FormValidationFormik from '../../components/formValidationFormik'
 import Home from '../../components/home'
 import InfiniteScroll from '../../components/infiniteScroll'
@@ -43,7 +44,8 @@ function App () {
     { to: '/counter', text: 'Counter', element: <Counter /> },
     { to: '/colorSwitch', text: 'Color Switch', element: <ColorSwitch /> },
     { to: '/formValidation', text: 'Form Validation', element: <FormValidation /> },
-    { to: '/formValidation-hooks', text: 'Form Validation with react-form-hooks', element: <FormValidationHooks /> },
+    { to: '/formValidation-hooks-with-register', text: 'Form Validation with react-form-hooks (register version)', element: <FormValidationHooksRegister /> },
+    { to: '/formValidation-hooks-with-controller', text: 'Form Validation with react-form-hooks (controller version)', element: <FormValidationHooksController /> },
     { to: '/formValidation-html5', text: 'Form Validation with HTML5', element: <FormValidationHtml5 /> },
     { to: '/formValidationFormik', text: 'Form Validation with Formik', element: <FormValidationFormik /> },
     { to: '/infiniteScroll', text: 'Infinite Scroll', element: <InfiniteScroll /> },

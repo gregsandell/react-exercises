@@ -6,11 +6,14 @@ import style from './formValidationHooks.module.css'
 export default function FormValidationHooks () {
   const [submitted, setSubmitted] = useState(false)
   const [submittedForm, setSubmittedForm] = useState({})
-  const { register, handleSubmit, reset, formState: { errors } } = useForm({
-    email: '',
-    firstName: '',
-    lastName: ''
-  })
+  const emptyForm = { firstName: '', lastName: '', email: ''}
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm(emptyForm)
 
   const emailValid = /^.+@.+\..+$/
   const nameValid = /^([^0-9]*)$/
@@ -22,7 +25,6 @@ export default function FormValidationHooks () {
   const handleCancel = () => {
     reset()
     setSubmitted(false)
-    setSubmittedForm({})
   }
 
   return (
@@ -48,7 +50,7 @@ export default function FormValidationHooks () {
           {errors.lastName?.type === 'pattern' && <div className={style.err}>Numbers are not allowed</div>}
         </div>
         <input type='submit' />
-        <button id={style.cancel} onClick={handleCancel}>Cancel</button>
+        <button id={style.cancel} type="button" onClick={handleCancel}>Cancel</button>
         {/* Do not use watch() to grab values, as they will change as user types in the already-submitted form */}
         {submitted && (<div>
           <div>Submitted Name: {submittedForm.firstName} {submittedForm.lastName}</div>
