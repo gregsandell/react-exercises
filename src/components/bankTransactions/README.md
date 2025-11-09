@@ -7,7 +7,7 @@ A code challenge from HackerRank for a position with Yahoo in November 2025.
 
 Implement the following functionalities:
 
-- All transactions are initially displayed inside the table in the order they are retrieved from the source. The source is passed down as `txns` prop to TransactionTable component in App.js.
+- All transactions are initially displayed inside the table in the order they are retrieved from the source. The source is passed down as `txns` prop to TransactionTable component in Index.js.
 
 - Picking the date from the date input and pressing the `Filter` button should display all the records for that date in the table. If no date is chosen, the `Filter` button should not do anything.
 

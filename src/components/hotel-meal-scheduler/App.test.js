@@ -1,10 +1,10 @@
 import React from 'react'
-import App from './App'
+import HotelMealScheduler from './index'
 import {render, cleanup, fireEvent} from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 
 
-const renderApp = () => render(<App/>)
+const renderApp = () => render(<HotelMealScheduler/>)
 
 afterEach(() => {
   cleanup()

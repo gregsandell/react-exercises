@@ -14,7 +14,7 @@ import FormValidationHooksRegister from '../../components/formValidation-hooks-w
 import FormValidationHooksController from '../../components/formValidation-hooks-with-controller'
 import FormValidationFormik from '../../components/formValidationFormik'
 import Home from '../../components/home'
-import HotelMealScheduler from '../../components/hotel-meal-scheduler/App'
+import HotelMealScheduler from '../../components/hotel-meal-scheduler'
 import InfiniteScroll from '../../components/infiniteScroll'
 import MemoizationDemo from '../../components/memoizationDemo'
 import MUITable from '../../components/mui-table'

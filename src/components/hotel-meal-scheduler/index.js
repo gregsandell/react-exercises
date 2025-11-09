@@ -5,7 +5,7 @@ import GuestForm from './GuestForm'
 
 const title = 'Meal Schedule'
 
-const App = () => {
+const HotelMealScheduler = () => {
   return (
     <div className={cx(styles['root-element'])}>
       <GuestForm />
@@ -13,4 +13,4 @@ const App = () => {
   )
 }
 
-export default App
+export default HotelMealScheduler
