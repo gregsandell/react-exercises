@@ -15,7 +15,7 @@ function BankTransactions({ txns }: { txns: BankRecord[] }) {
 
   return (
     <div className={cx(styles['root-element'], styles['layout-column'], styles['align-items-center'], styles['mt-50'])}>
-      <section className={cx(styles['layout-row'], styles['align-items-center'], styles['justify-content-center'])}>
+      <section style={{textAlign: 'center'}} className={cx(styles['layout-row'], styles['align-items-center'], styles['justify-content-center'])}>
         <label className={cx(styles['mr-10'])}>Transaction Date</label>
         <input
           id="date"

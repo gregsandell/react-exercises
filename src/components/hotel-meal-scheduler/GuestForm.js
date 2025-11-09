@@ -16,7 +16,9 @@ function GuestForm() {
             placeholder="Check out Date"/>
           <button data-testid="add-button">Add to Menu</button>
         </section>
-        <MealSchedule />
+        <div>
+          <MealSchedule />
+        </div>
       </div>
     </>
   )
