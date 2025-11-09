@@ -1,6 +1,6 @@
 import React from 'react'
-import styles from './h8k.module.css'
 import cx from 'classnames'
+import styles from '../../shared/h8k.module.css'
 
 function MealSchedule() {
   return (

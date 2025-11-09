@@ -14,7 +14,7 @@ import FormValidationHooksRegister from '../../components/formValidation-hooks-w
 import FormValidationHooksController from '../../components/formValidation-hooks-with-controller'
 import FormValidationFormik from '../../components/formValidationFormik'
 import Home from '../../components/home'
-// import HotelMealScheduler from '../../components/hotel-meal-scheduler/App'
+import HotelMealScheduler from '../../components/hotel-meal-scheduler/App'
 import InfiniteScroll from '../../components/infiniteScroll'
 import MemoizationDemo from '../../components/memoizationDemo'
 import MUITable from '../../components/mui-table'
@@ -49,7 +49,7 @@ function App () {
     { to: '/formValidation-hooks-with-controller', text: 'Form Validation with react-form-hooks (controller version)', element: <FormValidationHooksController /> },
     { to: '/formValidation-html5', text: 'Form Validation with HTML5', element: <FormValidationHtml5 /> },
     { to: '/formValidationFormik', text: 'Form Validation with Formik', element: <FormValidationFormik /> },
-    // { to: '/hotel-meal-scheduler', text: 'Hotel meal scheduler', element: <HotelMealScheduler /> },
+    { to: '/hotel-meal-scheduler', text: 'Hotel meal scheduler', element: <HotelMealScheduler /> },
     { to: '/infiniteScroll', text: 'Infinite Scroll', element: <InfiniteScroll /> },
     { to: '/memoizationDemo', text: 'Memoization demo: React.memo, useMemo and useCallback', element: <MemoizationDemo /> },
     { to: '/organizeteams', text: 'Organize Teams', element: <OrganizeTeams players={teamData.players} /> },

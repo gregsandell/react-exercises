@@ -1,10 +1,10 @@
-// Work in progress!
 import { useEffect } from 'react'
 import useAsync from './useAsync'
 import fetchDataFromApi from './fetchDataFromApi'
-const testUrl = 'https://jsonplaceholder.typicode.com/postsx'
 import loadingGif from '../../containers/App/loading-200x192.gif'
 import style from './useAsync.module.css'
+
+const testUrl = 'https://jsonplaceholder.typicode.com/posts'
 
 export default function asyncHookDemo () {
   let { data, error, loading, run, clear } = useAsync(() => fetchDataFromApi(testUrl))

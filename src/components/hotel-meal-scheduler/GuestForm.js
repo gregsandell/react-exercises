@@ -1,7 +1,7 @@
 import React from 'react'
-import MealSchedule from './MealSchedule'
-import styles from './h8k.module.css'
 import cx from 'classnames'
+import MealSchedule from './MealSchedule'
+import styles from '../../shared/h8k.module.css'
 function GuestForm() {
 
   return (

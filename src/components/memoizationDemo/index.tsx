@@ -13,7 +13,7 @@ const MemoizedCounterDisplay = React.memo(function countButton({ count, onIncrem
     <div>
       <p>Current Count: {count}</p>
       {/* The onIncrement function is memoized with useCallback in the parent */}
-      <button onClick={onIncrement}>Increment Count</button>
+      <button onClick={onIncrement}>Increment Count (Triggers App re-render)</button>
     </div>
   )
 })
@@ -23,6 +23,7 @@ const MemoizationDemo = () => {
   const [count, setCount] = useState(0)
   const [otherState, setOtherState] = useState(0) // State to trigger parent re-renders
 
+  console.log('parent component is rendering...')
   // 1. useCallback(): Memoizes the `handleIncrement` function
   //    This ensures the function reference remains the same across re-renders
   //    unless 'count' changes.
@@ -58,14 +59,14 @@ const MemoizationDemo = () => {
       {/* This button changes the parent state, causing the parent to re-render.
           Note how the child component (MemoizedCounterDisplay) does NOT re-render. */}
       <button onClick={() => setOtherState(s => s + 1)}>
-                Change Other State (Triggers App re-render)
+                Change Other State
       </button>
       <div style={{ marginTop: '20px' }}>
         <h3>Suggested observations</h3>
         <ul>
           <li>Open the browser console</li>
-          <li>Click "Increment Count" and observe that both the parent and child components re-render, triggering the "expensive calculation" log statement.</li>
-          <li>Click "Change Other State" and observe that only the parent component re-renders; the child does not, so the expensive calculation is not performed.</li>
+          <li>Click "Increment Count" and observe that both the parent and child "CounterDisplay" components re-render, triggering the "expensive calculation" log statement.</li>
+          <li>Click "Change Other State" and observe that only the parent component re-renders; the child "CounterDisplay" does not, so the expensive calculation is not performed.</li>
           <li>This demonstrates how useCallback, useMemo, and React.memo work together to optimize rendering performance in React components</li>
         </ul>
       </div>

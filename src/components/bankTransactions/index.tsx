@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import cx from 'classnames'
 import { BankRecord } from './types'
+import styles from '../../shared/h8k.module.css'
 
 function BankTransactions({ txns }: { txns: BankRecord[] }) {
   const [dateToFilter, setDateToFilter] = useState<string>('')
@@ -12,9 +14,9 @@ function BankTransactions({ txns }: { txns: BankRecord[] }) {
   }
 
   return (
-    <div className="layout-column align-items-center mt-50">
-      <section className="layout-row align-items-center justify-content-center">
-        <label className="mr-10">Transaction Date</label>
+    <div className={cx(styles['root-element'], styles['layout-column'], styles['align-items-center'], styles['mt-50'])}>
+      <section className={cx(styles['layout-row'], styles['align-items-center'], styles['justify-content-center'])}>
+        <label className={cx(styles['mr-10'])}>Transaction Date</label>
         <input
           id="date"
           type="date"
@@ -24,22 +26,22 @@ function BankTransactions({ txns }: { txns: BankRecord[] }) {
           }}
           role="search"
         />
-        <button className="small" onClick={() => setBankdate(dateToFilter)}>Filter</button>
+        <button className={styles.small} onClick={() => setBankdate(dateToFilter)}>Filter</button>
       </section>
 
-      <div className="card mt-50">
-        <table className="table">
+      <div className={cx(styles.card, styles['mt-50'])}>
+        <table className={styles.table}>
           <thead>
-            <tr className="table">
-              <th className="table-header">Date</th>
-              <th className="table-header">Description</th>
-              <th className="table-header">Type</th>
-              <th className="table-header">
+            <tr className={styles.table}>
+              <th className={styles['table-header']}>Date</th>
+              <th className={styles['table-header']}>Description</th>
+              <th className={styles['table-header']}>Type</th>
+              <th className={styles['table-header']}>
                 <span id="amount" onClick={ sort } role="button">
                   Amount ($)
                 </span>
               </th>
-              <th className="table-header">Available Balance</th>
+              <th className={styles['table-header']}>Available Balance</th>
             </tr>
           </thead>
           <tbody>{

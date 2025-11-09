@@ -1,14 +1,13 @@
 import React from 'react'
-import './App.css'
-// import 'h8k-components'
+import cx from 'classnames'
+import styles from '../../shared/h8k.module.css'
 import GuestForm from './GuestForm'
 
 const title = 'Meal Schedule'
 
 const App = () => {
   return (
-    <div className="App">
-      {/*<h8k-navbar header={title}></h8k-navbar>*/}
+    <div className={cx(styles['root-element'])}>
       <GuestForm />
     </div>
   )
