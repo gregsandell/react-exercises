@@ -110,3 +110,21 @@
   -webkit-box-orient: vertical;
   flex-direction: column;
 }
+.card.outlined {
+  background: white;
+  border: thin solid rgba(var(--primary-rgb), 0.1);
+  box-shadow: none; }
+.card .card-text {
+  padding: 1em; }
+.pb-20 {
+  padding-bottom: 20px !important; }
+button.text {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  margin: 8px 0; }
+button.danger {
+  color: #ffffff;
+  background: var(--error-color);
+  box-shadow: 0 4px 12px var(--error-box-shadow); }
+
