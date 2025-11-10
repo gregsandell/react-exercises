@@ -1,52 +1,57 @@
 import React from 'react'
+import { useForm } from 'react-hook-form'
 import cx from 'classnames'
 import dayjs from 'dayjs'
 import MealSchedule from './MealSchedule'
 import styles from '../../shared/h8k.module.css'
+import style from '../formValidation-hooks-with-register/formValidationHooks.module.css'
 const defaultData = {
   guestName: '',
-  checkInDate: '',
-  checkOutDate: ''
+  checkInDate: dayjs().format('YYYY-MM-DD'),
+  checkOutDate: dayjs().format('YYYY-MM-DD')
 }
+const nameValid = /^([^0-9]*)$/
+
 function GuestForm() {
   const [data, setData] = React.useState([])
-  const [name, setName] = React.useState('')
-  const [checkIn, setCheckIn] = React.useState(dayjs().format('YYYY-MM-DD'))
-  const [checkOut, setCheckOut] = React.useState(dayjs().format('YYYY-MM-DD'))
-  const [calDate, setCalDate] = React.useState()
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    defaultValues: defaultData,
+  })
+
+  const onSubmit = (ddata) => {
+    setData([...data, {guestName: ddata.name, checkInDate: ddata.checkInDate, checkOutDate: ddata.checkOutDate}])
+    reset()
+  }
+
   return (
     <>
       <div className={cx(styles['layout-column'], styles['align-items-center'], styles['justify-content-start'])}>
         <section
-          className={cx(styles['layout-row'], styles['align-items-center'], styles['justify-content-center'], styles['mt-30'])}>
-          <input data-testid="input-guest-name" value={name} className={cx(styles.large, styles['mx-8'])}
-            placeholder="Guest Name" onChange={(e) => setName(e.currentTarget.value)}/>
-          <label htmlFor="checkInDate">Check In Date:</label>
-          <input
-            id="checkInDate"
-            type="date"
-            defaultValue={checkIn}
-            onChange={(e) => {
-              setCheckIn(e.currentTarget.value)
-            }}
-          />
+          className={cx(styles['layout-row'], styles['align-items-center'], styles['justify-content-center'], styles['mt-30'])}
+        >
+          <form onSubmit={handleSubmit(onSubmit)}>
 
-          <label htmlFor="checkOutDate">Check Out Date:</label>
-          <input
-            id="checkOutDate"
-            type="date"
-            defaultValue={checkOut}
-            onChange={(e) => {
-              setCheckOut(e.currentTarget.value)
-            }}
-          />
-          <button data-testid="add-button" type="submit" onClick={() => {
-            setData([...data, {guestName: name, checkInDate: checkIn, checkOutDate: checkOut}])
-            setName('')
-            setCheckIn('')
-            setCheckOut('')
-          }}>Add to Menu
-          </button>
+            {/*<input data-testid="input-guest-name" value={name} className={cx(styles.large, styles['mx-8'])}*/}
+            {/*  placeholder="Guest Name" onChange={(e) => setName(e.currentTarget.value)}/>*/}
+            <input placeholder="Enter your name" {...register('name', {required: true, pattern: nameValid})} />
+
+            <label htmlFor="checkInDate">Check In Date:</label>
+            <input type='date' {...register('checkInDate', {required: true})} />
+
+            <label htmlFor="checkOut">Check Out Date:</label>
+            <input type='date' {...register('checkOutDate', {required: true})} />
+
+            <button type='submit'>Add to Menu</button>
+            {errors.name?.type === 'required' && <div className={style.err}>This field is required</div>}
+            {errors.name?.type === 'pattern' && <div className={style.err}>The name cannot include numbers</div>}
+
+          </form>
         </section>
         <div>
           <MealSchedule data={data}/>
