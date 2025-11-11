@@ -59,9 +59,11 @@ export default function TeamSelection() {
         position: 'relative',
         width: '80%' }}> {
           showPlayerDetail ? (
+          // TODO choose either "i" or "index"!
             <PlayerDetail
               players={players}
               i={playerIdxToShow}
+              disabledSelect={isPlayerSelected(playerIdxToShow)}
               close={() => closeCard()}
               index={1}
               addPlayer={(i) => addPlayer(i)}

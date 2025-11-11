@@ -1,7 +1,7 @@
 import React from 'react'
 // import players1 from '../players.json'
 // TODO selectedPlayers arg is unused
-export default function PlayerDetail({ close, i, addPlayer, players }) {
+export default function PlayerDetail({ close, i, disabledSelect, addPlayer, players }) {
   const player = players[i]
   const partialTestId = `player-detail-${player.name.replace(' ', '-')}`
   return (
@@ -10,6 +10,7 @@ export default function PlayerDetail({ close, i, addPlayer, players }) {
       className="card outlined mt-0"
       style={{
         border: '2px solid red',
+        backgroundColor: 'white',
         position: 'absolute',
         left: '50%',
         transform: 'translateX(-50%)',
@@ -17,7 +18,7 @@ export default function PlayerDetail({ close, i, addPlayer, players }) {
         width: '500px',
         top: '30%',
       }}
-      data-testid={'player-Rohit-Sharma-details'}
+      data-testid={`${partialTestId}-details`}
     >
       <h1 className="card-title" style={{ textAlign: 'center' }}>
 				Player Detail
@@ -38,7 +39,7 @@ export default function PlayerDetail({ close, i, addPlayer, players }) {
         <strong>Fielding:</strong> <span data-testid={`${partialTestId}-fielding`}>{player.fieldingSkill}</span>
       </p>
       <button
-        disabled={false}
+        disabled={disabledSelect}
         onClick={(e) => addPlayer(e, i)}
         data-testid={`${partialTestId}-add`}
       >
