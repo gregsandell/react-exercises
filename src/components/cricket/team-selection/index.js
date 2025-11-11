@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../../../shared/h8k.module.css'
 import PlayerDetail from '../player-info'
 import playersList from '../players.json'
@@ -16,6 +16,11 @@ export default function TeamSelection() {
   const [noBowl, setNoBowl] = React.useState(0)
   const [noAR, setNoAR] = React.useState(0)
   const [noWk, setNoWK] = React.useState(0)
+  useEffect(() => {
+    if (selectedPlayers.length === 11) {
+      alert('Congratulations, you have a complete team.')
+    }
+  }, [selectedPlayers])
 
   const isPlayerSelected = (idx) => {
     const name = players[idx].name
@@ -26,8 +31,6 @@ export default function TeamSelection() {
       const playersCopy = [...players]
       const added = playersCopy.splice(index, 1)[0]
       added.origIdx = index
-      // console.log('*** added = ', added)
-      // setPlayers(playersCopy)
       validatePlayerAddition(added, selectedPlayers)
       setSelectedPlayers([...selectedPlayers, added])
       e.currentTarget.disabled = true
