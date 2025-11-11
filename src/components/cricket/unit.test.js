@@ -21,13 +21,13 @@ describe('utils', () => {
 
       const newPlayer =     {
         'name':'Ishaan Kishan',
-        'type':'WicketKeeper',
+        'type':'AllAround',
         'battingSkill': 84,
         'bowlingSkill': 30,
         'fieldingSkill': 80
       }
       expect(() => validatePlayerAddition(
-        newPlayer, fixtures.MiscErrors)
+        newPlayer, fixtures.ElevenOkPlayers)
       ).toThrow(errorMesgs.TOO_MANY_PLAYERS)
     })
     it('too many wicket keepers', () => {
@@ -40,7 +40,7 @@ describe('utils', () => {
         'fieldingSkill': 80
       }
       expect(() => validatePlayerAddition(
-        newPlayer, fixtures.MiscErrors)
+        newPlayer, fixtures.TenOkPlayers)
       ).toThrow(errorMesgs.ONE_WICKET_KEEPER)
     })
     it('too many combined Batsmen/Bowers', () => {
@@ -53,7 +53,7 @@ describe('utils', () => {
         'fieldingSkill': 80
       }
       expect(() => validatePlayerAddition(
-        newPlayer, fixtures.MaxBatsmenPlusBowlersReached)
+        newPlayer, fixtures.TenOkPlayers)
       ).toThrow(errorMesgs.TOO_MANY_BATSMEN_BOWLERS)
     })
     it('too many All Rounders', () => {
