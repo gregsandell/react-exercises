@@ -3,6 +3,7 @@ import '../../../shared/h8k.module.css'
 import PlayerDetail from '../player-info'
 import playersList from '../players.json'
 import styles from '../cricket.module.css'
+import * as util from '../util'
 
 export default function TeamSelection() {
   // TODO don't need players, just use static playersList
@@ -21,14 +22,24 @@ export default function TeamSelection() {
     return selectedPlayers.some(player => player.name === name)
   }
   const addPlayer = (e, index) => {
-    const playersCopy = [...players]
-    const added = playersCopy.splice(index, 1)[0]
-    added.origIdx = index
-    // console.log('*** added = ', added)
-    // setPlayers(playersCopy)
-    setSelectedPlayers([...selectedPlayers, added])
-    e.currentTarget.disabled = true
+    try {
+      const playersCopy = [...players]
+      const added = playersCopy.splice(index, 1)[0]
+      added.origIdx = index
+      // console.log('*** added = ', added)
+      // setPlayers(playersCopy)
+      validatePlayerAddition(added, selectedPlayers)
+      setSelectedPlayers([...selectedPlayers, added])
+      e.currentTarget.disabled = true
+    } catch (errors) {
+      alert(`ERRORS:\n${errors}`)
+    }
   }
+
+  function validatePlayerAddition(player) {
+    util.validatePlayerAddition(player, selectedPlayers)
+  }
+
 
   const removePlayer = (e, index) => {
     const selectedPlayersCopy = [...selectedPlayers]

@@ -5688,11 +5688,6 @@ gzip-size@^6.0.0:
   dependencies:
     duplexer "^0.1.2"
 
-h8k-design@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/h8k-design/-/h8k-design-2.1.1.tgz#003e7be411fa19bc17eb29e641e6f83fcdcc3fd7"
-  integrity sha512-+1U3SR/hKN6XB8zAyFVWDmF9IBfdzQBaQ46gAbydHlF+8gZJyBd1zBku24bZKuathZd5Lfs+1Wgvjmz9bgaAYw==
-
 handle-thing@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/handle-thing/-/handle-thing-2.0.1.tgz#857f79ce359580c340d43081cc648970d0bb234e"
