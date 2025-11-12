@@ -23,6 +23,10 @@ export default function TeamSelection() {
     return util.isPlayerSelected(playerIdx, players, selectedPlayers)
   }
 
+  const getPlayerIdxFromPlayers = (player) => {
+    return util.getPlayerIdxFromPlayers(player, players)
+  }
+
   const addPlayer = (e, playerIdx) => {
     try {
       const playersCopy = [...players]
@@ -62,15 +66,15 @@ export default function TeamSelection() {
         position: 'relative',
         width: '80%' }}> {
           showPlayerDetail ? (
-            // TODO The Select button is not properly dimmin
-            // properly when clicking on the player name in
-            // the Selected Players side
             <PlayerDetail
               players={players}
               playerIdx={playerIdxToShow}
               disabledSelect={isPlayerSelected(playerIdxToShow)}
               close={() => closeCard()}
-              addPlayer={(i) => addPlayer(i)}
+              addPlayer={(i) => {
+                addPlayer(i)
+                closeCard()
+              }}
             />
           ) : null }
         <div
@@ -101,12 +105,12 @@ export default function TeamSelection() {
                         <h3 style={{ textAlign: 'center' }}>
                           <strong>Welcome to Team Selection</strong>
                         </h3>
-											11 players are required in a team <br />
-											3-6 batsmen and bowlers are allowed in a team
+                          11 players are required in a team <br />
+                          3-6 batsmen and bowlers are allowed in a team
                         <br />
-											Only 1 Wicket Keeper required in a team
+                          Only 1 Wicket Keeper required in a team
                         <br />
-											1-4 All Rounders are allowed in a team
+                          1-4 All Rounders are allowed in a team
                       </div>
                     </td>
                   ) : null}
@@ -124,7 +128,7 @@ export default function TeamSelection() {
                       >
                         { player.name}
                       </td>
-                      <td onClick={() => showplayerDetailsCard(playerIdx)}>
+                      <td>
                         {player.type}
                       </td>
                       <td>
@@ -174,7 +178,10 @@ export default function TeamSelection() {
                     >
                       <td
                         data-testid={`${partialTestId}-name`}
-                        onClick={() => showplayerDetailsCard(index)}
+                        onClick={() => {
+                          const playerIdx = getPlayerIdxFromPlayers(player, players )
+                          showplayerDetailsCard(playerIdx)
+                        }}
                       >
                         {player.name}
                       </td>

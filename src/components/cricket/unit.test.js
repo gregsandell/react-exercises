@@ -1,4 +1,4 @@
-import { validatePlayerAddition, errorMesgs, isPlayerSelected } from './util'
+import {validatePlayerAddition, errorMesgs, isPlayerSelected, getPlayerIdxFromPlayers} from './util'
 import fixtures from './fixtures'
 
 describe('utils', () => {
@@ -87,5 +87,26 @@ describe('utils', () => {
         fixtures.IsPlayerSelected.selected
       )).toBe(false)
     })
+  })
+  describe('getPlayerIdxFromPlayers', () => {
+    it('player and idx found', () => {
+      const players = fixtures.TenOkPlayers
+      const player = players[3]
+      expect(getPlayerIdxFromPlayers(player, players))
+        .toBe(3)
+    })
+    it('player and idx not found', () => {
+      const players = fixtures.TenOkPlayers
+      const player = {
+        'name': 'Harshal Patel',
+        'type': 'Bowler',
+        'battingSkill': 32,
+        'bowlingSkill': 85,
+        'fieldingSkill': 75
+      }
+      expect(getPlayerIdxFromPlayers(player, players))
+        .toBeUndefined()
+    })
+
   })
 })

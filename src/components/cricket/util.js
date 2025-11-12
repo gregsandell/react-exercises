@@ -29,4 +29,11 @@ export const isPlayerSelected = (playerIdx, availablePlayers, selectedPlayers) =
   return selectedPlayers.some(player => player.name === name)
 }
 
+export const getPlayerIdxFromPlayers = (player, players) => {
+  const createAscendingArray = (start, end) => [ ...Array((end-start)+1).keys()].map(i => i + start)
+
+  return createAscendingArray(0, players.length - 1)
+    .find(idx => player.name === players[idx].name)
+}
+
 export { }
