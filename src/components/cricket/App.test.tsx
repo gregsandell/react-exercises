@@ -1,15 +1,11 @@
 import React from 'react'
-import Cricket from './index'
-import { render, cleanup, fireEvent, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
-import players from './players.json'
 import '@testing-library/jest-dom'
-import { errorMesgs, congratsMesg} from './util'
+import { render, cleanup, fireEvent, waitFor, waitForElementToBeRemoved, Matcher, MatcherOptions} from '@testing-library/react'
+import Cricket from './index'
+import players from './players.json'
+import {errorMesgs, congratsMesg} from './util'
 
 const AVAILABLE_PLAYERS = players.length
-let selectedPlayers = []
-const randomNumberGenerator = (n) => {
-  return Math.floor(Math.random() * n)
-}
 
 const testIds = {
   availablePlayersName: 'available-players-name',
@@ -31,11 +27,12 @@ afterEach(() => {
 })
 
 let app,
-  getByTestId,
-  queryByTestId,
+  getByTestId: ((text: Matcher, options?: MatcherOptions | undefined, waitForElementOptions?: unknown) => HTMLElement) | ((arg0: string) => HTMLElement),
+  queryByTestId: ((text: Matcher, options?: MatcherOptions | undefined, waitForElementOptions?: unknown) => HTMLElement | null) | ((arg0: string) => any),
   getByText,
-  availablePlayersTableBody,
-  selectedPlayersTableBody
+  availablePlayersTableBody: HTMLElement,
+  selectedPlayersTableBody: HTMLElement
+
 beforeEach(() => {
   app = render(<Cricket />)
   getByTestId = app.getByTestId
@@ -60,7 +57,7 @@ it('Show welcome instructions initially and disappear on clicking close button',
 })
 
 it('Select first player in Available Players', () => {
-  let playerButton = getByTestId(
+  const playerButton = getByTestId(
     `available-${players[0]['name'].split(' ').join('-')}-select`
   )
   fireEvent.click(playerButton)
@@ -72,7 +69,7 @@ it('Select first player in Available Players', () => {
 })
 
 it('Remove Selected player', () => {
-  let playerButton = getByTestId(
+  const playerButton = getByTestId(
     `available-${players[0]['name'].split(' ').join('-')}-select`
   )
   fireEvent.click(playerButton)
@@ -82,7 +79,7 @@ it('Remove Selected player', () => {
   )
   expect(playerButton).toBeDisabled()
 
-  let playerRemoveButton = getByTestId(
+  const playerRemoveButton = getByTestId(
     `selected-${players[0]['name'].split(' ').join('-')}-remove`
   )
   fireEvent.click(playerRemoveButton)
@@ -91,7 +88,7 @@ it('Remove Selected player', () => {
 
 it('Select 5 players', () => {
   for (let i = 0; i < 5; i++) {
-    let playerSelectButton = getByTestId(
+    const playerSelectButton = getByTestId(
       `available-${players[i]['name'].split(' ').join('-')}-select`
     )
     fireEvent.click(playerSelectButton)
@@ -106,14 +103,14 @@ it('Select 5 players', () => {
 
 it('Add 5 players and remove them', () => {
   for (let i = 0; i < 5; i++) {
-    let playerSelectButton = getByTestId(
+    const playerSelectButton = getByTestId(
       `available-${players[i]['name'].split(' ').join('-')}-select`
     )
     fireEvent.click(playerSelectButton)
   }
   expect(selectedPlayersTableBody.children.length).toBe(5)
   for (let i = 0; i < 5; i++) {
-    let playerRemoveButton = getByTestId(
+    const playerRemoveButton = getByTestId(
       `selected-${players[i]['name'].split(' ').join('-')}-remove`
     )
     fireEvent.click(playerRemoveButton)
@@ -153,14 +150,14 @@ it('Select Player on Card and close card', () => {
 it('Check limit on adding more than 6 batsman', () => {
   const alertMock = jest.spyOn(window, 'alert').mockImplementation()
   for (let i = 0; i < 6; i++) {
-    let playerSelectButton = getByTestId(
+    const playerSelectButton = getByTestId(
       `available-${players[i]['name'].split(' ').join('-')}-select`
     )
     fireEvent.click(playerSelectButton)
   }
   expect(selectedPlayersTableBody.children.length).toBe(6)
 
-  let playerSelectButton = getByTestId(
+  const playerSelectButton = getByTestId(
     `available-${players[6]['name'].split(' ').join('-')}-select`
   )
   fireEvent.click(playerSelectButton)
@@ -170,14 +167,14 @@ it('Check limit on adding more than 6 batsman', () => {
 it('Check limit on adding more than 4 allrounders', () => {
   const alertMock = jest.spyOn(window, 'alert').mockImplementation()
   for (let i = 11; i < 15; i++) {
-    let playerSelectButton = getByTestId(
+    const playerSelectButton = getByTestId(
       `available-${players[i]['name'].split(' ').join('-')}-select`
     )
     fireEvent.click(playerSelectButton)
   }
   expect(selectedPlayersTableBody.children.length).toBe(4)
 
-  let playerSelectButton = getByTestId(
+  const playerSelectButton = getByTestId(
     `available-${players[15]['name'].split(' ').join('-')}-select`
   )
   fireEvent.click(playerSelectButton)
@@ -188,14 +185,14 @@ it('Check limit on adding more than 4 allrounders', () => {
 it('Check limit on adding more than 6 Bowlers', () => {
   const alertMock = jest.spyOn(window, 'alert').mockImplementation()
   for (let i = 17; i < 23; i++) {
-    let playerSelectButton = getByTestId(
+    const playerSelectButton = getByTestId(
       `available-${players[i]['name'].split(' ').join('-')}-select`
     )
     fireEvent.click(playerSelectButton)
   }
   expect(selectedPlayersTableBody.children.length).toBe(6)
 
-  let playerSelectButton = getByTestId(
+  const playerSelectButton = getByTestId(
     `available-${players[23]['name'].split(' ').join('-')}-select`
   )
   fireEvent.click(playerSelectButton)
@@ -206,7 +203,7 @@ it('check limit on adding 11 players', () => {
   const alertMock = jest.spyOn(window, 'alert').mockImplementation()
   const validTeamOfElevenIdxs = [0, 1, 2, 9, 11, 12, 13, 14, 17, 18, 19]
   for (let i = 0; i < validTeamOfElevenIdxs.length; i++) {
-    let playerSelectButton = getByTestId(
+    const playerSelectButton = getByTestId(
       `available-${players[validTeamOfElevenIdxs[i]]['name'].split(' ').join('-')}-select`
     )
     fireEvent.click(playerSelectButton)
@@ -214,7 +211,7 @@ it('check limit on adding 11 players', () => {
   expect(selectedPlayersTableBody.children.length).toBe(11)
   expect(alertMock).toHaveBeenCalledWith(congratsMesg)
 
-  let playerSelectButton = getByTestId(
+  const playerSelectButton = getByTestId(
     `available-${players[23]['name'].split(' ').join('-')}-select`
   )
   fireEvent.click(playerSelectButton)

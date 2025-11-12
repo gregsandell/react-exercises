@@ -7,3 +7,14 @@ table.player {
 .selection-rules {
     border: 2px solid red;
 }
+.teamPanel {
+    width: 50%;
+    marginRight: 10px;
+    overflow: scroll;
+    height: 80vh;
+}
+.detailPopup {
+    display: flex;
+    position: relative;
+    width: 80%;
+}

@@ -27,10 +27,10 @@ The component must have the following functionalities:
 ## Project Specifications
 
 **Read Only Files**
-- src/App.test.js
+- src/App.test.tsx
 - src/App.js
 - src/index.css
-- src/index.js
+- src/index.tsx
 - src/players.json
 - src/registerServiceWorker.js
 

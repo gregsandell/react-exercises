@@ -1,15 +1,15 @@
-export const errorMesgs = {
+import type { Player } from './types'
+
+export const errorMesgs: Record<string, string> = {
   TOO_MANY_PLAYERS: 'Only 11 players are allowed in a team',
   ONE_WICKET_KEEPER: 'The team may have only a single Wicker Keeper',
   TOO_MANY_ALL_ROUNDERS: 'All Rounders can not be more than 4',
   TOO_MANY_BATSMEN_BOWLERS: 'The combined number of Batsmen and Bowlers cannot exceed 6'
 }
 export const congratsMesg = 'Congratulations, you have a complete team.'
-export function validatePlayerAddition(player, currentSelected) {
-  const candidates = [...currentSelected, player]
-  const problems = []
+export function validatePlayerAddition(player: Player, currentSelected: Player[]): void {
+  const candidates: Player[] = [...currentSelected, player]
 
-  let count = 1
   if (candidates.length > 11) {
     throw new Error(errorMesgs.TOO_MANY_PLAYERS)
   }
@@ -24,13 +24,15 @@ export function validatePlayerAddition(player, currentSelected) {
   }
 }
 
-export const isPlayerSelected = (playerIdx, availablePlayers, selectedPlayers) => {
+export const isPlayerSelected = (playerIdx: number, availablePlayers: Player[], selectedPlayers: Player[]): boolean => {
   const name = availablePlayers[playerIdx].name
   return selectedPlayers.some(player => player.name === name)
 }
 
-export const getPlayerIdxFromPlayers = (player, players) => {
-  const createAscendingArray = (start, end) => [ ...Array((end-start)+1).keys()].map(i => i + start)
+export const getPlayerIdxFromPlayers = (player: Player, players: Player[]): number => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const createAscendingArray = (start: number, end: number) => [ ...Array((end-start)+1).keys()].map(i => i + start)
 
   return createAscendingArray(0, players.length - 1)
     .find(idx => player.name === players[idx].name)

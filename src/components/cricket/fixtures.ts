@@ -1,4 +1,8 @@
-const fixtures = {
+import type { Player, Fixture } from './types'
+
+// const fixtures: Record<string, Player[] | Record<string, Player[]>> = {
+const fixtures: Record<string, Player[] | Fixture> = {
+// const fixtures: = {
   TenOkPlayers: [
     { // Batsman-Bowlers 1, total = 1
       'name': 'Rohit Sharma',
