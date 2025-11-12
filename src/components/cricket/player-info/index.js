@@ -1,9 +1,10 @@
 import React from 'react'
 // import players1 from '../players.json'
-// TODO selectedPlayers arg is unused
-export default function PlayerDetail({ close, i, disabledSelect, addPlayer, players }) {
-  const player = players[i]
-  const partialTestId = `player-detail-${player.name.replace(' ', '-')}`
+// TODO reorder these args
+export default function PlayerDetail({ close, playerIdx, disabledSelect, addPlayer, players }) {
+  const player = players[playerIdx]
+  const partialTestId = `player-${player.name.replace(' ', '-')}`
+  const partialTestId2 = `player-detail-${player.name.replace(' ', '-')}`
   return (
   //Style fixed to center
     <div
@@ -40,12 +41,12 @@ export default function PlayerDetail({ close, i, disabledSelect, addPlayer, play
       </p>
       <button
         disabled={disabledSelect}
-        onClick={(e) => addPlayer(e, i)}
-        data-testid={`${partialTestId}-add`}
+        onClick={(e) => addPlayer(e, playerIdx)}
+        data-testid={`${partialTestId2}-add`}
       >
 				Select
       </button>
-      <button onClick={close} className="danger" data-testid={`${partialTestId}-close`}>
+      <button onClick={close} className="danger" data-testid={`${partialTestId2}-close`}>
 				Close
       </button>
     </div>

@@ -1,8 +1,9 @@
 import React from 'react'
-import App from './App'
+import Cricket from './index'
 import { render, cleanup, fireEvent, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
 import players from './players.json'
-import '@testing-library/jest-dom/extend-expect'
+import '@testing-library/jest-dom'
+import { errorMesgs, congratsMesg} from './util'
 
 const AVAILABLE_PLAYERS = players.length
 let selectedPlayers = []
@@ -36,7 +37,7 @@ let app,
   availablePlayersTableBody,
   selectedPlayersTableBody
 beforeEach(() => {
-  app = render(<App />)
+  app = render(<Cricket />)
   getByTestId = app.getByTestId
   queryByTestId = app.queryByTestId
   getByText = app.getByText
@@ -163,7 +164,7 @@ it('Check limit on adding more than 6 batsman', () => {
     `available-${players[6]['name'].split(' ').join('-')}-select`
   )
   fireEvent.click(playerSelectButton)
-  expect(alertMock).toHaveBeenCalledWith('Batsmen can not be more than 6')
+  expect(alertMock).toHaveBeenCalledWith(`Error: ${errorMesgs.TOO_MANY_BATSMEN_BOWLERS}`)
 })
 
 it('Check limit on adding more than 4 allrounders', () => {
@@ -180,7 +181,7 @@ it('Check limit on adding more than 4 allrounders', () => {
     `available-${players[15]['name'].split(' ').join('-')}-select`
   )
   fireEvent.click(playerSelectButton)
-  expect(alertMock).toHaveBeenCalledWith('All Rounders can not be more than 4')
+  expect(alertMock).toHaveBeenCalledWith(`Error: ${errorMesgs.TOO_MANY_ALL_ROUNDERS}`)
 })
 
 
@@ -198,28 +199,24 @@ it('Check limit on adding more than 6 Bowlers', () => {
     `available-${players[23]['name'].split(' ').join('-')}-select`
   )
   fireEvent.click(playerSelectButton)
-  expect(alertMock).toHaveBeenCalledWith('Bowlers can not be more than 6')
+  expect(alertMock).toHaveBeenCalledWith(`Error: ${errorMesgs.TOO_MANY_BATSMEN_BOWLERS}`)
 })
 
 it('check limit on adding 11 players', () => {
   const alertMock = jest.spyOn(window, 'alert').mockImplementation()
-  for (let i = 0; i < 6; i++) {
+  const validTeamOfElevenIdxs = [0, 1, 2, 9, 11, 12, 13, 14, 17, 18, 19]
+  for (let i = 0; i < validTeamOfElevenIdxs.length; i++) {
     let playerSelectButton = getByTestId(
-      `available-${players[i]['name'].split(' ').join('-')}-select`
-    )
-    fireEvent.click(playerSelectButton)
-  }
-  for (let i = 17; i < 22; i++) {
-    let playerSelectButton = getByTestId(
-      `available-${players[i]['name'].split(' ').join('-')}-select`
+      `available-${players[validTeamOfElevenIdxs[i]]['name'].split(' ').join('-')}-select`
     )
     fireEvent.click(playerSelectButton)
   }
   expect(selectedPlayersTableBody.children.length).toBe(11)
+  expect(alertMock).toHaveBeenCalledWith(congratsMesg)
 
   let playerSelectButton = getByTestId(
     `available-${players[23]['name'].split(' ').join('-')}-select`
   )
   fireEvent.click(playerSelectButton)
-  expect(alertMock).toHaveBeenCalledWith('Only 11 players are allowed in a team')
+  expect(alertMock).toHaveBeenCalledWith('Error: Only 11 players are allowed in a team')
 })

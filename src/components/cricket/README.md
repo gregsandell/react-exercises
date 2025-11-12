@@ -1,7 +1,7 @@
 # Cricket Programming Challenge
 
 I got this challenge from a HackerRank test
-sent to me in Sept 2025 for a position with Lucid motors (https://lucidmotors.com/).
+sent to me in Sept 2025 for a Sr. React Developer position with Lucid motors (https://lucidmotors.com/).
 
 ## Environment 
 

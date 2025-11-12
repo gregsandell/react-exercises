@@ -4,3 +4,6 @@ thead.headers tr th {
 table.player {
     width: 100%;
 }
+.selection-rules {
+    border: 2px solid red;
+}

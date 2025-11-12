@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import cx from 'classnames'
 import '../../../shared/h8k.module.css'
 import PlayerDetail from '../player-info'
 import playersList from '../players.json'
@@ -9,33 +10,28 @@ export default function TeamSelection() {
   // TODO don't need players, just use static playersList
   const [players, setPlayers] = React.useState([...playersList])
   const [selectedPlayers, setSelectedPlayers] = React.useState([])
-  const [showPlayerDetail, setShowPlayerDetail] = React.useState(true)
+  const [showPlayerDetail, setShowPlayerDetail] = React.useState(false)
   const [playerIdxToShow, setPlayerIdxToShow] = React.useState(0)
   const [welcome, setWelcome] = React.useState(true)
-  const [noBat, setNoBat] = React.useState(0)
-  const [noBowl, setNoBowl] = React.useState(0)
-  const [noAR, setNoAR] = React.useState(0)
-  const [noWk, setNoWK] = React.useState(0)
   useEffect(() => {
     if (selectedPlayers.length === 11) {
-      alert('Congratulations, you have a complete team.')
+      alert(util.congratsMesg)
     }
   }, [selectedPlayers])
 
-  const isPlayerSelected = (idx) => {
-    const name = players[idx].name
+  const isPlayerSelected = (playerIdx) => {
+    const name = players[playerIdx].name
     return selectedPlayers.some(player => player.name === name)
   }
-  const addPlayer = (e, index) => {
+  const addPlayer = (e, playerIdx) => {
     try {
       const playersCopy = [...players]
-      const added = playersCopy.splice(index, 1)[0]
-      added.origIdx = index
+      const added = playersCopy.splice(playerIdx, 1)[0]
       validatePlayerAddition(added, selectedPlayers)
       setSelectedPlayers([...selectedPlayers, added])
       e.currentTarget.disabled = true
     } catch (errors) {
-      alert(`ERRORS:\n${errors}`)
+      alert(`${errors}`)
     }
   }
 
@@ -57,8 +53,8 @@ export default function TeamSelection() {
     // e.currentTarget.disabled = true
   }
 
-  const showplayerDetailsCard = (i) => {
-    setPlayerIdxToShow(i)
+  const showplayerDetailsCard = (playerIdx) => {
+    setPlayerIdxToShow(playerIdx)
     setShowPlayerDetail(true)
   }
 
@@ -76,7 +72,7 @@ export default function TeamSelection() {
           // TODO choose either "i" or "index"!
             <PlayerDetail
               players={players}
-              i={playerIdxToShow}
+              playerIdx={playerIdxToShow}
               disabledSelect={isPlayerSelected(playerIdxToShow)}
               close={() => closeCard()}
               index={1}
@@ -104,42 +100,44 @@ export default function TeamSelection() {
               </thead>
               <tbody data-testid="available-players-table-body">
                 <tr>
-                  <td data-testid="selection-rules" colSpan="3" className="card pb-20">
-                    <div style={{ display: welcome ? 'block' : 'none'}}>
-                      <p data-testid="close-welcome" style={{textAlign:'right'}} onClick={()=>setWelcome(false)}>X</p>
-                      <h3 style={{ textAlign: 'center' }}>
-                        <strong>Welcome to Team Selection</strong>
-                      </h3>
+                  { welcome ? (
+                    <td data-testid="selection-rules" style={{ display: welcome ? 'block' : 'none'}} colSpan="3" className={cx(styles['selection-rules'], 'card', 'pb-20')}>
+                      <div>
+                        <p data-testid="close-welcome" style={{textAlign:'right'}} onClick={()=>setWelcome(false)}>X</p>
+                        <h3 style={{ textAlign: 'center' }}>
+                          <strong>Welcome to Team Selection</strong>
+                        </h3>
 											11 players are required in a team <br />
 											3-6 batsmen and bowlers are allowed in a team
-                      <br />
+                        <br />
 											Only 1 Wicket Keeper required in a team
-                      <br />
+                        <br />
 											1-4 All Rounders are allowed in a team
-                    </div>
-                  </td>
+                      </div>
+                    </td>
+                  ) : null}
                 </tr>
-                { players.map((player, idx) => {
+                { players.map((player, playerIdx) => {
                   const partialTestId = `available-${player.name.replace(' ', '-')}`
                   return (
                     <tr
                       data-testid={`${partialTestId}-row`}
-                      key={idx}
+                      key={playerIdx}
                     >
                       <td
                         data-testid={`${partialTestId}-name`}
-                        onClick={() => showplayerDetailsCard(idx)}
+                        onClick={() => showplayerDetailsCard(playerIdx)}
                       >
                         { player.name}
                       </td>
-                      <td onClick={() => showplayerDetailsCard(idx)}>
+                      <td onClick={() => showplayerDetailsCard(playerIdx)}>
                         {player.type}
                       </td>
                       <td>
                         <button
                           data-testid={`${partialTestId}-select`}
-                          onClick={(e) => addPlayer(e, idx)}
-                          disabled={isPlayerSelected(idx)}
+                          onClick={(e) => addPlayer(e, playerIdx)}
+                          disabled={isPlayerSelected(playerIdx)}
                           className="btn btn-primary text"
                         >
 													Select
@@ -172,6 +170,7 @@ export default function TeamSelection() {
               </thead>
               <tbody data-testid="selected-players-table-body">
                 {selectedPlayers.map((player, index) => {
+                  const partialTestId = `availablek-${player.name.replace(' ', '-')}`
                   return (
                     <tr
                       data-testid={`selected-${player.name
@@ -179,7 +178,12 @@ export default function TeamSelection() {
                         .join('-')}-row`}
                       key={index}
                     >
-                      <td>{player.name}</td>
+                      <td
+                        data-testid={`${partialTestId}-name`}
+                        onClick={() => showplayerDetailsCard(index)}
+                      >
+                        {player.name}
+                      </td>
                       <td>{player.type}</td>
                       <td>
                         <button
@@ -189,7 +193,7 @@ export default function TeamSelection() {
                           onClick={() => removePlayer(index)}
                           className="btn danger text"
                         >
-													Remove
+                            Remove
                         </button>
                       </td>
                     </tr>
