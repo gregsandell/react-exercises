@@ -1,4 +1,4 @@
-import { validatePlayerAddition, errorMesgs } from './util'
+import { validatePlayerAddition, errorMesgs, isPlayerSelected } from './util'
 import fixtures from './fixtures'
 
 describe('utils', () => {
@@ -70,5 +70,22 @@ describe('utils', () => {
       ).toThrow(errorMesgs.TOO_MANY_ALL_ROUNDERS)
     })
   })
-
+  describe('isPlayerSelected', () => {
+    it('is selected', () => {
+      const playerIdx = 0
+      expect(isPlayerSelected(
+        playerIdx,
+        fixtures.IsPlayerSelected.players,
+        fixtures.IsPlayerSelected.selected
+      )).toBe(true)
+    })
+    it('is not selected', () => {
+      const playerIdx = 1
+      expect(isPlayerSelected(
+        playerIdx,
+        fixtures.IsPlayerSelected.players,
+        fixtures.IsPlayerSelected.selected
+      )).toBe(false)
+    })
+  })
 })

@@ -24,4 +24,9 @@ export function validatePlayerAddition(player, currentSelected) {
   }
 }
 
+export const isPlayerSelected = (playerIdx, availablePlayers, selectedPlayers) => {
+  const name = availablePlayers[playerIdx].name
+  return selectedPlayers.some(player => player.name === name)
+}
+
 export { }

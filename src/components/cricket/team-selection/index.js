@@ -20,9 +20,9 @@ export default function TeamSelection() {
   }, [selectedPlayers])
 
   const isPlayerSelected = (playerIdx) => {
-    const name = players[playerIdx].name
-    return selectedPlayers.some(player => player.name === name)
+    return util.isPlayerSelected(playerIdx, players, selectedPlayers)
   }
+
   const addPlayer = (e, playerIdx) => {
     try {
       const playersCopy = [...players]
@@ -40,17 +40,10 @@ export default function TeamSelection() {
   }
 
 
-  const removePlayer = (e, index) => {
+  const removePlayer = (index) => {
     const selectedPlayersCopy = [...selectedPlayers]
     const removee = selectedPlayersCopy.splice(index, 1)[0]
-    // console.log('*** added = ', added)
     setSelectedPlayers(selectedPlayersCopy)
-    // let dataId = e.currentTarget.getAttribute('data-testid')
-    // "selected-{playerName}-remove"
-
-
-    // setPlayers([...players, added])
-    // e.currentTarget.disabled = true
   }
 
   const showplayerDetailsCard = (playerIdx) => {
@@ -69,13 +62,14 @@ export default function TeamSelection() {
         position: 'relative',
         width: '80%' }}> {
           showPlayerDetail ? (
-          // TODO choose either "i" or "index"!
+            // TODO The Select button is not properly dimmin
+            // properly when clicking on the player name in
+            // the Selected Players side
             <PlayerDetail
               players={players}
               playerIdx={playerIdxToShow}
               disabledSelect={isPlayerSelected(playerIdxToShow)}
               close={() => closeCard()}
-              index={1}
               addPlayer={(i) => addPlayer(i)}
             />
           ) : null }

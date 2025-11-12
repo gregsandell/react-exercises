@@ -265,6 +265,47 @@ const fixtures = {
       'bowlingSkill': 45,
       'fieldingSkill': 83
     },
-  ]
+  ],
+  IsPlayerSelected: {
+    players: [
+      {
+        'name': 'Rohit Sharma',
+        'type': 'Batsman',
+        'battingSkill': 90,
+        'bowlingSkill': 90,
+        'fieldingSkill': 90
+      },
+      {
+        'name': 'Virat Kohli',
+        'type': 'Batsman',
+        'battingSkill': 90,
+        'bowlingSkill': 70,
+        'fieldingSkill': 80
+      },
+      {
+        'name': 'Shikhar Dhawan',
+        'type': 'Batsman',
+        'battingSkill': 85,
+        'bowlingSkill': 50,
+        'fieldingSkill': 80
+      },
+      {
+        'name': 'Shreyas Iyer',
+        'type': 'Batsman',
+        'battingSkill': 87,
+        'bowlingSkill': 40,
+        'fieldingSkill': 80
+      }
+    ],
+    selected: [
+      {
+        'name': 'Rohit Sharma', // is in Players at idx 0
+        'type': 'Batsman',
+        'battingSkill': 90,
+        'bowlingSkill': 90,
+        'fieldingSkill': 90
+      }
+    ]
+  }
 }
 export default fixtures
