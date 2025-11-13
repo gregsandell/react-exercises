@@ -41,7 +41,7 @@ export default function PlayerDetail({ close, playerIdx, disabledSelect, addPlay
       </p>
       <button
         disabled={disabledSelect}
-        onClick={(e) => addPlayer(e, playerIdx)}
+        onClick={() => addPlayer(playerIdx)}
         data-testid={`${partialTestId2}-add`}
       >
 				Select

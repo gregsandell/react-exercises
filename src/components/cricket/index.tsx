@@ -4,7 +4,7 @@ import TeamSelection from './team-selection'
 
 const title = 'Team Selection'
 
-const Cricket = () => {
+const CricketTeam = () => {
   return (
     <div className="App">
       <TeamSelection />
@@ -12,4 +12,4 @@ const Cricket = () => {
   )
 }
 
-export default Cricket
+export default CricketTeam

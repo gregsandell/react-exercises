@@ -8,7 +8,7 @@ import BankTransactions from '../../components/bankTransactions'
 // import Calc from '../../components/calc' // TODO restore this when TypeScript problems are fixed
 import ColorSwitch from '../../components/colorSwitch'
 import Counter from '../../components/counter'
-import Cricket from '../../components/cricket'
+import CricketTeam from '../../components/cricket'
 import FormValidation from '../../components/formValidation'
 import FormValidationHtml5 from '../../components/formValidation-html5'
 import FormValidationHooksRegister from '../../components/formValidation-hooks-with-register'
@@ -44,7 +44,7 @@ function App () {
     // { to: '/calc', text: 'Calculator', element: <Calc initial={0} /> }, // TODO fix the typ0escript problems in <Calc>
     { to: '/bankTransactions', text: 'Bank Transactions', element: <BankTransactions txns={bankData} /> },
     { to: '/counter', text: 'Counter', element: <Counter /> },
-    { to: '/cricket', text: 'Cricket', element: <Cricket /> },
+    { to: '/cricket-team', text: 'Cricket Team', element: <CricketTeam /> },
     { to: '/colorSwitch', text: 'Color Switch', element: <ColorSwitch /> },
     { to: '/formValidation', text: 'Form Validation', element: <FormValidation /> },
     { to: '/formValidation-hooks-with-register', text: 'Form Validation with react-form-hooks (register version)', element: <FormValidationHooksRegister /> },

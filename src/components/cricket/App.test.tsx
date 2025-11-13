@@ -1,7 +1,7 @@
 import React from 'react'
 import '@testing-library/jest-dom'
 import { render, cleanup, fireEvent, waitFor, waitForElementToBeRemoved, Matcher, MatcherOptions} from '@testing-library/react'
-import Cricket from './index'
+import CricketTeam from './index'
 import players from './players.json'
 import {errorMesgs, congratsMesg} from './util'
 
@@ -34,7 +34,7 @@ let app,
   selectedPlayersTableBody: HTMLElement
 
 beforeEach(() => {
-  app = render(<Cricket />)
+  app = render(<CricketTeam />)
   getByTestId = app.getByTestId
   queryByTestId = app.queryByTestId
   getByText = app.getByText
