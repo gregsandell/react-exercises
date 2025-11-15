@@ -30,12 +30,7 @@ export const isPlayerSelected = (playerIdx: number, availablePlayers: Player[], 
 }
 
 export const getPlayerIdxFromPlayers = (player: Player, players: Player[]): number => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  const createAscendingArray = (start: number, end: number) => [ ...Array((end-start)+1).keys()].map(i => i + start)
-
-  return createAscendingArray(0, players.length - 1)
-    .find(idx => player.name === players[idx].name)
+  return players.findIndex(item => item.name === player.name)
 }
 
 export { }

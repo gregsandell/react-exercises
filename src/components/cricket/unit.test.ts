@@ -105,8 +105,7 @@ describe('utils', () => {
         'bowlingSkill': 85,
         'fieldingSkill': 75
       }
-      expect(getPlayerIdxFromPlayers(player, players))
-        .toBeUndefined()
+      expect(getPlayerIdxFromPlayers(player, players)).toBe(-1)
     })
 
   })
