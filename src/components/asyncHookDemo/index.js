@@ -61,7 +61,6 @@ export default function asyncHookDemo () {
             </div>
           )}
         </div>
-        {/*)}*/}
       </div>
       { error instanceof Error && (<div>ERROR: {error.message}</div>)}
     </>

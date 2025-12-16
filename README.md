@@ -124,8 +124,8 @@ A pretty standard, bare bones ToDo List.  Clicking on each ToDo toggles
 it as done vs in progress, and text at the bottom tallies incomplete
 vs complete tasks. Original source:  code challenge from toptal.com, June 2022.
 
-## UseAsync Hook (work in progress)
-Source: [The Hook I Use in Every React Project (You’ll Want It Too)](https://medium.com/full-stack-forge/the-hook-i-use-in-every-react-project-youll-want-it-too-50a504b1b854)
+## UseAsync Hook
+This exercise has its own README.
 
 ## WordByWord
 This challenge comes from [React Coding Interview Challenge 20](https://medium.com/@justin.sherman/react-coding-interview-challenge-20-87d5707ecefe).

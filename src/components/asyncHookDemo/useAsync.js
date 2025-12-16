@@ -1,9 +1,10 @@
 import { useState, useCallback } from 'react'
-export default function useAsync (fn, deps = []) {
+export default function useAsync (fn) {
   const [data, setData] = useState(null)
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
 
+  // TODO: use TypeScript generics to accept various data types
   const clear = () => setData([])
 
   const run = useCallback(async () => {
@@ -17,7 +18,7 @@ export default function useAsync (fn, deps = []) {
     } finally {
       setLoading(false)
     }
-  }, deps)
+  }, [])
 
   // Use below only if you want to force an auto-retrieval (which the calling code cannot stop)
   // useEffect(() => {

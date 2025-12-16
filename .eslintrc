@@ -8,18 +8,21 @@
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended"
   ],
+  "ignorePatterns": ["build/"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
-      "jsx": true,
-      "experimentalObjectRestSpread": true
+      "jsx": true
     },
     "ecmaVersion": 2020,
-    "sourceType": "module"
+    "sourceType": "module",
+    "project": "./tsconfig.json"
   },
   "plugins": [
     "react",
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "jsx-a11y",
+    "import"
   ],
   "rules": {
     "indent": [
@@ -44,7 +47,14 @@
     "one-var": "off",
     "react/jsx-no-bind": "off",
     "react/jsx-boolean-value": "off",
-    "jsx-a11y/href-no-hash": "off",
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["to"],
+        "aspects": ["noHref", "invalidHref", "preferButton"]
+      }
+    ],
     "camelcase": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-closing-tag-location": "off",
@@ -62,7 +72,7 @@
   },
   "settings": {
     "react": {
-      "version": "^17.0.2"
+      "version": "detect"
     },
     "import/parsers": {
       "@typescript-eslint/parser": [
