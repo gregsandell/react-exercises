@@ -24,6 +24,7 @@ import Pagination from '../../components/pagination'
 import Quiz from '../../components/quiz'
 import StarRating from '../../components/starRating'
 import StarRatingPublished from '../../components/starRatingPublished'
+import SuspenseDemo from '../../components/suspenseDemo'
 import ToDoBroken from '../../components/fixThisToDo/unfixed'
 import ToDoFixed from '../../components/fixThisToDo/fixed'
 import ToDoList from '../../components/toDoList'
@@ -61,6 +62,7 @@ function App () {
     { to: '/quiz', text: 'Quiz', element: <Quiz questions={quizData} /> },
     { to: '/starrating', text: 'Star Rating', element: <StarRating /> },
     { to: '/starratingpublished', text: 'Star Rating (published version)', element: <StarRatingPublished /> },
+    { to: '/suspenseDemo', text: 'React Suspense Demo', element: <SuspenseDemo /> },
     { to: '/todobroken', text: 'To Do (Broken)', element: <ToDoBroken /> },
     { to: '/todofastapi', text: 'To Do with FastAPI backend', element: <Todo_FastAPI /> },
     { to: '/todofixed', text: 'To Do (Fixed)', element: <ToDoFixed /> },
