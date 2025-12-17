@@ -27,6 +27,7 @@ import StarRatingPublished from '../../components/starRatingPublished'
 import ToDoBroken from '../../components/fixThisToDo/unfixed'
 import ToDoFixed from '../../components/fixThisToDo/fixed'
 import ToDoList from '../../components/toDoList'
+import Todo_FastAPI from '../../components/todo_fastapi'
 import WordByWord from '../../components/wordByWord'
 import WordByWordPublished from '../../components/wordByWordPublished'
 
@@ -61,6 +62,7 @@ function App () {
     { to: '/starrating', text: 'Star Rating', element: <StarRating /> },
     { to: '/starratingpublished', text: 'Star Rating (published version)', element: <StarRatingPublished /> },
     { to: '/todobroken', text: 'To Do (Broken)', element: <ToDoBroken /> },
+    { to: '/todofastapi', text: 'To Do with FastAPI backend', element: <Todo_FastAPI /> },
     { to: '/todofixed', text: 'To Do (Fixed)', element: <ToDoFixed /> },
     { to: '/todolist', text: 'To Do List', element: <ToDoList /> },
     { to: '/wordbyword', text: 'Word by Word', element: <WordByWord /> },
