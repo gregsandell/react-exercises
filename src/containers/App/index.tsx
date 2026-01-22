@@ -14,6 +14,7 @@ import FormValidationHtml5 from '../../components/formValidation-html5'
 import FormValidationHooksRegister from '../../components/formValidation-hooks-with-register'
 import FormValidationHooksController from '../../components/formValidation-hooks-with-controller'
 import FormValidationFormik from '../../components/formValidationFormik'
+import Fruits from '../../components/fruits'
 import Home from '../../components/home'
 import HotelMealScheduler from '../../components/hotel-meal-scheduler'
 import InfiniteScroll from '../../components/infiniteScroll'
@@ -53,6 +54,7 @@ function App () {
     { to: '/formValidation-hooks-with-controller', text: 'Form Validation with react-form-hooks (controller version)', element: <FormValidationHooksController /> },
     { to: '/formValidation-html5', text: 'Form Validation with HTML5', element: <FormValidationHtml5 /> },
     { to: '/formValidationFormik', text: 'Form Validation with Formik', element: <FormValidationFormik /> },
+    { to: '/fruits', text: 'Fruits data retrieval and display', element: <Fruits /> },
     { to: '/hotel-meal-scheduler', text: 'Hotel meal scheduler', element: <HotelMealScheduler /> },
     { to: '/infiniteScroll', text: 'Infinite Scroll', element: <InfiniteScroll /> },
     { to: '/memoizationDemo', text: 'Memoization demo: React.memo, useMemo and useCallback', element: <MemoizationDemo /> },
