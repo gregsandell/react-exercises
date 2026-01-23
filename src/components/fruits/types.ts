@@ -3,3 +3,7 @@ export type apidata = {
     primaryColor: string,
     averageWeightInGrams: number
 }
+export type Weights = {
+    min: number,
+    max: number
+}

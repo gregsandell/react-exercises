@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import type { apidata } from './types'
+import type { apidata, Weights } from './types'
+import './globals.module.css'
+import styles from './styles.module.css'
+import _ from 'lodash'
 
 const apiURL = 'https://frontend-interview-api.rollcredits.io/api/fruits'
-
 const apiKey = 'sk-fruit-api-1234567890abcdef'
 
 export default function Fruit() {
   const [data, setData] = useState<apidata[]>([])
+
+  const [colors, setColors] = useState<string[]>([])
+  const [names, setNames] = useState<string[]>([])
+
   //-data.json()
   const getFruits = async () => {
     return await fetch(apiURL, { headers: {
@@ -15,7 +21,7 @@ export default function Fruit() {
     }})
       .then (async (data:any) => {
         console. log(data)
-        setData (await data.json())
+        setData(await data.json())
       })
       .catch((e: any) => console. log(e))
   }
@@ -27,8 +33,13 @@ export default function Fruit() {
     fetchData()
   }, [])
 
+  useEffect((): void => {
+    if (data.length > 0) {
+    }
+  }, [data])
+
   return (
-    <div className="app">
+    <div className={styles.app}>
       <form
         style={{
           display: 'flex',
@@ -39,17 +50,31 @@ export default function Fruit() {
           getFruits()
         }}
       >
-        <label>Filter Title
-          <input
-            onChange={(e) => {
-              const value = e.target.value
-              console. log ('New value', value)
-            }}
-          />
-        </label>
-        <button type="submit" style={{ marginTop: 10 }}>Submit</button>
+        <div>
+          <fieldset className={styles.fieldset}>
+            <legend>Filters</legend>
+
+            <div className={styles.filters}>
+              <label>
+                Match names?
+                <input type="checkbox"/>
+              </label>
+
+              <label>
+                Match colors?
+                <input type="checkbox"/>
+              </label>
+
+              <label>
+                Search
+                <input type="text"/>
+              </label>
+              <button type="submit" >Submit</button>
+            </div>
+          </fieldset>
+        </div>
       </form>
-      <table style={{marginTop: 10, border: '1px solid black'}}>
+      <table className={styles.fruitTable}>
         <thead>
           <tr>
             <th>Name</th>
@@ -58,12 +83,12 @@ export default function Fruit() {
           </tr>
         </thead>
         <tbody>
-          {data.map( (data: apidata, i) => {
+          {data.map( (item: apidata, i) => {
             return (
               <tr key={`data${i}`}>
-                <td>{data.name}</td>
-                <td>{data.primaryColor}</td>
-                <td>{data.averageWeightInGrams}</td>
+                <td>{item.name}</td>
+                <td>{item.primaryColor}</td>
+                <td>{item.averageWeightInGrams}</td>
               </tr>
             )
           })}
