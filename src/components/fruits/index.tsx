@@ -10,10 +10,12 @@ const apiKey = 'sk-fruit-api-1234567890abcdef'
 export default function Fruit() {
   const [data, setData] = useState<apidata[]>([])
 
-  const [colors, setColors] = useState<string[]>([])
-  const [names, setNames] = useState<string[]>([])
+  const [matchColors, setMatchColors] = useState<boolean>(false)
+  const [matchNames, setMatchNames] = useState<boolean>(false)
+  const [searchText, setSearchText] = useState<string>('')
 
   //-data.json()
+
   const getFruits = async () => {
     return await fetch(apiURL, { headers: {
       'Authorization': `Bearer ${apiKey}`,
@@ -40,40 +42,33 @@ export default function Fruit() {
 
   return (
     <div className={styles.app}>
-      <form
-        style={{
-          display: 'flex',
-          flexDirection: 'column'
-        }}
-        onSubmit={(e) => {
-          e.preventDefault()
-          getFruits()
-        }}
-      >
-        <div>
-          <fieldset className={styles.fieldset}>
-            <legend>Filters</legend>
+      <div>
+        <fieldset className={styles.fieldset}>
+          <legend>Filters</legend>
 
-            <div className={styles.filters}>
-              <label>
+          <div className={styles.filters}>
+            <label>
                 Match names?
-                <input type="checkbox"/>
-              </label>
+              <input type="checkbox" onChange={() => setMatchNames(prev => !prev)} checked={matchNames}/>
+            </label>
 
-              <label>
+            <label>
                 Match colors?
-                <input type="checkbox"/>
-              </label>
+              <input type="checkbox" onChange={() => setMatchColors(prev => !prev)} checked={matchColors}/>
+            </label>
 
-              <label>
+            <label>
                 Search
-                <input type="text"/>
-              </label>
-              <button type="submit" >Submit</button>
-            </div>
-          </fieldset>
-        </div>
-      </form>
+              <input type="text" onChange={e => setSearchText(e.currentTarget.value)} value={searchText}/>
+            </label>
+            <button type="reset" onClick={() => {
+              setMatchNames(false)
+              setMatchColors(false)
+              setSearchText('')
+            }}>Clear</button>
+          </div>
+        </fieldset>
+      </div>
       <table className={styles.fruitTable}>
         <thead>
           <tr>
@@ -83,15 +78,21 @@ export default function Fruit() {
           </tr>
         </thead>
         <tbody>
-          {data.map( (item: apidata, i) => {
-            return (
-              <tr key={`data${i}`}>
-                <td>{item.name}</td>
-                <td>{item.primaryColor}</td>
-                <td>{item.averageWeightInGrams}</td>
-              </tr>
-            )
-          })}
+          {data.filter((iitem) => {
+            const searchTokens = searchText.trim().split(/\s+/)
+            return ((!matchNames && !matchColors) || searchText.length === 0)
+                || (matchNames && searchTokens.some(tok => iitem.name.includes(tok)))
+                || (matchColors && searchTokens.some(tok => iitem.primaryColor.includes(tok)))
+          })
+            .map( (item: apidata, i) => {
+              return (
+                <tr key={`data${i}`}>
+                  <td>{item.name}</td>
+                  <td>{item.primaryColor}</td>
+                  <td>{item.averageWeightInGrams}</td>
+                </tr>
+              )
+            })}
         </tbody>
       </table>
     </div>
