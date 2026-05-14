@@ -2,8 +2,13 @@
     padding: 0 0.5rem
 }
 .app {
-    width: 900px;
+    width: 930px;
     margin: 0 auto;
+}
+.tabularData {
+    max-height: 700px;
+    min-height: 700px;
+    overflow-y: auto;
 }
 .fieldset {
     padding: 5px;
@@ -31,6 +36,7 @@
 }
 .filters input[type="text"] {
     height: 25px;
+    width: 250px;
 }
 .fruitTable {
     width: 100%;

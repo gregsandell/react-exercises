@@ -12,6 +12,7 @@ export default function Fruit() {
 
   const [matchColors, setMatchColors] = useState<boolean>(false)
   const [matchNames, setMatchNames] = useState<boolean>(false)
+  const [matchWeights, setMatchWeights] = useState<boolean>(false)
   const [searchText, setSearchText] = useState<string>('')
 
   //-data.json()
@@ -22,21 +23,20 @@ export default function Fruit() {
       'Content-Type': 'application/json'
     }})
       .then (async (data:any) => {
-        console. log(data)
         setData(await data.json())
       })
       .catch((e: any) => console. log(e))
   }
-  useEffect((): void => {
+  useEffect(() => {
     const fetchData = async () => {
       await getFruits()
-      console.log(`fetch data = ${JSON.stringify(data)}`)
     }
     fetchData()
   }, [])
 
-  useEffect((): void => {
+  useEffect(() => {
     if (data.length > 0) {
+      console.log(`fetch data = ${JSON.stringify(data)}`)
     }
   }, [data])
 
@@ -58,6 +58,11 @@ export default function Fruit() {
             </label>
 
             <label>
+                Match weight in grams?
+              <input type="checkbox" onChange={() => setMatchWeights(prev => !prev)} checked={matchWeights}/>
+            </label>
+
+            <label>
                 Search
               <input type="text" onChange={e => setSearchText(e.currentTarget.value)} value={searchText}/>
             </label>
@@ -69,32 +74,39 @@ export default function Fruit() {
           </div>
         </fieldset>
       </div>
-      <table className={styles.fruitTable}>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Primary Color</th>
-            <th>Average Weight in Grams</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.filter((iitem) => {
-            const searchTokens = searchText.trim().split(/\s+/)
-            return ((!matchNames && !matchColors) || searchText.length === 0)
+      <div className={styles.tabularData}>
+        <table className={styles.fruitTable}>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Primary Color</th>
+              <th>Average Weight in Grams</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.filter((iitem) => {
+              const searchTokens = searchText.trim().split(/\s+/)
+              return ((!matchNames && !matchColors && !matchWeights) || searchText.length === 0
                 || (matchNames && searchTokens.some(tok => iitem.name.includes(tok)))
                 || (matchColors && searchTokens.some(tok => iitem.primaryColor.includes(tok)))
-          })
-            .map( (item: apidata, i) => {
-              return (
-                <tr key={`data${i}`}>
-                  <td>{item.name}</td>
-                  <td>{item.primaryColor}</td>
-                  <td>{item.averageWeightInGrams}</td>
-                </tr>
+                || (matchWeights && searchTokens.some(tok => {
+                  const maybeNum = Number(tok)
+                  return Number.isInteger(maybeNum) && maybeNum === iitem.averageWeightInGrams
+                }))
               )
-            })}
-        </tbody>
-      </table>
+            })
+              .map( (item: apidata, i) => {
+                return (
+                  <tr key={`data${i}`}>
+                    <td>{item.name}</td>
+                    <td>{item.primaryColor}</td>
+                    <td>{item.averageWeightInGrams}</td>
+                  </tr>
+                )
+              })}
+          </tbody>
+        </table>
+      </div>
     </div>
   )
 }
