@@ -1,0 +1,47 @@
+/**
+ * Checkbox styled as an independent circular toggle (radio-like look, checkbox semantics).
+ * Centering uses transform so the inner dot stays aligned across browsers and box sizes.
+ */
+.radioLook {
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  flex: 0 0 auto;
+  align-self: center;
+  border: 2px solid #666;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  position: relative;
+  display: block;
+}
+
+.radioLook:checked {
+  border-color: #005fb8;
+}
+
+.radioLook:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #333;
+}
+
+.radioLook:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.radioLook:focus-visible {
+  outline: 2px solid #005fb8;
+  outline-offset: 2px;
+}
